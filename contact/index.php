@@ -10,6 +10,7 @@ $lesson_data = getPDOStatement($pdo, CONTACT_LESSON_SQL)->fetch();
 $work_data = getPDOStatement($pdo, CONTACT_WORK_SQL)->fetch();
 $work_play_data = getPDOStatement($pdo, CONTACT_WORK_PLAY_SQL)->fetch();
 $work_play_band_data = getPDOStatement($pdo, CONTACT_WORK_PLAY_BAND_SQL)->fetchAll();
+$player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
 $work_composition_data = getPDOStatement($pdo, CONTACT_WORK_COMPOSITION_SQL)->fetch();
 $work_composition_music_data = getPDOStatement($pdo, CONTACT_WORK_COMPOSITION_MUSIC_SQL)->fetchAll();
 $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();
@@ -19,7 +20,7 @@ $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();
   <article>
     <div>
       <h2><?=CONTACT_JA?></h2>
-      <p><?=SYNC_ICON?><time><?=$contact_data['updatedate']?></time></p>
+      <p><?=SYNC_ICON?><time><?=$concert_data['updatedate']?></time></p>
     </div>
 
     <div>
@@ -47,13 +48,21 @@ $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();
             <p><?=$work_play_data['text']?></p>
             <section>
               <h5><?=CONTACT_BAND_DESCRIPTION?></h5>
+              <?php foreach($work_play_band_data as $row): ?>
               <section>
-                <h6><?=$work_play_band_data[0]['title']?></h6>
+                <h6><?=$row['title']?></h6>
                 <ul>
-                  <li></li>
+                  <?php
+                  $performer_id_list = preg_split("/,/", $row['text']);
+                  foreach($performer_id_list as $performer_id):
+                    $player_prepare->execute(array($performer_id));
+                    $player = $player_prepare->fetch();
+                  ?>
+                  <li><?=$player['name']?></a>&nbsp;(<?=$player['instrument']?>)</li>
+                <?php endforeach; ?>
                 </ul>
                 <iframe
-                  src = "https://www.youtube.com/embed/<?=$work_play_band_data[0]['youtube_id']?>?rel=0"
+                  src = "https://www.youtube.com/embed/<?=$row['youtube_id']?>?rel=0"
                   width = "560"
                   height = "315"
                   frameborder = "0"
@@ -61,61 +70,18 @@ $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();
                   allowfullscreen>
                 </iframe>
               </section>
-
-              <section>
-                <h6><?=$work_play_band_data[1]['title']?></h6>
-                <ul>
-                  <li></li>
-                </ul>
-                <iframe
-                  src = "https://www.youtube.com/embed/<?=$work_play_band_data[1]['youtube_id']?>?rel=0"
-                  width = "560"
-                  height = "315"
-                  frameborder = "0"
-                  allow = "autoplay; encrypted-media"
-                  allowfullscreen>
-                </iframe>
-              </section>
-
-              <section>
-                <h6><?=$work_play_band_data[2]['title']?></h6>
-                <ul>
-                  <li></li>
-                </ul>
-                <iframe
-                  src = "https://www.youtube.com/embed/<?=$work_play_band_data[2]['youtube_id']?>?rel=0"
-                  width = "560"
-                  height = "315"
-                  frameborder = "0"
-                  allow = "autoplay; encrypted-media"
-                  allowfullscreen>
-                </iframe>
-              </section>
-
-              <section>
-                <h6><?=$work_play_band_data[3]['title']?></h6>
-                <ul>
-                  <li></li>
-                </ul>
-                <iframe
-                  src = "https://www.youtube.com/embed/<?=$work_play_band_data[3]['youtube_id']?>?rel=0"
-                  width = "560"
-                  height = "315"
-                  frameborder = "0"
-                  allow = "autoplay; encrypted-media"
-                  allowfullscreen>
-                </iframe>
-              </section>
+            <?php endforeach; ?>
             </section>
           </section>
 
           <section>
             <h4><?=$work_composition_data['title']?></h4>
             <p><?=$work_composition_data['text']?></p>
+            <?php foreach($work_composition_music_data as $row): ?>
             <section>
-              <h5><?=$work_composition_music_data[0]['title']?></h5>
+              <h5><?=$row['title']?></h5>
               <iframe
-                src = "https://www.youtube.com/embed/<?=$work_composition_music_data[0]['youtube_id']?>?rel=0"
+                src = "https://www.youtube.com/embed/<?=$row['youtube_id']?>?rel=0"
                 width = "560"
                 height = "315"
                 frameborder = "0"
@@ -123,17 +89,7 @@ $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();
                 allowfullscreen>
               </iframe>
             </section>
-            <section>
-              <h5><?=$work_composition_music_data[1]['title']?></h5>
-              <iframe
-                src = "https://www.youtube.com/embed/<?=$work_composition_music_data[1]['youtube_id']?>?rel=0"
-                width = "560"
-                height = "315"
-                frameborder = "0"
-                allow = "autoplay; encrypted-media"
-                allowfullscreen>
-              </iframe>
-            </section>
+          <?php endforeach; ?>
           </section>
 
           <section>
