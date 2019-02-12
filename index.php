@@ -15,15 +15,17 @@ $youtube_data = getPDOStatement($pdo, YOUTUBE_SQL)->fetchAll();
 
 $updates = array(
   //BIO
-  createUpdatedArticle( //date, title, text, image, url
+  createUpdatedArticle( //page, date, title, text, image, url
+    BIOGRAPHY_EN,
     $biography_data['updatedate'],
-    UPDATES_BIOGRAPHY_TITLE.$biography_data['janame'],
-    $biography_data['jatext'],
+    UPDATES_BIOGRAPHY_TITLE,
+    $biography_data['janame'].'&nbsp;'.$biography_data['jatext'],
     $root.'img/bio/'.$biography_photo_src.'.jpg',
     $root.BIOGRAPHY_PAGE_PATH
   ),
   //SCHEDULE
   createUpdatedArticle(
+    SCHEDULE_EN,
     $schedule_data[count($schedule_data)-1]['updatedate'],
     UPDATES_SCHEDULE_TITLE,
     UPDATES_SCHEDULE_TEXT.$schedule_data[0]['date'].' '.$schedule_data[0]['title'],
@@ -32,6 +34,7 @@ $updates = array(
   ),
   //DESIGN
   createUpdatedArticle(
+    DESIGN_EN,
     $design_data[0]['updatedate'],
     UPDATES_DESIGN_TITLE,
     UPDATES_DESIGN_TEXT,
@@ -40,6 +43,7 @@ $updates = array(
   ),
   //DISCO
   createUpdatedArticle(
+    DISCOGRAPHY_EN,
     $discography_data[0]['updatedate'],
     UPDATES_DISCOGRAPHY_TITLE,
     $discography_data[0]['title'],
@@ -51,6 +55,7 @@ $updates = array(
  //BLOG * 5 articles
 foreach(get_posts(array('order'=>'DESC', 'posts_per_page'=>5)) as $post) {
   $updates[] = createUpdatedArticle(
+    BLOG_EN,
     substr($post->post_date, 0, 10),
     $post->post_title,
     wp_strip_all_tags($post->post_content),
@@ -103,7 +108,7 @@ $updates = dateSort($updates);
         <article>
           <div>
             <h3><a href="<?=$key['page_url']?>"><?=$key['title']?></a></h3>
-            <p><?=SYNC_ICON?><time><?=$key['date']?></time></p>
+            <p><?=$key['page']?>&nbsp;<?=SYNC_ICON?><time><?=$key['date']?></time></p>
           </div>
           <p><?=$key['text']?></p>
           <p><?=EXCERPT_DOTS?><a href="<?=$key['page_url']?>"><?=VIEW_ALL?></a></p>

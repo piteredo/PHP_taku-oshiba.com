@@ -28,8 +28,9 @@ function getPDOPreparedStatement($pdo, $sql) {
   return $pdo->prepare($sql);
 }
 
-function createUpdatedArticle($date, $title, $text, $img_url, $page_url) {
+function createUpdatedArticle($page, $date, $title, $text, $img_url, $page_url) {
   return [
+    'page' => $page,
     'date' => $date,
     'title' => $title,
     'text' => $text,

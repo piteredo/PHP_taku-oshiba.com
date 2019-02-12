@@ -49,7 +49,9 @@ require($root.'function.php');
   </head>
 
   <body id="<?=$page_name?>">
-    <p><span style="color:red;font-weight:bold">サイトの緊急工事中です。(2019 2/10～</span><br/></p>
+    <p><span style="color:red;font-weight:bold">
+      (2019 2/10～) サイトの緊急工事中につきレイアウトがぐっちゃぐちゃですが内容の表示自体は正しく行われているはずです…
+    </span><br/></p>
 
     <header>
       <h1>
