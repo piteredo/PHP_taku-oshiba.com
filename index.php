@@ -53,15 +53,19 @@ $updates = array(
 );
 
  //BLOG * 5 articles
-foreach(get_posts(array('order'=>'DESC', 'posts_per_page'=>5)) as $post) {
-  $updates[] = createUpdatedArticle(
-    BLOG_EN,
-    substr($post->post_date, 0, 10),
-    $post->post_title,
-    wp_strip_all_tags($post->post_content),
-    catch_that_image() != null ? catch_that_image() : $root.NO_IMG_PATH,
-    $root.'blog/?p='.$post->ID
-  );
+$the_query = new WP_Query(array('posts_per_page' => 5));
+if($the_query->have_posts()){
+  while($the_query->have_posts()){
+    $the_query->the_post();
+    $updates[] = createUpdatedArticle(
+      BLOG_EN,
+      get_the_date(),
+      get_the_title(),
+      get_the_excerpt(),
+      catch_that_image() != null ? catch_that_image() : $root.NO_IMG_PATH,
+      get_the_permalink()
+    );
+  }
 }
 
 $updates = dateSort($updates);
@@ -111,7 +115,6 @@ $updates = dateSort($updates);
             <p><?=$key['page']?>&nbsp;<?=SYNC_ICON?><time><?=$key['date']?></time></p>
           </div>
           <p><?=$key['text']?></p>
-          <p><?=EXCERPT_DOTS?><a href="<?=$key['page_url']?>"><?=VIEW_ALL?></a></p>
           <p><a href="<?=$key['page_url']?>"><img src="<?=$key['img_url']?>" src="<?=$root.DUMMY_LOADER_IMG_PATH?>" alt="<?=$key['img_url']?>"></a></p>
         </article>
       </li>
