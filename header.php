@@ -1,4 +1,4 @@
-<?php
+  <?php
 // 呼び出し元で先に $root が定義されてること
 $robot = $_GET['robot'];
 $page_name = $_GET['page_name'];
@@ -26,17 +26,12 @@ require($root.'function.php');
     <meta name="twitter:creator" content="@piteredo">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!--<link rel="stylesheet" href="<?=$root?>css/reset.css">
+    <link rel="stylesheet" href="<?=$root?>css/reset.css">
     <link rel="stylesheet" href="<?=$root?>css/main.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">-->
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
     <link rel="stylesheet" href="<?=$root?>css/slick.css">
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">-->
-    <style type="text/css">
-      img, iframe {
-        width: 100%;
-      }
-    </style>
 
     <link rel="icon" type="image/x-icon" href="<?=$root?>img/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="<?=$root?>img/apple-touch-icon-180x180.png">

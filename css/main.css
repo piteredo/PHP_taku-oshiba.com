@@ -4,24 +4,27 @@
 
 /*----------------------------- BASE -----------------------------*/
 
-
 html {
   font-size: 62.5%; /*10px(root)*/
   overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
 }
 
-img {
-  width: 480px;
-  -ms-interpolation-mode: bicubic;
-}
-
-a {
-  color: rgb(0, 163, 175);
+img,
+iframe {
+  width: 100%;
 }
 
 body {
-  font-size: 1.4rem; /*basic(14px)*/
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+  width: 370px;
+  line-height: 1.8;
+
+  font-size: 1.3rem; /*basic(14px)*/
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI",
+    "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   text-align: justify;
   word-break: break-all;
+  word-wrap: break-word; /*for IE*/
 }
