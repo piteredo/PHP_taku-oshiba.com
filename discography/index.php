@@ -24,10 +24,9 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
         <a href="<?='https://www.amazon.co.jp/dp/'.$row['amazonurl']?>" target="_blank"><i class="fab fa-amazon"></i></a>
         <ul>
           <?php
-          $performer_id_list = preg_split("/,/", $row['performeridlist']);
+          $performer_id_list = getPerformerIdList($row['performeridlist']);
           foreach($performer_id_list as $performer_id):
-            $player_prepare->execute(array($performer_id));
-            $player = $player_prepare->fetch();
+            $player = getPlayerById($player_prepare, $performer_id);
           ?>
           <li><?=$player['name']?>&nbsp;(<?=$player['instrument']?>)</li>
         <?php endforeach; ?>

@@ -20,6 +20,9 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
     <?php foreach($schedule_data as $row): ?>
     <section>
       <p><time><?=$row['date']?></time><?='&nbsp;'.getDay($row['date'])?></p>
+        <?php if($row['alert'] != null): ?>
+        <p><?=$row['alert']?></p>
+      <?php endif; ?>
       <h3><?=$row['title']?></h3>
       <p>
         <?php
@@ -27,15 +30,21 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
         echo $place['city'].'&nbsp;';
         ?><a href="<?=$place['url']?>" target="_blank"><?=$place['name']?></a>
       </p>
-      <?php if($row['starttime'] != null): ?>
-      <p><?=$row['starttime']?>-&nbsp;(<?=$row['opentime']?>open)&nbsp;&nbsp;<?=$row['price']?></p>
+      <p>
+        <?php
+        if($row['starttime'] != null) echo $row['starttime'].'-&nbsp;';
+        if($row['opentime'] != null) echo '('.$row['opentime'].'open)&nbsp;&nbsp;';
+        if($row['price'] != null) echo $row['price'];
+      ?>
+      </p>
+        <?php if($row['other_text'] != null): ?>
+        <p><?=$row['other_text']?></p>
       <?php endif; ?>
       <ul>
         <?php
-        $performer_id_list = preg_split("/,/", $row['performeridlist']);
+        $performer_id_list = getPerformerIdList($row['performeridlist']);
         foreach($performer_id_list as $performer_id):
-          $player_prepare->execute(array($performer_id));
-          $player = $player_prepare->fetch();
+          $player = getPlayerById($player_prepare, $performer_id);
         ?>
         <li><a href="<?=$player['url']?>" target="_blank"><?=$player['name']?></a>&nbsp;(<?=$player['instrument']?>)</li>
       <?php endforeach; ?>

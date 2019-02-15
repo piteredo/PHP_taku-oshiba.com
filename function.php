@@ -53,4 +53,13 @@ function getDay($date) {
   $w = (int)$datetime->format('w');
   return $week[$w];
 }
+
+function getPerformerIdList($ids_str) {
+  return preg_split("/,/", $ids_str);
+}
+
+function getPlayerById($sql, $id) {
+  $sql->execute(array($id));
+  return $sql->fetch();
+}
 ?>
