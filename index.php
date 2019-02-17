@@ -14,7 +14,7 @@ $design_all_data = getPDOStatement($pdo, DESIGN_ALL_SQL)->fetchAll();
 $discography_data = getPDOStatement($pdo, DISCOGRAPHY_SQL)->fetchAll();
 $youtube_data = getPDOStatement($pdo, YOUTUBE_SQL)->fetchAll();
 
-//書き直す
+//書き直す 
 $performer_id_list = getPerformerIdList($schedule_data[0]['performeridlist']);
 foreach($performer_id_list as $performer_id){
   $player = getPlayerById($player_prepare, $performer_id);
