@@ -11,9 +11,9 @@ $photos = getPDOStatement($pdo, PHOTO_SQL)->fetchAll();
 
 <main id="main">
   <article>
-    <div>
+    <div class="header">
       <h2><?=BIOGRAPHY_EN?></h2>
-      <p><?=SYNC_ICON?><time><?=$bio_data['updatedate']?></time></p>
+      <p class="updated-date"><?=SYNC_ICON?><time><?=$bio_data['updatedate']?></time></p>
     </div>
     <ul class="slider">
       <?php foreach($photos as $photo) : ?>
@@ -22,11 +22,11 @@ $photos = getPDOStatement($pdo, PHOTO_SQL)->fetchAll();
     </ul>
     <div>
       <section>
-        <p><span><?=$bio_data['janame']?></span><?=$bio_data['jatext']?></p>
+        <p class="sentence"><span><?=$bio_data['janame']?></span><?=$bio_data['jatext']?></p>
       </section>
 
       <section>
-        <p><span><?=$bio_data['enname']?></span><?=$bio_data['entext']?></p>
+        <p class="sentence"><span><?=$bio_data['enname']?></span><?=$bio_data['entext']?></p>
       </section>
     </div>
   </article>

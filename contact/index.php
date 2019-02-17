@@ -18,15 +18,15 @@ $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();
 
 <main id="main">
   <article>
-    <div>
-      <h2><?=CONTACT_JA?></h2>
-      <p><?=SYNC_ICON?><time><?=$concert_data['updatedate']?></time></p>
+    <div class="header">
+      <h2><?=CONTACT_EN?></h2>
+      <p class="updated-date"><?=SYNC_ICON?><time><?=$concert_data['updatedate']?></time></p>
     </div>
 
     <div>
       <section>
         <p><?=CONTACT_DESCRIPTION?></p>
-        <p>
+        <p class="sentence">
           <a href="mailto:<?=EMAIL_ADDRESS?>?subject=<?=EMAIL_SUBJECT?>" target="_blank"><i class="far fa-envelope"></i></a>
           <a href="mailto:<?=EMAIL_ADDRESS?>?subject=<?=EMAIL_SUBJECT?>" target="_blank"><?=EMAIL_ADDRESS?></a>
         </p>
@@ -35,21 +35,21 @@ $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();
       <section>
         <section>
           <h3><?=$concert_data['title']?></h3>
-          <p><?=$concert_data['text']?></p>
+          <p class="sentence"><?=$concert_data['text']?></p>
         </section>
 
         <section>
           <h3><?=$lesson_data['title']?></h3>
-          <p><?=$lesson_data['text']?></p>
+          <p class="sentence"><?=$lesson_data['text']?></p>
         </section>
 
         <section>
           <h3><?=$work_data['title']?></h3>
-          <p><?=$work_data['text']?></p>
+          <p class="sentence"><?=$work_data['text']?></p>
           <section>
-            <h4><?=$work_play_data['title']?></h4>
-            <p><?=$work_play_data['text']?></p>
-            <section>
+            <h4 class="work_title"><?=$work_play_data['title']?></h4>
+            <p class="sentence"><?=$work_play_data['text']?></p>
+            <section class="movie">
               <h5><?=CONTACT_BAND_DESCRIPTION?></h5>
               <?php foreach($work_play_band_data as $row): ?>
               <section>
@@ -77,8 +77,8 @@ $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();
             </section>
           </section>
 
-          <section>
-            <h4><?=$work_composition_data['title']?></h4>
+          <section class="movie">
+            <h4 class="work_title"><?=$work_composition_data['title']?></h4>
             <p><?=$work_composition_data['text']?></p>
             <?php foreach($work_composition_music_data as $row): ?>
             <section>
@@ -96,8 +96,8 @@ $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();
           </section>
 
           <section>
-            <h4><?=$work_design_data['title']?></h4>
-            <p><?=$work_design_data['text']?></p>
+            <h4 class="work_title"><?=$work_design_data['title']?></h4>
+            <p class="sentence"><?=$work_design_data['text']?></p>
           </p>
         </section>
       </section>

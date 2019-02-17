@@ -1,4 +1,4 @@
-  <?php
+<?php
 // 呼び出し元で先に $root が定義されてること
 $robot = $_GET['robot'];
 $page_name = $_GET['page_name'];
@@ -28,37 +28,30 @@ require($root.'function.php');
 
     <link rel="stylesheet" href="<?=$root?>css/reset.css">
     <link rel="stylesheet" href="<?=$root?>css/main.css">
-    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
     <link rel="stylesheet" href="<?=$root?>css/slick.css">
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
 
     <link rel="icon" type="image/x-icon" href="<?=$root?>img/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="<?=$root?>img/apple-touch-icon-180x180.png">
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="<?=$root?>js/slick.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>-->
     <script src="<?=$root?>js/main.js"></script>
   </head>
 
   <body id="<?=$page_name?>">
-    <p><span style="color:red;font-weight:bold">
-      (2019 2/10～) サイトの緊急工事中につきレイアウトがぐっちゃぐちゃですが内容の表示自体は正しく行われているはずです…
-    </span><br/></p>
-
     <header>
-      <h1>
-        <a href="<?=$root?>"><img src="<?=$root?>img/header_title.png" alt="<?=SITE_DESCRIPTION?>"></a>
-      </h1>
-
+      <h1><a href="<?=$root?>"><img class="logo" src="<?=$root?>img/header_title.png" alt="<?=SITE_DESCRIPTION?>"></a></h1>
       <nav>
         <input id="ham-menu-cb" type="checkbox" value="off">
         <label id="ham-menu-icon" for="ham-menu-cb"><i class="fas fa-bars"></i></label>
         <label id="ham-menu-bg" for="ham-menu-cb"></label>
         <div class="ham-menu">
-          <ul>
+          <ul class="main">
             <li><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_EN?></a></li>
             <li><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_EN?></a></li>
             <li><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=DESIGN_EN?></a></li>
@@ -66,6 +59,8 @@ require($root.'function.php');
             <li><a href="<?=$root.BLOG_PAGE_PATH?>"><?=BLOG_EN?></a></li>
             <li><a href="<?=$root.DISCOGRAPHY_PAGE_PATH?>"><?=DISCOGRAPHY_EN?></a></li>
             <li><a href="<?=$root.CONTACT_PAGE_PATH?>"><?=CONTACT_EN?></a></li>
+          </ul>
+          <ul class="icons">
             <li><a href="<?=TWITTER_URL?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
             <li><a href="<?=YOUTUBE_URL?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
             <li><a href="<?=GITHUB_URL?>" target="_blank"><i class="fab fa-github"></i></a></li>

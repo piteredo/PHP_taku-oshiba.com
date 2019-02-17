@@ -14,9 +14,9 @@ $lesson_image = getPDOStatement($pdo, LESSON_IMAGE_SQL)->fetchAll(); //currently
 
 <main id="main">
   <article>
-    <div>
+    <div class="header">
       <h2><?=LESSON_SCHOOL_NAME?></h2>
-      <p><?=SYNC_ICON?><time><?=$lesson_greeting['updatedate']?></time></p>
+      <p class="updated-date"><?=SYNC_ICON?><time><?=$lesson_greeting['updatedate']?></time></p>
     </div>
 
     <div>
@@ -25,13 +25,13 @@ $lesson_image = getPDOStatement($pdo, LESSON_IMAGE_SQL)->fetchAll(); //currently
       </section>
 
       <section>
-        <h3><?=$lesson_greeting['title']?></h3>
-        <p><?=$lesson_greeting['textmain_arr']?></p>
+        <h3 class="section_title"><?=$lesson_greeting['title']?></h3>
+        <p class="sentence"><?=$lesson_greeting['textmain_arr']?></p>
       </section>
 
-      <section>
+      <section class="movie">
         <?php foreach($lesson_movie as $row): ?>
-        <h3><?=$row['title']?></h3>
+        <h3 class="section_title"><?=$row['title']?></h3>
         <section>
           <h4><?=$row['subtitle']?></h4>
           <iframe
@@ -46,25 +46,25 @@ $lesson_image = getPDOStatement($pdo, LESSON_IMAGE_SQL)->fetchAll(); //currently
       <?php endforeach; ?>
       </section>
 
-      <section>
-        <h3><?=$lesson_detail[0]['title']?></h3>
-        <section>
-          <?php for($i=0; $i<count($lesson_detail); $i++): ?>
-          <h4><?=$lesson_detail[$i]['subtitle']?></h4>
+      <section class="detail">
+        <h3 class="section_title"><?=$lesson_detail[0]['title']?></h3>
+        <?php for($i=0; $i<count($lesson_detail); $i++): ?>
+        <div class="section">
+          <h4 class="section_subtitle"><?=$lesson_detail[$i]['subtitle']?></h4>
           <ul>
             <?php $textmain_arr = preg_split("/,/", $lesson_detail[$i]['textmain_arr']);
             foreach($textmain_arr as $textmain): ?>
-            <li><?=$textmain?></li>
+            <li class="bold"><?=$textmain?></li>
           <?php endforeach; ?>
           </ul>
           <ul>
           <?php $textsub_arr = preg_split("/,/", $lesson_detail[$i]['textsub_arr']);
             foreach($textsub_arr as $textsub): ?>
-            <li><?=$textsub?></li>
+            <li>※ <?=$textsub?></li>
           <?php endforeach; ?>
           </ul>
+        </div>
         <?php endfor; ?>
-        </section>
       </section>
 
       <section>

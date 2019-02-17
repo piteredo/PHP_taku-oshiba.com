@@ -12,16 +12,16 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
 
 <main id="main">
   <article>
-    <div>
+    <div class="header">
       <h2><?=SCHEDULE_EN?></h2>
-      <p><?=SYNC_ICON?><time><?=$schedule_data[count($schedule_data)-1]['updatedate']?></time></p>
+      <p class="updated-date"><?=SYNC_ICON?><time><?=$schedule_data[count($schedule_data)-1]['updatedate']?></time></p>
     </div>
 
     <?php foreach($schedule_data as $row): ?>
     <section>
-      <p><time><?=$row['date']?></time><?='&nbsp;'.getDay($row['date'])?></p>
+      <p class="date"><time><?=$row['date']?></time><?='&nbsp;'.getDay($row['date'])?></p>
         <?php if($row['alert'] != null): ?>
-        <p><?=$row['alert']?></p>
+        <p class="alert"><?=$row['alert']?></p>
       <?php endif; ?>
       <h3><?=$row['title']?></h3>
       <p>

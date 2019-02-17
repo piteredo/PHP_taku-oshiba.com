@@ -21,14 +21,14 @@ $design_section_arr = [
 
 <main id="main">
   <article>
-    <div>
+    <div class="header">
       <h2><?=DESIGN_EN?></h2>
-      <p><?=SYNC_ICON?><time><?=$design_all_data[0]['updatedate']?></time></p>
+      <p class="updated-date"><?=SYNC_ICON?><time><?=$design_all_data[0]['updatedate']?></time></p>
     </div>
 
     <section>
-      <p><?=DESIGN_GREETING_TEXT?></p>
-      <ul>
+      <p class="sentence"><?=DESIGN_GREETING_TEXT?></p>
+      <ul class="nav">
         <?php foreach($design_section_arr as $design_section): ?>
         <li><a href="#<?=$design_section['id']?>"><?=$design_section['title']?></a></li>
       <?php endforeach; ?>
@@ -36,9 +36,9 @@ $design_section_arr = [
     </section>
 
     <?php foreach($design_section_arr as $design_section): ?>
-    <section>
-      <h3><a id="<?=$design_section['id']?>"><?=$design_section['title']?></a></h3>
-      <ul>
+    <section class="category">
+      <h3 class="category_title"><a id="<?=$design_section['id']?>"><?=$design_section['title']?></a></h3>
+      <ul class="images">
         <?php foreach($design_section['data'] as $row): ?>
         <li>
           <a href="<?=$root.'img/design/'.$row['src'].'.jpg'?>">

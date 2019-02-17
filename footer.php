@@ -1,6 +1,6 @@
 <footer>
   <nav>
-    <ul>
+    <ul class="footer_main">
       <li><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_JA?></a></li>
       <li><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_JA?></a></li>
       <li><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=DESIGN_JA?></a></li>
@@ -9,6 +9,8 @@
       <li><a href="<?=$root.DISCOGRAPHY_PAGE_PATH?>"><?=DISCOGRAPHY_JA?></a></li>
       <li><a href="<?=$root.CONTACT_PAGE_PATH?>"><?=CONTACT_JA?></a></li>
       <li><a href="<?=$root?>"><?=INDEX_JA?></a></li>
+    </ul>
+    <ul class="icons">
       <li><a href="<?=TWITTER_URL?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
       <li><a href="<?=YOUTUBE_URL?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
       <li><a href="<?=GITHUB_URL?>" target="_blank"><i class="fab fa-github"></i></a></li>

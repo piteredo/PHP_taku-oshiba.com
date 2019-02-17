@@ -11,9 +11,9 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
 
 <main id="main">
   <article>
-    <div>
+    <div class="header">
       <h2><?=DISCOGRAPHY_EN?></h2>
-      <p><?=SYNC_ICON?><time><?=$discography_data[0]['updatedate']?></time></p>
+      <p class="updated-date"><?=SYNC_ICON?><time><?=$discography_data[0]['updatedate']?></time></p>
     </div>
 
     <?php foreach($discography_data as $row): ?>
@@ -37,6 +37,6 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
     </section>
     <?php endforeach; ?>
   </article>
-</div>
+</main>
 
 <?php require($root.'footer.php'); ?>

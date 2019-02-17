@@ -82,7 +82,7 @@ $updates = dateSort($updates);
 ?>
 
 <main id="main">
-  <article>
+  <article class="movie">
     <?php foreach($youtube_data as $row): ?>
     <section>
       <iframe
@@ -97,10 +97,10 @@ $updates = dateSort($updates);
   <?php endforeach ?>
   </article>
 
-  <article>
-    <div>
+  <article class="design">
+    <div class="header">
       <h2><?=DESIGN_EN?></h2>
-      <p><?=SYNC_ICON?><time><?=$design_all_data[0]['updatedate']?></time></p>
+      <p class="updated-date"><?=SYNC_ICON?><time><?=$design_all_data[0]['updatedate']?></time></p>
     </div>
     <ul class="slider">
       <?php foreach($design_all_data as $row):
@@ -108,13 +108,13 @@ $updates = dateSort($updates);
       <li><a href="<?=$url?>"><img data-lazy="<?=$url?>" alt="<?=$row['src']?>"></a></li>
     <?php endforeach ?>
     </ul>
-    <p><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p>
+    <p class="footer_nav"><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p>
   </article>
 
-  <div>
-    <div>
+  <div class="updates">
+    <div class="header">
       <h2><?=UPDATES_EN?></h2>
-      <p><?=SYNC_ICON?><time><?=$updates[0]['date']?></time></p>
+      <p class="updated-date"><?=SYNC_ICON?><time><?=$updates[0]['date']?></time></p>
     </div>
     <ul>
       <?php foreach($updates as $key): ?>
@@ -122,9 +122,9 @@ $updates = dateSort($updates);
         <article>
           <div>
             <h3><a href="<?=$key['page_url']?>"><?=$key['title']?></a></h3>
-            <p><?=$key['page']?>&nbsp;<?=SYNC_ICON?><time><?=$key['date']?></time></p>
+            <p class="updated-date"><?=$key['page']?>&nbsp;<?=SYNC_ICON?><time><?=$key['date']?></time></p>
           </div>
-          <p><?=$key['text']?><?=EXCERPT_DOTS?><a href="<?=$key['page_url']?>"><?=VIEW_ALL?></a></p>
+          <p class="sentence"><?=$key['text']?><?=EXCERPT_DOTS?><a href="<?=$key['page_url']?>"><?=VIEW_ALL?></a></p>
           <p><a href="<?=$key['page_url']?>"><img src="<?=$key['img_url']?>" src="<?=$root.DUMMY_LOADER_IMG_PATH?>" alt="<?=$key['img_url']?>"></a></p>
         </article>
       </li>
