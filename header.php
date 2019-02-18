@@ -51,6 +51,7 @@ require($root.'function.php');
         <label id="ham-menu-icon" for="ham-menu-cb"><i class="fas fa-bars"></i></label>
         <label id="ham-menu-bg" for="ham-menu-cb"></label>
         <div class="ham-menu">
+          <p style="color:red;font-size:1.2rem">(2019 2/17~) サイト工事中にて一部レイアウトに崩れがあります。</p>
           <ul class="main">
             <li><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_EN?></a></li>
             <li><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_EN?></a></li>
