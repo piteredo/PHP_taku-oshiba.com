@@ -18,22 +18,28 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
 
     <?php foreach($discography_data as $row): ?>
     <section>
-      <h3><?=$row['title']?></h3>
-      <p><img src="<?=$root.'img/design/'.$row['imgurl'].'.jpg'?>" src="<?=$root.DUMMY_LOADER_IMG_PATH?>" alt="<?=$row['imgurl']?>"></p>
-      <div>
-        <a href="<?='https://www.amazon.co.jp/dp/'.$row['amazonurl']?>" target="_blank"><i class="fab fa-amazon"></i></a>
-        <ul>
-          <?php
-          $performer_id_list = getPerformerIdList($row['performeridlist']);
-          foreach($performer_id_list as $performer_id):
-            $player = getPlayerById($player_prepare, $performer_id);
-          ?>
-          <li><?=$player['name']?>&nbsp;(<?=$player['instrument']?>)</li>
-        <?php endforeach; ?>
-        </ul>
-        <p><?=$row['info']?></p>
-        <p><?=$row['songlist']?></p>
-      </div>
+      <section class="text-section">
+        <h3><?=$row['title']?></h3>
+      </section>
+      <section class="image-section">
+        <p><img src="<?=$root.'img/design/'.$row['imgurl'].'.jpg'?>" src="<?=$root.DUMMY_LOADER_IMG_PATH?>" alt="<?=$row['imgurl']?>"></p>
+      </section>
+      <section class="text-section">
+        <div>
+          <a href="<?='https://www.amazon.co.jp/dp/'.$row['amazonurl']?>" target="_blank"><i class="fab fa-amazon"></i></a>
+          <ul>
+            <?php
+            $performer_id_list = getPerformerIdList($row['performeridlist']);
+            foreach($performer_id_list as $performer_id):
+              $player = getPlayerById($player_prepare, $performer_id);
+            ?>
+            <li><?=$player['name']?>&nbsp;(<?=$player['instrument']?>)</li>
+          <?php endforeach; ?>
+          </ul>
+          <p><?=$row['info']?></p>
+          <p><?=$row['songlist']?></p>
+        </div>
+      </section>
     </section>
     <?php endforeach; ?>
   </article>

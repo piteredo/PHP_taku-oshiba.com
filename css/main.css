@@ -141,13 +141,17 @@ header #ham-menu-cb:checked ~ #ham-menu-bg {
 
 #main {
   display: block;
-  margin: 100px 5% 0;
+  margin: 100px 0 0;
 }
 @media screen and (min-width: 768px) {
   #main {
     width: calc(768px * 0.9);
     margin: 100px auto 0;
   }
+}
+
+#main .header {
+  margin: 0 12.5% 4%;
 }
 
 #main .page-title {
@@ -161,13 +165,67 @@ header #ham-menu-cb:checked ~ #ham-menu-bg {
   margin-bottom: 10px;*/
 }
 
+#main .article-section {
+  margin-bottom: 8%;
+}
+
+#main .text-section {
+  margin: 0 12.5% 0;
+}
+
 
 
 /*----------------------------- MAIN INDEX -----------------------------*/
 
 
-#index #main .text {
-  margin-bottom: 6px;
+
+
+/*orverride*/
+#index #main .text-section {
+  margin-bottom: 10px;
+}
+
+#index #main .view-all-wrapper {
+  display: block;
+  width: 75%;
+  margin: 0 12.5% 0;
+  text-align: right;
+}
+
+
+
+/*----------------------------- MAIN SQUARE-TRIM -----------------------------*/
+
+
+#main .square-trim-ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#main .square-trim-wrapper {
+  position: relative;
+  width: 75%;
+  margin: 0 12.5% 8%;
+}
+
+#main .square-trim-wrapper::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+#main .square-trim-wrapper img,
+#main .square-trim-wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  object-fit: cover;
 }
 
 
@@ -193,50 +251,73 @@ header #ham-menu-cb:checked ~ #ham-menu-bg {
 
 
 
-/*----------------------------- SQUARE TRIM. -----------------------------*/
+/*----------------------------- SLIDER (BIO) -----------------------------*/
 
 
-#index #main .movie ul,
-#index #main .design ul,
-#index #main .blog ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+#main .slider li {
+	height: 300px;
 }
 
-#index #main .square-wrapper,
-#index #main .rectangle-wrapper {
+#main .slider .prev {
+	position: absolute;
+	left: -3%;
+	top: 130px;
+	cursor: pointer;
+	font-size: 2rem;
+}
+
+#main .slider .next {
+	position: absolute;
+	right: -3%;
+	top: 130px;
+	cursor: pointer;
+	font-size: 2rem;
+}
+
+
+/*for IE & Edge*/
+#main .slider li {
   position: relative;
-  width: 100%;
-  margin-bottom: 5%;
+  height: 315px;
+  display: block;
+  overflow: hidden;
 }
-@media screen and (min-width: 768px) {
-  #index #main .square-wrapper,
-  #index #main .rectangle-wrapper {
-    width: calc(50% - 2.5%);
+/*for IE & Edge*/
+#main .slider img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+/*for Othres*/
+@supports (object-fit: cover) {
+  #main .slider img {
+    /* negative */
+    position: static;
+    top: 0;
+    left: 0;
+    -ms-transform: none;
+    -moz-transform: none;
+    -webkit-transform: none;
+    transform: none;
+    min-width: inherit;
+
+    /* main */
+    width: 100%;
+  	height: 100%;
+  	object-fit: cover;
+  	object-position: center 40%;
+  	margin-right: 5%;
   }
 }
-#index #main .blog .square-wrapper {
-  position: relative;
-  width: 100%;
-  margin-bottom: 5%;
-}
 
-#index #main .square-wrapper::before {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
-
-#index #main .square-wrapper img,
-#index #main .square-wrapper iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  margin: auto;
-  object-fit: cover;
+.slider .slick-slide  {
+    margin-left: 6px;
+    margin-right: 6px;
 }

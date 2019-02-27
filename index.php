@@ -82,15 +82,15 @@ $updates = dateSort($updates);
 ?>
 
 <main id="main">
-  <div class="movie">
+  <div class="movie article-section">
     <div class="header">
       <h2 class="page-title">MOVIE</h2>
       <p class="updated-date"><?=SYNC_ICON?><time><?=$youtube_data[0]['updatedate']?></time></p>
     </div>
     <section>
-      <ul>
+      <ul class="square-trim-ul">
         <?php foreach($youtube_data as $row): ?>
-        <li class="square-wrapper"><iframe
+        <li class="square-trim-wrapper"><iframe
             src = "https://www.youtube.com/embed/<?=$row['src']?>?rel=0"
             width = "560"
             height = "315"
@@ -99,22 +99,22 @@ $updates = dateSort($updates);
             allowfullscreen>
         </iframe></li>
         <?php endforeach; ?>
-        <li><p class="footer_nav"><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
+        <li class="view-all-wrapper"><p><a href="<?=$root.MOVIE_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
       </ul>
     </section>
   </div>
 
-  <div class="design">
+  <div class="design article-section">
     <div class="header">
       <h2 class="page-title"><?=DESIGN_EN?></h2>
       <p class="updated-date"><?=SYNC_ICON?><time><?=$design_all_data[0]['updatedate']?></time></p>
     </div>
     <section>
-      <ul>
+      <ul class="square-trim-ul">
         <?php $i=0; foreach($design_all_data as $row): if($i<5): $url = $root.'img/design/'.$row['src'].'.jpg'; ?>
-        <li class="square-wrapper"><a href="<?=$url?>"><img src="<?=$url?>" alt="<?=$row['src']?>"></a></li>
+        <li class="square-trim-wrapper"><a href="<?=$url?>"><img src="<?=$url?>" alt="<?=$row['src']?>"></a></li>
         <?php endif; $i++; endforeach ?>
-        <li><p class="footer_nav"><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
+        <li class="view-all-wrapper"><p><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
       </ul>
     </section>
   </div>
@@ -127,18 +127,20 @@ $updates = dateSort($updates);
     <section>
       <ul>
         <?php foreach($updates as $key): ?>
-        <li class="rectangle-wrapper">
-          <article>
-            <div>
+        <li>
+          <article class="article-section">
+            <section class="text-section">
               <h3><a href="<?=$key['page_url']?>"><?=$key['title']?></a></h3>
               <p class="updated-date"><?=SYNC_ICON?><time><?=$key['date']?></time></p>
-            </div>
-            <p class="text"><?=$key['text']?><?=EXCERPT_DOTS?><a href="<?=$key['page_url']?>"><?=VIEW_ALL?></a></p>
-            <p class="square-wrapper"><a href="<?=$key['page_url']?>"><img src="<?=$key['img_url']?>" alt="<?=$key['img_url']?>"></a></p>
+              <p class="text"><?=$key['text']?><?=EXCERPT_DOTS?><a href="<?=$key['page_url']?>"><?=VIEW_ALL?></a></p>
+            </section>
+            <section class="image-section">
+              <p><a href="<?=$key['page_url']?>"><img src="<?=$key['img_url']?>" alt="<?=$key['img_url']?>"></a></p>
+            </section>
           </article>
         </li>
         <?php endforeach ?>
-        <li><p class="footer_nav"><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
+        <li class="view-all-wrapper"><p><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
       </ul>
     </section>
   </div>

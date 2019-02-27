@@ -20,7 +20,7 @@ $photos = getPDOStatement($pdo, PHOTO_SQL)->fetchAll();
       <li><a href="<?=$root.'img/bio/'.$photo['src'].'.jpg'?>"><img data-lazy="<?=$root.'img/bio/'.$photo['src'].'.jpg'?>" alt="<?=$bio_data['enname']?>"></a></li>
     <?php endforeach; ?>
     </ul>
-    <div>
+    <div class="text-section">
       <section>
         <p class="sentence"><span><?=$bio_data['janame']?></span><?=$bio_data['jatext']?></p>
       </section>

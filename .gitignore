@@ -1,5 +1,6 @@
 _BACKUP/
 img/
 .ftpconfig
+css/old_main.css
 .htaccess
 const.php

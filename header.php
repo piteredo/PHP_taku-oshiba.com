@@ -30,8 +30,8 @@ require($root.'function.php');
     <link rel="stylesheet" href="<?=$root?>css/main.css">
     <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
-    <!--<link rel="stylesheet" href="<?=$root?>css/slick.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">-->
+    <link rel="stylesheet" href="<?=$root?>css/slick.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">-->
 
     <link rel="icon" type="image/x-icon" href="<?=$root?>img/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="<?=$root?>img/apple-touch-icon-180x180.png">
@@ -71,7 +71,7 @@ require($root.'function.php');
           <li><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_EN?></a></li>
           <li><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_EN?></a></li>
           <li><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=DESIGN_EN?></a></li>
-          <li>MOVIE</li>
+          <li><a href="<?=$root.MOVIE_PAGE_PATH?>"><?=MOVIE_EN?></a></li>
           <li><a href="<?=$root.BLOG_PAGE_PATH?>"><?=BLOG_EN?></a></li>
           <li><a href="<?=$root.LESSON_PAGE_PATH?>"><?=LESSON_EN?></a></li>
           <li><a href="<?=$root.DISCOGRAPHY_PAGE_PATH?>"><?=DISCOGRAPHY_EN?></a></li>
