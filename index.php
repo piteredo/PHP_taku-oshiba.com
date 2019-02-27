@@ -3,7 +3,7 @@ $root = './';
 $_GET['robot'] = 'index';
 $_GET['page_name'] = 'index';
 require($root.'header.php');
-require($root.'blog/wp-load.php');
+require($root.'../blog/wp-load.php'); //実装時パス直す
 
 $pdo = initPDO();
 $biography_data = getPDOStatement($pdo, BIOGRAPHY_SQL)->fetch(); //only 1 column
@@ -29,7 +29,7 @@ foreach($performer_id_list as $performer_id){
 
 $updates = array(
   //BIO
-  createUpdatedArticle( //page, date, title, text, image, url
+  /*createUpdatedArticle( //page, date, title, text, image, url
     BIOGRAPHY_EN,
     $biography_data['updatedate'],
     UPDATES_BIOGRAPHY_TITLE,
@@ -63,7 +63,7 @@ $updates = array(
     strip_tags(UPDATES_DISCOGRAPHY_TEXT).'<br/>'.$discography_data[0]['title'].'<br/>'.$players_discography.'<br/>',
     $root.'img/design/'.$discography_data[0]['imgurl'].'.jpg',
     $root.DISCOGRAPHY_PAGE_PATH
-  )
+  )*/
 );
 
  //BLOG * 5 articles
@@ -82,54 +82,65 @@ $updates = dateSort($updates);
 ?>
 
 <main id="main">
-  <article class="movie">
-    <?php foreach($youtube_data as $row): ?>
-    <section>
-      <iframe
-        src = "https://www.youtube.com/embed/<?=$row['src']?>?rel=0"
-        width = "560"
-        height = "315"
-        frameborder = "0"
-        allow = "autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
-    </section>
-  <?php endforeach ?>
-  </article>
-
-  <article class="design">
+  <div class="movie">
     <div class="header">
-      <h2><?=DESIGN_EN?></h2>
+      <h2 class="page-title">MOVIE</h2>
+      <p class="updated-date"><?=SYNC_ICON?><time><?=$youtube_data[0]['updatedate']?></time></p>
+    </div>
+    <section>
+      <ul>
+        <?php foreach($youtube_data as $row): ?>
+        <li class="square-wrapper"><iframe
+            src = "https://www.youtube.com/embed/<?=$row['src']?>?rel=0"
+            width = "560"
+            height = "315"
+            frameborder = "0"
+            allow = "autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe></li>
+        <?php endforeach; ?>
+        <li><p class="footer_nav"><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="design">
+    <div class="header">
+      <h2 class="page-title"><?=DESIGN_EN?></h2>
       <p class="updated-date"><?=SYNC_ICON?><time><?=$design_all_data[0]['updatedate']?></time></p>
     </div>
-    <ul class="slider">
-      <?php foreach($design_all_data as $row):
-        $url = $root.'img/design/'.$row['src'].'.jpg'; ?>
-      <li><a href="<?=$url?>"><img data-lazy="<?=$url?>" alt="<?=$row['src']?>"></a></li>
-    <?php endforeach ?>
-    </ul>
-    <p class="footer_nav"><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p>
-  </article>
+    <section>
+      <ul>
+        <?php $i=0; foreach($design_all_data as $row): if($i<5): $url = $root.'img/design/'.$row['src'].'.jpg'; ?>
+        <li class="square-wrapper"><a href="<?=$url?>"><img src="<?=$url?>" alt="<?=$row['src']?>"></a></li>
+        <?php endif; $i++; endforeach ?>
+        <li><p class="footer_nav"><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
+      </ul>
+    </section>
+  </div>
 
-  <div class="updates">
+  <div class="blog">
     <div class="header">
-      <h2><?=UPDATES_EN?></h2>
+      <h2 class="page-title"><?=BLOG_EN?></h2>
       <p class="updated-date"><?=SYNC_ICON?><time><?=$updates[0]['date']?></time></p>
     </div>
-    <ul>
-      <?php foreach($updates as $key): ?>
-      <li>
-        <article>
-          <div>
-            <h3><a href="<?=$key['page_url']?>"><?=$key['title']?></a></h3>
-            <p class="updated-date"><?=$key['page']?>&nbsp;<?=SYNC_ICON?><time><?=$key['date']?></time></p>
-          </div>
-          <p class="sentence"><?=$key['text']?><?=EXCERPT_DOTS?><a href="<?=$key['page_url']?>"><?=VIEW_ALL?></a></p>
-          <p><a href="<?=$key['page_url']?>"><img src="<?=$key['img_url']?>" src="<?=$root.DUMMY_LOADER_IMG_PATH?>" alt="<?=$key['img_url']?>"></a></p>
-        </article>
-      </li>
-    <?php endforeach ?>
-    </ul>
+    <section>
+      <ul>
+        <?php foreach($updates as $key): ?>
+        <li class="rectangle-wrapper">
+          <article>
+            <div>
+              <h3><a href="<?=$key['page_url']?>"><?=$key['title']?></a></h3>
+              <p class="updated-date"><?=SYNC_ICON?><time><?=$key['date']?></time></p>
+            </div>
+            <p class="text"><?=$key['text']?><?=EXCERPT_DOTS?><a href="<?=$key['page_url']?>"><?=VIEW_ALL?></a></p>
+            <p class="square-wrapper"><a href="<?=$key['page_url']?>"><img src="<?=$key['img_url']?>" alt="<?=$key['img_url']?>"></a></p>
+          </article>
+        </li>
+        <?php endforeach ?>
+        <li><p class="footer_nav"><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
+      </ul>
+    </section>
   </div>
 </main>
 

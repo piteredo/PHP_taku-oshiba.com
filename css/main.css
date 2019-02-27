@@ -12,7 +12,6 @@ html {
 img,
 iframe {
   width: 100%;
-  -ms-interpolation-mode: bicubic;
 }
 
 a {
@@ -20,10 +19,14 @@ a {
 }
 
 body {
-  font-size: 1.4rem; /*basic(14px)*/
+  font-size: 1.3rem; /*basic(14px)*/
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   text-align: justify;
   word-break: break-all;
+
+  line-height: 1.7;
+  color: #D3D3D3;
+  background-color: #292929;
 }
 
 
@@ -32,127 +35,70 @@ body {
 
 
 header {
-  position: fixed;
   display: flex;
-  justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.9);
-  top: 0;
-
-  left: 0;
-  width: 90%;
-  padding: 15.34px 5%; /*767px*2%*/
-
-  z-index: 20;
-}
-@media screen and (min-width: 768px) {
-  header {
-    padding: 2% 5%;
-  }
-}
-@media screen and (min-width: 960px) {
-  header {
-    left: auto;
-    width: 864px; /*bodyWidth*/
-    width: 100%;
-    padding: 19.2px 0; /*960px*2%*/
-    justify-content: center;
-  }
-}
-
-
-header .logo {
-  width: 241.605px; /*767px*90%*35%*/
-  height: 100%;
-
-  /*border: 1px solid #000; box-sizing: border-box; --- FOR_DEBUG */
-}
-@media screen and (min-width: 768px) {
-  header .logo {
-    width: 35%;
-  }
-}
-@media screen and (min-width: 960px) {
-  header .logo {
-    width: 302.4px; /*960px*90%*35%*/
-    margin-right: 28.8px;
-  }
-}
-
-
-
-/*----------------------------- HEADER.NAV / HAMBURGUR_MENU -----------------------------*/
-
-
-header nav {
-  width: auto;
-  font-family: 'Ubuntu Condensed', sans-serif;
-  font-size: 3rem;
-
-  /*border: 1px solid #000; box-sizing: border-box; --- FOR_DEBUG */
-}
-@media screen and (min-width: 768px) {
-  header nav {
-    width: 62%;
-    font-size: 1.8rem;
-  }
-}
-@media screen and (min-width: 960px) {
-  header nav {
-    width: 535.68px; /*960px*90%*62%*/
-  }
-}
-
-
-header nav li {
-	margin-bottom: 25%;
-}
-@media screen and (min-width: 768px) {
-  header nav li {
-    margin-bottom: 0;
-  }
-}
-
-
-header nav #ham-menu-cb {
-  display: none;
-}
-
-
-header nav #ham-menu-icon {
-  display: none;
-
   position: relative;
-  cursor: pointer;
-  border: solid 1px #000;
-  width: 55.224px; /*logo700:160=241.605:Xpx*/
-  height: 55.224px;
-  line-height: 55.224px; /*vertical*/
-  text-align: center;
-  font-size: 3rem;
-  z-index: 1000;
-}
-@media screen and (max-width: 767px) {
-  header nav #ham-menu-icon {
-    display: block;
-  }
+  justify-content: flex-end;
+  margin: 10px 10px 0;
 }
 
+header .site-title {
+  margin-right: 10px;
+}
 
-header nav ul {
+header >:nth-child(2) {
+  margin-right: auto;
+}
+
+header .lang-switcher ul {
   display: flex;
-  justify-content: space-between;
 }
-@media screen and (max-width: 767px) {
-  header nav ul {
-    display: inline; /*default*/
-  }
+header .lang-switcher ul li:first-child {
+  margin-right: 10px;
+}
 
-  header nav div.ham-menu {
-    opacity: 0;
-    display: block;
-    position: absolute;
-    pointer-events: none;
-    top: 45px;
+header nav.typical-menu {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  header nav.typical-menu {
+    display: inline;
+  }
+  header nav.typical-menu ul {
+    display: flex;
+  }
+  header nav.typical-menu ul li {
+    margin-left: 10px;
+  }
+  header nav.typical-menu ul li:first-child {
+    margin-left: 0;
+  }
+}
+
+header #ham-menu-icon {
+  margin-left: 10px;
+}
+
+
+
+
+/*----------------------------- HAMBURGUR_MENU -----------------------------*/
+
+
+header #ham-menu-cb {
+  display: none;
+}
+
+header #ham-menu-icon {
+  display: block;
+  cursor: pointer;
+}
+
+header nav.ham-menu {
+  opacity: 0;
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  top: 45px;
 	left: 50%;
 	-webkit-transform: translate(-50%,0);
 	-moz-transform: translate(-50%,0);
@@ -160,12 +106,10 @@ header nav ul {
 	-o-transform: translate(-50%,0);
 	transform: translate(-50%,0);
 	text-align: center;
-    z-index: 1000;
-  }
+  z-index: 1000;
 }
 
-
-header nav #ham-menu-bg {
+header #ham-menu-bg {
   opacity: 0;
   pointer-events: none;
   background-color: rgba(255, 255, 255, 0.99);
@@ -179,12 +123,12 @@ header nav #ham-menu-bg {
   left: 0;
 }
 
-header nav #ham-menu-cb:checked ~ .ham-menu {
+header #ham-menu-cb:checked ~ .ham-menu {
   opacity: 1.0;
   pointer-events: all;
 }
 
-header nav #ham-menu-cb:checked ~ #ham-menu-bg {
+header #ham-menu-cb:checked ~ #ham-menu-bg {
     opacity: 0.9;
     z-index: 999;
     pointer-events: all;
@@ -192,252 +136,46 @@ header nav #ham-menu-cb:checked ~ #ham-menu-bg {
 
 
 
-/*----------------------------- MAIN.ALL_PAGES -----------------------------*/
+/*----------------------------- MAIN -----------------------------*/
 
 
 #main {
-  width: auto;
-  margin: 191.5px 5% 114.9px; /*766*25%*/ /*766*15%*/
+  display: block;
+  margin: 100px 5% 0;
 }
 @media screen and (min-width: 768px) {
   #main {
-    margin-top: 25%;
-    margin-bottom: 15%;
-  }
-}
-@media screen and (min-width: 960px) {
-  #main {
-    width: 864px; /*bodyWidth*/
-    margin: 240px auto 144px; /*960*25%*/ /*960*15%*/
+    width: calc(768px * 0.9);
+    margin: 100px auto 0;
   }
 }
 
+#main .page-title {
+  /*font-size: 1.6rem;
+  margin-bottom: 10px;*/
+}
 
-#main .header h2 {
-  font-size: 3.2rem;
-  font-family: 'Ubuntu Condensed', sans-serif;
-  font-weight: bold; /*iphone効かないかも？*/
+#main .updated-date {
+  opacity: 0.6;
+  /*font-size: 1.2rem;
+  margin-bottom: 10px;*/
+}
+
+
+
+/*----------------------------- MAIN INDEX -----------------------------*/
+
+
+#index #main .text {
   margin-bottom: 6px;
 }
 
-#main .header .updated-date .fas {
-  font-size: 1.0rem;
-  letter-spacing: 0.3rem;
-}
-
-#main .header .updated-date {
-  font-size: 1.1rem;
-  color: #777;
-}
-
-#main .header {
-  margin-bottom: 26px;
-}
 
 
-
-/*----------------------------- MAIN.INDEX -----------------------------*/
-
-
-#index #main .movie section {
-	border: solid 1px #AAA;
-	box-sizing: border-box;
-	padding: 16px;
-	margin-bottom: 4%;
-}
-
-#index #main .movie section:last-child {
-	margin-bottom: 0;
-}
-
-#index #main .movie {
-	margin-bottom: 12%;
-}
-
-#index #main .slider {
-	margin-bottom: 10px;
-}
-
-#index #main .design .footer_nav {
-	position: relative;
-	text-align: right;
-}
-
-#index #main .design {
-	margin-bottom: 12%;
-}
-
-#index #main .updates ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+/*----------------------------- MOVIE PLAY-CIRCLE -----------------------------*/
 
 
-#index #main .updates li {
-  width: 100%;
-  border: solid 1px #AAA;
-  box-sizing: border-box;
-  padding: 16px;
-
-  margin-top: 4%; /*！上向きマージン(footerとの距離維持のため)*/
-}
-@media screen and (min-width:768px){
-  #index #main .updates li {
-    width: 48%;
-  }
-}
-
-
-#index #main .updates li:first-child {
-  margin-top: 0; /*１カラムのときは １番目の上向きマージンのみキャンセル*/
-}
-@media screen and (min-width:768px){
-  #index #main .updates li:nth-child(2) {
-    margin-top: 0; /*２カラムのときは２番目もキャンセルする*/
-  }
-}
-
-
-#index #main .updates h3 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  line-height: 24px;
-}
-
-#index #main .updates h3 a {
-  /*negation of root*/
-  text-decoration : none;
-  color: #000;
-}
-
-#index #main .updates .updated-date {
-  /*same as other update_dates*/
-  font-size: 1.1rem;
-  color: #777;
-  margin-bottom: 14px;
-}
-
-#index #main .updates .sentence {
-  /*display: block;
-  overflow: hidden;*/
-  line-height: 1.8;
-  /*height: 7.2em; /* 1em*行数(4)*line-height */
-}
-
-#index #main .updates .footer_nav {
-  line-height: 1.8;
-  margin-bottom: 14px;
-}
-
-
-/*for IE & Edge*/
-#index #main .updates .update_img {
-  position: relative;
-  height: 300px;
-  display: block;
-  overflow: hidden;
-}
-/*for IE & Edge*/
-#index #main .updates img {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  width: 100%;
-  height: auto;
-
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-}
-/*for Othres*/
-@supports (object-fit: cover) {
-  #index #main .updates img {
-    /* negative */
-    position: static;
-    top: 0;
-    left: 0;
-    -ms-transform: none;
-    -moz-transform: none;
-    -webkit-transform: none;
-    transform: none;
-    min-width: inherit;
-
-    /* main */
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: center 30%;
-  }
-}
-
-
-
-/*----------------------------- MAIN.YOUTUBE (INDEX, LESSON, CONTACT) -----------------------------*/
-
-
-#index #main .movie section,
-#lesson #main .movie section,
-#contact #main .movie section {
-	/*orverride MAIN.INDEX*/
-	position: relative;
-}
-
-
-/*for IE & Edge*/
-#index #main .movie .youtube_thumb,
-#lesson #main .movie .youtube_thumb,
-#contact #main .movie .youtube_thumb {
-  position: relative;
-  height: 315px;
-  display: block;
-  overflow: hidden;
-}
-/*for IE & Edge*/
-#index #main .movie .youtube_thumb img,
-#lesson #main .movie .youtube_thumb img,
-#contact #main .movie .youtube_thumb img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: auto;
-
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-
-  cursor: pointer;
-}
-/*for Othres*/
-@supports (object-fit: cover) {
-  #index #main .movie .youtube_thumb img,
-  #lesson #main .movie .youtube_thumb img,
-  #contact #main .movie .youtube_thumb img {
-    /* negative */
-    position: static;
-    top: 0;
-    left: 0;
-    -ms-transform: none;
-    -moz-transform: none;
-    -webkit-transform: none;
-    transform: none;
-    min-width: inherit;
-
-    /* main */
-    height: 315px;
-  	object-fit: cover;
-  	object-position: center 30%;
-  }
-}
-
-
-#index #main .movie section .fa-play-circle,
-#lesson #main .movie section .fa-play-circle,
-#contact #main .movie section .fa-play-circle {
+#index #main .movie .fa-play-circle {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -447,7 +185,7 @@ header nav #ham-menu-cb:checked ~ #ham-menu-bg {
 	-o-transform: translate(-50%,-50%);
 	transform: translate(-50%,-50%);
 	font-size: 80px;
-	color: #FFF;
+	color: #C3C3C3;
 	pointer-events: none;
 
   z-index: 4;
@@ -455,546 +193,50 @@ header nav #ham-menu-cb:checked ~ #ham-menu-bg {
 
 
 
-/*----------------------------- MAIN.SLIDER (INDEX, BIO) -----------------------------*/
+/*----------------------------- SQUARE TRIM. -----------------------------*/
 
 
-#index #main .slider li,
-#biography #main .slider li {
-	height: 300px;
-}
-
-#index #main .slider .prev,
-#biography #main .slider .prev {
-	position: absolute;
-	left: -3%;
-	top: 130px;
-	cursor: pointer;
-	font-size: 2rem;
-}
-
-#index #main .slider .next,
-#biography #main .slider .next {
-	position: absolute;
-	right: -3%;
-	top: 130px;
-	cursor: pointer;
-	font-size: 2rem;
-}
-
-
-/*for IE & Edge*/
-#index #main .slider li,
-#biography #main .slider li {
-  position: relative;
-  height: 315px;
-  display: block;
-  overflow: hidden;
-}
-/*for IE & Edge*/
-#index #main .slider img,
-#biography #main .slider img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  height: 100%;
-
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-}
-/*for Othres*/
-@supports (object-fit: cover) {
-  #index #main .slider img,
-  #biography #main .slider img {
-    /* negative */
-    position: static;
-    top: 0;
-    left: 0;
-    -ms-transform: none;
-    -moz-transform: none;
-    -webkit-transform: none;
-    transform: none;
-    min-width: inherit;
-
-    /* main */
-    border: solid 1px #AAA;
-  	box-sizing: border-box;
-  	padding: 2%;
-    width: 100%;
-  	height: 100%;
-  	object-fit: cover;
-  	object-position: center 40%;
-  	margin-right: 5%;
-  }
-}
-
-
-.slider .slick-slide  {
-    margin-left: 4px;
-    margin-right: 4px;
-}
-
-
-
-/*----------------------------- MAIN.BIOGRAPHY -----------------------------*/
-
-
-#biography #main .slider {
-  margin-bottom: 60px;
-}
-
-#biography #main section:first-child {
-  border-bottom: solid 1px #CCC;
-  padding-bottom: 60px;
-}
-
-#biography #main section:last-child {
-  padding-top: 45px;
-}
-
-#biography #main .sentence {
-  line-height: 1.6;
-}
-
-#biography #main .artist-name {
-  font-weight: bold;
-}
-
-
-
-/*----------------------------- MAIN.SCHEDULE -----------------------------*/
-
-
-#schedule #main .date {
-  font-size: 1.8rem;
-}
-
-#schedule #main .alert {
-  color: #c9171e;
-}
-
-#schedule #main h3 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 13px;
-  line-height: 20px;
-}
-
-#schedule #main section p,
-#schedule #main ul li {
-  margin-bottom: 12px;
-}
-
-#schedule #main section {
-  margin-bottom: 100px;
-}
-
-#schedule #main section:last-child {
-  margin-bottom: 0;
-}
-
-
-
-/*----------------------------- MAIN.LARGE_IMG (SCHE, LESSON, BLOG, DISCO, CONTACT) -----------------------------*/
-
-
-#schedule #main img,
-#lesson #main img,
-#blog #main img,
-#discography #main img,
-#contact #main img {
-  border: solid 1px #AAA;
-  box-sizing: border-box;
-  padding: 8px;
-  width: 100%;
-}
-@media screen and (min-width:480px) {
-  #schedule #main img,
-  #lesson #main img,
-  #blog #main img,
-  #discography #main img,
-  #contact #main img {
-    width: 474px;
-  }
-}
-
-
-
-/*----------------------------- MAIN.DESIGN -----------------------------*/
-
-
-#design #main ul.images {
+#index #main .movie ul,
+#index #main .design ul,
+#index #main .blog ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-#design #main ul.images li {
-  width: 46%;
-  margin-bottom: 9%;
-}
-@media screen and (min-width: 600px){
-  #design #main ul.images li {
-    width: 29%;
-    margin-bottom: 7%;
-  }
-
-  #design #main ul.images li:nth-child(3n+2):last-child {
-    margin-right: 35.5%;
-  }
-}
-@media screen and (min-width: 768px){
-  #design #main ul.images li {
-    width: 21%;
-    margin-bottom: 6%;
-  }
-
-  #design #main ul.images li:nth-child(3n+2):last-child {
-    margin-right: 0;
-  }
-
-  #design #main ul.images li:nth-child(4n+2):last-child {
-    margin-right: 52.8%;
-  }
-
-  #design #main ul.images li:nth-child(4n+3):last-child {
-    margin-right: 26.4%;
-  }
-}
-
-
-/*for IE & Edge*/
-#design #main ul.images li {
+#index #main .square-wrapper,
+#index #main .rectangle-wrapper {
   position: relative;
-  height: 20vh;
-  display: block;
-  overflow: hidden;
-}
-/*for IE & Edge*/
-#design #main ul.images li img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  height: 100%;
-
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-}
-/*for Othres*/
-@supports (object-fit: cover) {
-  #design #main ul.images li img {
-    /* negative */
-    position: static;
-    top: 0;
-    left: 0;
-    -ms-transform: none;
-    -moz-transform: none;
-    -webkit-transform: none;
-    transform: none;
-    min-width: inherit;
-
-    /* main */
-    object-fit: cover;
-    object-position: center top;
-    width: 100%;
-
-    padding: 4px;
-    border: solid 1px #AAA;
-    box-sizing: border-box;
-  }
-}
-
-#design #main .sentence {
-  line-height: 1.6;
-}
-
-#design #main .category_title {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 13px;
-  line-height: 20px;
-}
-
-#design #main .category_title a {
-  color: inherit;
-
-  margin-top: -191.5px;
-  padding-top: 191.5px;
-  pointer-events: none;
-}
-@media screen and (min-width: 768px) {
-  #design #main .category_title a {
-    margin-top: -25%;
-    padding-top: 25%;
-  }
-}
-@media screen and (min-width: 960px) {
-  #design #main .category_title a {
-    margin-top: -240px;
-    padding-top: 240px;
-  }
-}
-
-#design #main ul.nav,
-#design #main section.category {
-  margin: 20px 0 100px;
-}
-
-#design #main ul.nav li {
-  list-style-type: disc;
-  margin-bottom: 12px;
-}
-
-
-
-/*----------------------------- MAIN.LESSON -----------------------------*/
-
-
-#lesson #main .section_title {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 13px;
-  line-height: 20px;
-}
-
-#lesson #main .section_subtitle {
-  font-size: 1.6rem;
-  font-weight: bold;
-}
-
-#lesson #main .movie h4,
-#lesson #main .section_subtitle,
-#lesson #main li{
-  margin-bottom: 12px;
-}
-
-#lesson #main .detail .section {
-  margin-bottom: 25px;
-}
-
-#lesson #main section {
-  padding-bottom: 60px;
-}
-
-#lesson #main .sentence {
-  line-height: 1.6;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-
-
-/*----------------------------- MAIN.BLOG -----------------------------*/
-
-
-#blog #main .header h2 a,
-#blog #main section h3 a {
-  /*negation of root*/
-  text-decoration : none;
-  color: #000;
-}
-
-#blog #main section h3 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  line-height: 20px
-}
-
-#blog #main section p {
-  margin-bottom: 12px;
-  line-height: 1.6;
-}
-
-#blog #main section {
-  margin-bottom: 100px;
-}
-
-#blog #main img {
-  height: auto;
-}
-
-#blog #main .share_buttons {
-  display: flex;
-}
-
-#blog #main .share_buttons .fb-share-button {
-  margin-right: 5px;
-}
-
-#blog #main ul.page-numbers,
-#blog #main ul.singlepage_prev_next_link {
-  display: flex;
-  justify-content: space-between;
-}
-
-#blog #main ul.page-numbers li a.page-numbers {
-  display: block;
-  border: 1px solid #000;
-  padding: 4px;
-  color: #000;
-  text-decoration: none;
-}
-
-
-
-/*----------------------------- MAIN.DISCOGRAPHY -----------------------------*/
-
-
-#discography #main h3 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 13px;
-  line-height: 20px
-}
-
-#discography #main .fa-amazon {
-  font-size: 3rem;
-}
-
-#discography #main .fa-amazon,
-#discography #main ul,
-#discography #main section p {
-  margin-bottom: 12px;
-}
-
-#discography #main section p,
-#discography #main li {
-  line-height: 2.0;
-}
-
-#discography #main section {
-  margin-bottom: 100px;
-}
-
-#discography #main section:last-child {
-  margin-bottom: 0;
-}
-
-
-
-/*----------------------------- MAIN.CONTACT -----------------------------*/
-
-
-#contact #main h3 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 13px;
-  line-height: 20px;
-}
-
-#contact #main section {
-  margin-bottom: 25px;
-}
-
-#contact #main .sentence {
-  line-height: 1.6;
-}
-
-#contact #main li,
-#contact #main h5,
-#contact #main h6 {
-  margin-bottom: 12px;
-}
-
-#contact #main .work_title {
-  font-size: 1.6rem;
-  font-weight: bold;
-  margin: 18px 0 9px;
-  line-height: 20px;
-}
-
-#contact #main .work_title a {
-  color: inherit;
-
-  margin-top: -191.5px;
-  padding-top: 191.5px;
-  pointer-events: none;
-}
-@media screen and (min-width: 768px) {
-  #contact #main .work_title a {
-    margin-top: -25%;
-    padding-top: 25%;
-  }
-}
-@media screen and (min-width: 960px) {
-  #contact #main .work_title a {
-    margin-top: -240px;
-    padding-top: 240px;
-  }
-}
-
-#contact #main h5 {
-  font-weight: bold;
-  margin: 9px 0;
-  line-height: 20px;
-}
-
-
-
-/*----------------------------- FOOTER -----------------------------*/
-
-
-footer {
   width: 100%;
-  box-sizing: border-box;
-  padding: 40px 5% 20px;
-  background-color: #222;
+  margin-bottom: 5%;
 }
-
-footer nav {
-  margin: 0 auto;
-  width: auto;
-}
-@media screen and (min-width: 960px) {
-  footer nav {
-    width: 864px;
+@media screen and (min-width: 768px) {
+  #index #main .square-wrapper,
+  #index #main .rectangle-wrapper {
+    width: calc(50% - 2.5%);
   }
 }
-
-footer nav .footer_main li {
-  font-size: 1.6rem;
-  font-weight: bold; /*iphone効かないかも？*/
-  margin-bottom: 30px;
+#index #main .blog .square-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 5%;
 }
 
-footer nav .footer_main li:last-child {
-  margin-bottom: 0;
-}
-
-footer nav .footer_main {
-  margin-bottom: 40px;
-}
-
-footer nav .icons li {
-  font-size: 2.0rem;
-  margin-right: 40px;
-}
-
-footer nav .icons li:last-child {
-  margin-right: 0;
-}
-
-footer nav .icons {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 32px;
-}
-
-footer small {
+#index #main .square-wrapper::before {
+  content: "";
   display: block;
-  font-size: 1rem;
-  text-align: center;
-  color: #999;
+  padding-top: 100%;
 }
 
-
-
-/*----------------------------- EOF -----------------------------*/
+#index #main .square-wrapper img,
+#index #main .square-wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  object-fit: cover;
+}
