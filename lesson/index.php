@@ -24,7 +24,7 @@ $lesson_image = getPDOStatement($pdo, LESSON_IMAGE_SQL)->fetchAll(); //currently
         <p><img src="<?=$root.'img/'.$lesson_image[0]['textmain_arr']?>" alt"<?=$lesson_image[0]['textmain_arr']?>"></p>
       </section>
 
-      <section>
+      <section class="text-section">
         <h3 class="section_title"><?=$lesson_greeting['title']?></h3>
         <p class="sentence"><?=$lesson_greeting['textmain_arr']?></p>
       </section>
@@ -46,7 +46,7 @@ $lesson_image = getPDOStatement($pdo, LESSON_IMAGE_SQL)->fetchAll(); //currently
       <?php endforeach; ?>
       </section>
 
-      <section class="detail">
+      <section class="detail text-section">
         <h3 class="section_title"><?=$lesson_detail[0]['title']?></h3>
         <?php for($i=0; $i<count($lesson_detail); $i++): ?>
         <div class="section">

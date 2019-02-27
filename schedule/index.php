@@ -18,7 +18,7 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
     </div>
 
     <?php foreach($schedule_data as $row): ?>
-    <section>
+    <section class="article-section">
       <section class="text-section">
         <p class="date"><time><?=$row['date']?></time><?='&nbsp;'.getDay($row['date'])?></p>
         <?php if($row['alert'] != null): ?>
