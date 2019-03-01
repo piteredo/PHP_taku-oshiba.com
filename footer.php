@@ -14,7 +14,7 @@
       <li><a href="<?=GITHUB_URL?>" target="_blank"><i class="fab fa-github"></i></a></li>
     </ul>
   </nav>
-  <small><?='2006-'.date('Y').COPYRIGHT?></small>
+  <small class="copyright"><?='2006-'.date('Y').COPYRIGHT?></small>
 </footer>
 </body>
 </html>

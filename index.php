@@ -82,6 +82,15 @@ $updates = dateSort($updates);
 ?>
 
 <main id="main">
+  <div class="header">
+    <h2 class="page-title">TAKU OSHIBA</h2>
+    <p class="updated-date"><?=SYNC_ICON?><time><?=$youtube_data[0]['updatedate']?></time></p>
+  </div>
+
+  <section class="article-section">
+    <p class="text-section">大柴拓の公式ウェブサイトです。ギタリスト・作曲家・グラフィックデザイン・Webデザイン/プログラミング 等。ご依頼は メール にて。</p>
+  </section>
+
   <div class="movie article-section">
     <div class="header">
       <h2 class="page-title">MOVIE</h2>
@@ -89,7 +98,7 @@ $updates = dateSort($updates);
     </div>
     <section>
       <ul class="square-trim-ul">
-        <?php foreach($youtube_data as $row): ?>
+        <?php $i=0; foreach($youtube_data as $row): if($i<3): ?>
         <li class="square-trim-wrapper"><iframe
             src = "https://www.youtube.com/embed/<?=$row['src']?>?rel=0"
             width = "560"
@@ -98,7 +107,7 @@ $updates = dateSort($updates);
             allow = "autoplay; encrypted-media"
             allowfullscreen>
         </iframe></li>
-        <?php endforeach; ?>
+        <?php endif; $i++; endforeach; ?>
         <li class="view-all-wrapper"><p><a href="<?=$root.MOVIE_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
       </ul>
     </section>
@@ -111,7 +120,7 @@ $updates = dateSort($updates);
     </div>
     <section>
       <ul class="square-trim-ul">
-        <?php $i=0; foreach($design_all_data as $row): if($i<5): $url = $root.'img/design/'.$row['src'].'.jpg'; ?>
+        <?php $i=0; foreach($design_all_data as $row): if($i<3): $url = $root.'img/design/'.$row['src'].'.jpg'; ?>
         <li class="square-trim-wrapper"><a href="<?=$url?>"><img src="<?=$url?>" alt="<?=$row['src']?>"></a></li>
         <?php endif; $i++; endforeach ?>
         <li class="view-all-wrapper"><p><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL?></a></p></li>
@@ -130,7 +139,7 @@ $updates = dateSort($updates);
         <li>
           <article class="article-section">
             <section class="text-section">
-              <h3><a href="<?=$key['page_url']?>"><?=$key['title']?></a></h3>
+              <h3 class="title"><a href="<?=$key['page_url']?>"><?=$key['title']?></a></h3>
               <p class="updated-date"><?=SYNC_ICON?><time><?=$key['date']?></time></p>
               <p class="text"><?=$key['text']?><?=EXCERPT_DOTS?><a href="<?=$key['page_url']?>"><?=VIEW_ALL?></a></p>
             </section>

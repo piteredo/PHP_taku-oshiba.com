@@ -25,8 +25,8 @@ body {
   word-break: break-all;
 
   line-height: 1.7;
-  color: #D3D3D3;
-  background-color: #292929;
+  color: #191918;
+  background-color: #E3E3E0;
 }
 
 
@@ -141,7 +141,7 @@ header #ham-menu-cb:checked ~ #ham-menu-bg {
 
 #main {
   display: block;
-  margin: 100px 0 0;
+  margin: 100px 0;
 }
 @media screen and (min-width: 768px) {
   #main {
@@ -151,28 +151,29 @@ header #ham-menu-cb:checked ~ #ham-menu-bg {
 }
 
 #main .header {
-  margin: 0 12.5% 4%;
+  margin: 0 12.5% 2%;
 }
 
 #main .page-title {
-  /*font-size: 1.6rem;
-  margin-bottom: 10px;*/
+  font-size: 2.0rem;
+  /*margin-bottom: 10px;*/
 }
 
 #main .updated-date {
   opacity: 0.6;
-  /*font-size: 1.2rem;
-  margin-bottom: 10px;*/
+  font-size: 1.1rem;
+  /*margin-bottom: 10px;*/
+}
+
+
+#main .text-section {
+  margin-left: 12.5%;
+  margin-right: 12.5%;
 }
 
 #main .article-section {
-  margin-bottom: 8%;
+  margin-bottom: 12%;
 }
-
-#main .text-section {
-  margin: 0 12.5% 0;
-}
-
 
 
 /*----------------------------- MAIN INDEX -----------------------------*/
@@ -190,6 +191,10 @@ header #ham-menu-cb:checked ~ #ham-menu-bg {
   width: 75%;
   margin: 0 12.5% 0;
   text-align: right;
+}
+
+#main .blog .title a::before {
+  content: "■ ";
 }
 
 
@@ -226,6 +231,9 @@ header #ham-menu-cb:checked ~ #ham-menu-bg {
   bottom: 0;
   margin: auto;
   object-fit: cover;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #AAA;
 }
 
 
@@ -243,7 +251,7 @@ header #ham-menu-cb:checked ~ #ham-menu-bg {
 	-o-transform: translate(-50%,-50%);
 	transform: translate(-50%,-50%);
 	font-size: 80px;
-	color: #C3C3C3;
+	color: #E3E3E0;
 	pointer-events: none;
 
   z-index: 4;
@@ -320,4 +328,23 @@ header #ham-menu-cb:checked ~ #ham-menu-bg {
 .slider .slick-slide  {
     margin-left: 6px;
     margin-right: 6px;
+}
+
+
+
+/*----------------------------- FOOTER -----------------------------*/
+
+footer {
+  margin: 0 12.5%;
+}
+
+footer nav li {
+  margin-bottom: 8px;
+}
+
+footer .copyright {
+  display: block;
+  font-size: 1rem;
+  text-align: center;
+  opacity: 0.6;
 }
