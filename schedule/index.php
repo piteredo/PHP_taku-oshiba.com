@@ -6,6 +6,10 @@ require($root.'header.php');
 
 $pdo = initPDO();
 $schedule_data = getPDOStatement($pdo, SCHEDULE_SQL)->fetchAll();
+foreach ($schedule_data as $v) {
+  $date[] = strtotime(substr($v['date'], 0, -4));
+}
+array_multisort($date, SORT_ASC, SORT_NUMERIC, $schedule_data);
 $place_data = getPDOStatement($pdo, PLACE_SQL)->fetchAll();
 $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
 ?>
