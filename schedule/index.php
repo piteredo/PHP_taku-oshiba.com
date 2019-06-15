@@ -12,58 +12,85 @@ foreach ($schedule_data as $v) {
 array_multisort($date, SORT_ASC, SORT_NUMERIC, $schedule_data);
 $place_data = getPDOStatement($pdo, PLACE_SQL)->fetchAll();
 $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
+
+$update_date = $schedule_data[count($schedule_data)-1]['updatedate'];
 ?>
 
-<main id="main">
-  <article>
-    <div class="header">
-      <h2><?=SCHEDULE_EN?></h2>
-      <p class="updated-date"><?=SYNC_ICON?><time><?=$schedule_data[count($schedule_data)-1]['updatedate']?></time></p>
-    </div>
+<main>
+  <div>
+    <h2><?=SCHEDULE_EN?></h2>
+    <p><?=SYNC_ICON?><time><?=$update_date?></time></p>
+  </div>
 
-    <?php foreach($schedule_data as $row): ?>
-    <section class="article-section">
-      <section class="text-section">
-        <p class="date"><time><?=$row['date']?></time><?='&nbsp;'.getDay($row['date'])?></p>
-        <?php if($row['alert'] != null): ?>
-        <p class="alert"><?=$row['alert']?></p>
-        <?php endif; ?>
-        <h3><?=$row['title']?></h3>
-        <p>
-          <?php
-          $place = $place_data[$row['placeid']];
-          echo $place['city'].'&nbsp;';
-          ?><a href="<?=$place['url']?>" target="_blank"><?=$place['name']?></a>
-        </p>
-        <p>
-          <?php
-          if($row['starttime'] != null) echo $row['starttime'].'-&nbsp;';
-          if($row['opentime'] != null) echo '('.$row['opentime'].'open)&nbsp;&nbsp;';
-          if($row['price'] != null) echo $row['price'];
+  <article>
+  <?php foreach($schedule_data as $row):
+    $date = $row['date'];
+    $alert = $row['alert'];
+    $title = $row['title'];
+    $place = $place_data[$row['placeid']];
+    $place_city = $place['city'];
+    $place_url = $place['url'];
+    $place_name = $place['name'];
+    $start_time = $row['starttime'];
+    $open_time = $row['opentime'];
+    $price = $row['price'];
+    $other_text = $row['other_text'];
+    $performer_id_list = getPerformerIdList($row['performeridlist']);
+    $img_url = $row['imgurl'];
+    $img_fullpath = $root. 'img/design/'. $img_url;
+    ?>
+
+    <section>
+      <p>
+        <time><?=$date?></time>
+        <?=getDay($date)?>
+      </p>
+
+      <?php if($alert != null): ?>
+      <p><?=$alert?></p>
+      <?php endif; ?>
+
+      <h3><?=$title?></h3>
+
+      <p>
+        <?=$place_city?>
+        <a href="<?=$place_url?>" target="_blank"><?=$place_name?></a>
+      </p>
+
+      <p>
+        <?php if($starttime != null) echo $starttime; ?>
+        <?php if($opentime != null) echo '('. $opentime. 'open)'; ?>
+        <?php if($price != null) echo $price; ?>
+      </p>
+
+      <?php if($other_text != null): ?>
+      <p><?=$other_text?></p>
+      <?php endif; ?>
+
+      <ul>
+      <?php foreach($performer_id_list as $performer_id):
+        $player = getPlayerById($player_prepare, $performer_id);
+        $player_url = $player['url'];
+        $player_name = $player['name'];
+        $player_instrument = $player['instrument'];
         ?>
-        </p>
-          <?php if($row['other_text'] != null): ?>
-          <p><?=$row['other_text']?></p>
-        <?php endif; ?>
-        <ul>
-          <?php
-          $performer_id_list = getPerformerIdList($row['performeridlist']);
-          foreach($performer_id_list as $performer_id):
-            $player = getPlayerById($player_prepare, $performer_id);
-          ?>
-          <li><a href="<?=$player['url']?>" target="_blank"><?=$player['name']?></a>&nbsp;(<?=$player['instrument']?>)</li>
-        <?php endforeach; ?>
-        </ul>
-      </section>
-      <section class="image-section">
-        <p>
-          <?php if($row['imgurl'] != null): ?>
-          <img src="<?=$root.'img/design/'.$row['imgurl']?>" alt="<?=$row['imgurl']?>" src="<?=$root.DUMMY_LOADER_IMG_PATH?>">
-        <?php endif; ?>
-        </p>
-      </section>
+        <li>
+          <a href="<?=$player_url?>" target="_blank"><?=$player_name?></a>
+          (<?=$player_instrument?>)
+        </li>
+      <?php endforeach; ?>
+      </ul>
     </section>
-    <?php endforeach;?>
+
+    <section>
+      <p>
+      <?php if($imgurl != null): ?>
+        <img src="<?=$img_fullpath?>" alt="<?=$imgurl?>">
+      <?php endif; ?>
+      </p>
+    </section>
+
+  <?php endforeach;?>
   </article>
 </main>
 

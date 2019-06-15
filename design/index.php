@@ -17,42 +17,41 @@ $design_section_arr = [
   array('id'=>DESIGN_PAGE_CARD_ID, 'title'=>DESIGN_CARD_TITLE, 'data'=>$design_card_data),
   array('id'=>DESIGN_PAGE_WEB_ID, 'title'=>DESIGN_WEB_TITLE, 'data'=>$design_web_data)
 ];
+
+$num   = 30;
+$query = 'media.limit('. $num. '){media_url,permalink,timestamp}';
+$json  = file_get_contents("{$f_api}{$ig_id}?fields={$query}&access_token={$token}");
+$data  = json_decode($json, true);
+$medias = $data['media']['data'];
+$update_date = substr($medias[0]['timestamp'], 0, 10);
 ?>
 
-<main id="main">
-  <article>
-    <div class="header">
-      <h2><?=DESIGN_EN?></h2>
-      <p class="updated-date"><?=SYNC_ICON?><time><?=$design_all_data[0]['updatedate']?></time></p>
-    </div>
 
-    <section class="text-section">
+<main>
+  <div>
+    <h2><?=DESIGN_EN?></h2>
+    <p><?=SYNC_ICON?><time><?=$update_date?></time></p>
+  </div>
+
+  <article>
+    <section>
       <p><?=DESIGN_GREETING_TEXT?></p>
+    </section>
+
+    <section>
       <ul>
-        <?php foreach($design_section_arr as $design_section): ?>
-        <li><a href="#<?=$design_section['id']?>"><?=$design_section['title']?></a></li>
+      <?php foreach($medias as $media):
+        $permalink = $media['permalink'];
+        $media_url = $media['media_url'];
+        ?>
+        <li>
+          <a href="<?=$permalink?>">
+            <img src="<?=$media_url?>" alt="#">
+          </a>
+        </li>
       <?php endforeach; ?>
       </ul>
     </section>
-
-    <?php foreach($design_section_arr as $design_section): ?>
-    <section class="category">
-      <section class="text-section">
-        <h3 class="category_title"><a id="<?=$design_section['id']?>"><?=$design_section['title']?></a></h3>
-      </section>
-      <section class="image-section">
-        <ul class="square-trim-ul">
-          <?php foreach($design_section['data'] as $row): ?>
-          <li class="square-trim-wrapper">
-            <a href="<?=$root.'img/design/'.$row['src'].'.jpg'?>">
-              <img src="<?=$root.'img/design/'.$row['src'].'.jpg'?>" src="<?=$root.DUMMY_LOADER_IMG_PATH?>" alt="<?=$row['src']?>">
-            </a>
-          </li>
-        <?php endforeach; ?>
-        </ul>
-      </section>
-    </section>
-  <?php endforeach; ?>
   </article>
 </main>
 
