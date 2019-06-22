@@ -1,49 +1,41 @@
 <?php
 $root = '../';
+$page_name = 'schedule';
 $_GET['robot'] = 'noindex';
-$_GET['page_name'] = 'schedule';
+$_GET['page_name'] = $page_name;
 require($root.'header.php');
 
-$pdo = initPDO();
+$update_date = getUpdateDate($pdo, $page_name);
 $schedule_data = getPDOStatement($pdo, SCHEDULE_SQL)->fetchAll();
-foreach ($schedule_data as $v) {
-  $date[] = strtotime(substr($v['date'], 0, -4));
-}
-array_multisort($date, SORT_ASC, SORT_NUMERIC, $schedule_data);
+scheduleDateSortAsc($schedule_data, 'date');
 $place_data = getPDOStatement($pdo, PLACE_SQL)->fetchAll();
 $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
-
-$update_date = $schedule_data[count($schedule_data)-1]['updatedate'];
 ?>
 
 <main>
-  <div>
+  <article>
     <h2><?=SCHEDULE_EN?></h2>
     <p><?=SYNC_ICON?><time><?=$update_date?></time></p>
-  </div>
 
-  <article>
-  <?php foreach($schedule_data as $row):
-    $date = $row['date'];
-    $alert = $row['alert'];
-    $title = $row['title'];
-    $place = $place_data[$row['placeid']];
-    $place_city = $place['city'];
-    $place_url = $place['url'];
-    $place_name = $place['name'];
-    $start_time = $row['starttime'];
-    $open_time = $row['opentime'];
-    $price = $row['price'];
-    $other_text = $row['other_text'];
-    $performer_id_list = getPerformerIdList($row['performeridlist']);
-    $img_url = $row['imgurl'];
-    $img_fullpath = $root. 'img/design/'. $img_url;
+    <?php foreach($schedule_data as $row):
+      $date = $row['date'];
+      $alert = $row['alert'];
+      $title = $row['title'];
+      $place = $place_data[$row['placeid']];
+      $place_city = $place['city'];
+      $place_url = $place['url'];
+      $place_name = $place['name'];
+      $start_time = $row['starttime'];
+      $open_time = $row['opentime'];
+      $price = $row['price'];
+      $other_text = $row['other_text'];
+      $performer_id_list = strListToArray($row['performeridlist']);
+      $img_url = $row['imgurl'];
+      $img_fullpath = $root. 'img/design/'. $img_url;
     ?>
-
     <section>
       <p>
-        <time><?=$date?></time>
-        <?=getDay($date)?>
+        <time><?=$date?></time> <?=getDay($date)?>
       </p>
 
       <?php if($alert != null): ?>
@@ -53,8 +45,7 @@ $update_date = $schedule_data[count($schedule_data)-1]['updatedate'];
       <h3><?=$title?></h3>
 
       <p>
-        <?=$place_city?>
-        <a href="<?=$place_url?>" target="_blank"><?=$place_name?></a>
+        <?=$place_city?> <a href="<?=$place_url?>" target="_blank"><?=$place_name?></a>
       </p>
 
       <p>
@@ -75,19 +66,17 @@ $update_date = $schedule_data[count($schedule_data)-1]['updatedate'];
         $player_instrument = $player['instrument'];
         ?>
         <li>
-          <a href="<?=$player_url?>" target="_blank"><?=$player_name?></a>
+          <?php if($player_url != null) : ?><a href="<?=$player_url?>" target="_blank"><?php endif;?>
+          <?=$player_name?>
+          <?php if($player_url != null) : ?></a><?php endif;?>
           (<?=$player_instrument?>)
         </li>
       <?php endforeach; ?>
       </ul>
-    </section>
 
-    <section>
-      <p>
       <?php if($imgurl != null): ?>
-        <img src="<?=$img_fullpath?>" alt="<?=$imgurl?>">
+      <p><img src="<?=$img_fullpath?>" alt="<?=$imgurl?>"></p>
       <?php endif; ?>
-      </p>
     </section>
 
   <?php endforeach;?>

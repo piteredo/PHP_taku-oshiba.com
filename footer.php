@@ -4,7 +4,7 @@
       <li><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_JA?></a></li>
       <li><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_JA?></a></li>
       <li><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=DESIGN_JA?></a></li>
-      <li><a href="<?=$root.MOVIE_PAGE_PATH?>"><?=MOVIE_JA?></a></li>
+      <li><a href="<?=$root.VIDEO_PAGE_PATH?>"><?=VIDEO_JA?></a></li>
       <li><a href="<?=$root.BLOG_PAGE_PATH?>"><?=BLOG_JA?></a></li>
       <li><a href="<?=$root.LESSON_PAGE_PATH?>"><?=LESSON_JA?></a></li>
       <li><a href="<?=$root.DISCOGRAPHY_PAGE_PATH?>"><?=DISCOGRAPHY_JA?></a></li>

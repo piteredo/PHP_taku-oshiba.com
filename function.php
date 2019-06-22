@@ -28,6 +28,35 @@ function getPDOPreparedStatement($pdo, $sql) {
   return $pdo->prepare($sql);
 }
 
+function getUpdateDate($pdo, $page_name) {
+  //MUST page_name == table_name
+  return substr(getPDOStatement($pdo, UPDATE_DATE_SQL_PREFIX.'"'.$page_name.'"')->fetch()['Create_time'], 0, 10);
+}
+
+function scheduleDateSortAsc($data, $key) {
+  //data==schedule_data key=="date"
+  foreach ($data as $v) {
+    $date[] = strtotime(substr($v[$key], 0, -4));
+  }
+  array_multisort($key, SORT_ASC, SORT_NUMERIC, $data);
+}
+
+function deleteHashTags($str) {
+  return preg_replace("/#.+$/", "", $str);
+}
+
+function cuGet_contents( $url, $timeout = 15 ){
+	$ch = curl_init();
+	curl_setopt( $ch, CURLOPT_URL, $url );
+	curl_setopt( $ch, CURLOPT_HEADER, false );
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+	curl_setopt( $ch, CURLOPT_TIMEOUT, $timeout );
+	$result = curl_exec( $ch );
+	curl_close( $ch );
+
+	return $result;
+}
+
 function createUpdatedArticle($page, $date, $title, $text, $img_url, $page_url) {
   return [
     'page' => $page,
@@ -54,7 +83,7 @@ function getDay($date) {
   return $week[$w];
 }
 
-function getPerformerIdList($ids_str) {
+function strListToArray($ids_str) {
   return preg_split("/,/", $ids_str);
 }
 

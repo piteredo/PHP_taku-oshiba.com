@@ -11,4 +11,5 @@ require($root.'function.php');
   <?php
   require($root.'header_head.php');
   require($root.'header_body.php');
+  $pdo = initPDO();
   ?>

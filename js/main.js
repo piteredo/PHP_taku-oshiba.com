@@ -4,7 +4,7 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-$(function() {      
+$(function() {
   $('.slider').slick({
     slidesToShow: 2,
       autoplay: false,
@@ -24,7 +24,7 @@ $(function() {
       }
     }]
   });
-  
+
   $('.modal').modaal({
     type: "image"
   });
@@ -36,15 +36,15 @@ $(function() {
    });
 
   $('iframe').each(function(i){
-    let url = $(this).attr('src');       
-    if(url.indexOf("www.youtube.com")){         
-      let id = url.replace("https://www.youtube.com/embed/","").replace("?rel=0","");         
-      $(this).wrap('<div class="youtube_thumb" data-id="'+id+'"><i class="far fa-play-circle"></i><img src="https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg"></div>');         
+    let url = $(this).attr('src');
+    if(url.indexOf("www.youtube.com")){
+      let id = url.replace("https://www.youtube.com/embed/","").replace("?rel=0","");
+      $(this).wrap('<div class="youtube_thumb" data-id="'+id+'"><i class="far fa-play-circle"></i><img src="https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg"></div>');
       $(this).remove();
     }
-   
-    $('.youtube_thumb').click(function(e){         
-      let youtubeId = $(this).attr("data-id");         
+
+    $('.youtube_thumb').click(function(e){
+      let youtubeId = $(this).attr("data-id");
       var ytPlayer = new YT.Player(
         e.target, // 埋め込む場所の指定
         {

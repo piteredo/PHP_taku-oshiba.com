@@ -1,32 +1,30 @@
 <?php
 $root = '../';
+$page_name = 'discography';
 $_GET['robot'] = 'noindex';
-$_GET['page_name'] = 'discography';
+$_GET['page_name'] = $page_name;
 require($root.'header.php');
 
-$pdo = initPDO();
+$update_date = getUpdateDate($pdo, $page_name);
 $discography_data = getPDOStatement($pdo, DISCOGRAPHY_SQL)->fetchAll();
 $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
-$update_date = $discography_data[0]['updatedate'];
 ?>
 
 <main>
-  <div>
+  <article>
     <h2><?=DISCOGRAPHY_EN?></h2>
     <p><?=SYNC_ICON?><time><?=$update_date?></time></p>
-  </div>
 
-  <article>
-  <?php foreach($discography_data as $row):
-    $title = $row['title'];
-    $img_url = $row['imgurl'];
-    $img_fullpath = $root. 'img/design/'. $img_url. '.jpg';
-    $amazon_fullpath = 'https://www.amazon.co.jp/dp/'.$row['amazonurl'];
-    $performer_id_list = getPerformerIdList($row['performeridlist']);
-    $info = $row['info'];
-    $song_list = $row['songlist'];
+    <?php foreach($discography_data as $row):
+      $title = $row['title'];
+      $img_url = $row['imgurl'];
+      $img_fullpath = $root. 'img/design/'. $img_url. '.jpg';
+      $amazon_fullpath = 'https://www.amazon.co.jp/dp/'.$row['amazonurl'];
+      $performer_id_list = strListToArray($row['performeridlist']);
+      $info = $row['info'];
+      $rec_size = $row['recsize'];
+      $song_list = strListToArray($row['songlist']);
     ?>
-
     <section>
       <h3><?=$title?></h3>
       <p><img src="<?=$img_fullpath?>" alt="<?=$img_url?>"></p>
@@ -43,9 +41,14 @@ $update_date = $discography_data[0]['updatedate'];
       <?php endforeach; ?>
       </ul>
       <p><?=$info?></p>
-      <p><?=$song_list?></p>
+      <p><?=DISCOGRAPHY_SONGS_LABEL.' ('.$rec_size.')'?></p>
+      <ol>
+      <?php foreach($song_list as $song): ?>
+        <li><?=$song?></li>
+      <?php endforeach; ?>
+      </ol>
     </section>
-    
+
   <?php endforeach; ?>
   </article>
 </main>
