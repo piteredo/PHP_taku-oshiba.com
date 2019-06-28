@@ -17,16 +17,20 @@ $work_composition_music_data = getPDOStatement($pdo, CONTACT_WORK_COMPOSITION_MU
 $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();*/
 ?>
 
-<main>
-  <article>
-    <h2><?=CONTACT_EN?></h2>
-    <p><?=SYNC_ICON?><time><?=$update_date?></time></p>
+<main class="main">
+  <article class="content">
+    <h2 class="content__header-title"><?=CONTACT_EN?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$update_date?></time></p>
 
-    <p><?=CONTACT_DESCRIPTION?></p>
-    <p>
-      <a href="mailto:<?=EMAIL_ADDRESS?>?subject=<?=EMAIL_SUBJECT?>" target="_blank"><i class="far fa-envelope"></i></a>
-      <a href="mailto:<?=EMAIL_ADDRESS?>?subject=<?=EMAIL_SUBJECT?>" target="_blank"><?=EMAIL_ADDRESS?></a>
-    </p>
+    <section  class="content__section section">
+      <p class="section__sentence">
+        <?=CONTACT_DESCRIPTION?>
+      </p>
+      <p>
+        <a href="mailto:<?=EMAIL_ADDRESS?>?subject=<?=EMAIL_SUBJECT?>" target="_blank"><i class="far fa-envelope"></i></a>
+        <a href="mailto:<?=EMAIL_ADDRESS?>?subject=<?=EMAIL_SUBJECT?>" target="_blank"><?=EMAIL_ADDRESS?></a>
+      </p>
+    </section>
   </article>
 </main>
 

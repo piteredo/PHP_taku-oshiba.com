@@ -10,10 +10,10 @@ $discography_data = getPDOStatement($pdo, DISCOGRAPHY_SQL)->fetchAll();
 $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
 ?>
 
-<main>
-  <article>
-    <h2><?=DISCOGRAPHY_EN?></h2>
-    <p><?=SYNC_ICON?><time><?=$update_date?></time></p>
+<main class="main">
+  <article class="content">
+    <h2 class="content__header-title"><?=DISCOGRAPHY_EN?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$update_date?></time></p>
 
     <?php foreach($discography_data as $row):
       $title = $row['title'];
@@ -21,32 +21,50 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
       $img_fullpath = $root. 'img/design/'. $img_url. '.jpg';
       $amazon_fullpath = 'https://www.amazon.co.jp/dp/'.$row['amazonurl'];
       $performer_id_list = strListToArray($row['performeridlist']);
-      $info = $row['info'];
+      $info_list = strListToArray($row['info']);
       $rec_size = $row['recsize'];
       $song_list = strListToArray($row['songlist']);
     ?>
-    <section>
-      <h3><?=$title?></h3>
-      <p><img src="<?=$img_fullpath?>" alt="<?=$img_url?>"></p>
-      <p><a href="<?=$amazon_fullpath?>" target="_blank"><i class="fab fa-amazon"></i></a></p>
-      <ul>
-      <?php foreach($performer_id_list as $performer_id):
-        $player = getPlayerById($player_prepare, $performer_id);
-        $player_name = $player['name'];
-        $player_instrument = $player['instrument'];
-        ?>
-        <li>
-          <?=$player_name?> (<?=$player_instrument?>)
-        </li>
-      <?php endforeach; ?>
-      </ul>
-      <p><?=$info?></p>
-      <p><?=DISCOGRAPHY_SONGS_LABEL.' ('.$rec_size.')'?></p>
-      <ol>
-      <?php foreach($song_list as $song): ?>
-        <li><?=$song?></li>
-      <?php endforeach; ?>
-      </ol>
+    <section class="content__section section">
+      <h3 class="section__title-text">
+        <?=$title?>
+      </h3>
+      <p class="section__header-image">
+        <img src="<?=$img_fullpath?>" alt="<?=$img_url?>">
+      </p>
+      <div class="discography-text-section">
+        <p class="discography-text-section__amazon-logo">
+          <a href="<?=$amazon_fullpath?>" target="_blank"><i class="fab fa-amazon"></i></a>
+        </p>
+        <ul class="discography-text-section__content">
+        <?php foreach($performer_id_list as $performer_id):
+          $player = getPlayerById($player_prepare, $performer_id);
+          $player_name = $player['name'];
+          $player_instrument = $player['instrument'];
+          ?>
+          <li class="discography-text-section__content-label">
+            <?=$player_name?> (<?=$player_instrument?>)
+          </li>
+        <?php endforeach; ?>
+        </ul>
+        <ul class="discography-text-section__content">
+        <?php foreach($info_list as $info): ?>
+          <li class="discography-text-section__content-label">
+            <?=$info?>
+          </li>
+        <?php endforeach; ?>
+        </ul>
+        <p class="discography-text-section__content-label">
+          <?=DISCOGRAPHY_SONGS_LABEL.' ('.$rec_size.')'?>
+        </p>
+        <ol class="discography-text-section__content">
+        <?php foreach($song_list as $song): ?>
+          <li class="discography-text-section__content-label">
+            <?=$song?>
+          </li>
+        <?php endforeach; ?>
+        </ol>
+      </div>
     </section>
 
   <?php endforeach; ?>

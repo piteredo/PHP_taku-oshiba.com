@@ -15,12 +15,12 @@ $en_name = $bio_data['enname'];
 $en_text = $bio_data['entext'];
 ?>
 
-<main>
-  <article>
-    <h2><?=BIOGRAPHY_EN?></h2>
-    <p><?=SYNC_ICON?><time><?=$update_date?></time></p>
+<main class="main">
+  <article class="content">
+    <h2 class="content__header-title"><?=BIOGRAPHY_EN?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$update_date?></time></p>
 
-    <ul>
+    <ul class="content__header-image">
     <?php foreach($photos as $photo) :
       $src = $root.'img/bio/'.$photo['src'].'.jpg'; ?>
       <li>
@@ -32,14 +32,22 @@ $en_text = $bio_data['entext'];
     </ul>
 
     <section>
-      <article>
-        <h3><?=$ja_name?> (<?=$ja_name_ruby?>)</h3>
-        <p><?=$ja_text?></p>
+      <article class="content__section section">
+        <h3 class="section__title-text">
+          <?=$ja_name?> (<?=$ja_name_ruby?>)
+        </h3>
+        <p class="section__sentence">
+          <?=$ja_text?>
+        </p>
       </article>
 
-      <article>
-        <h3><?=$en_name?></h3>
-        <p><?=$en_text?></p>
+      <article class="content__section section">
+        <h3 class="section__title-text">
+          <?=$en_name?>
+        </h3>
+        <p class="section__sentence">
+          <?=$en_text?>
+        </p>
       </article>
     </section>
 

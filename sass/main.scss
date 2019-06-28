@@ -1,0 +1,202 @@
+@charset "UTF-8";
+
+html {
+  font-size: 62.5%; /*10px(root)*/
+  overflow-y: scroll;
+}
+
+img, iframe {
+  width: 100%;
+}
+
+body {
+  font-size: 1.4rem; /*basic(14px)*/
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+  text-align: justify;
+  word-break: break-all;
+
+  line-height: 1.0;
+  color: #191918;
+  background-color: #E3E3E0;
+}
+
+
+$debug-mode: 0; //1=>true
+$text-pale-color: #AAA;
+$text-link-color: #00A99D;
+$text-alert-color: #C1272D;
+$image-margin-bottom: 30px;
+$font-size-basic: 14px;
+$sentence-line-height: 1.7;
+$label-line-height: 12.6px; // use as margin-bottom
+$label-margin-bottom: 10px;
+
+@mixin debug-border() {
+  @if $debug-mode == 1 {
+    border: 1px solid #000;
+  }
+}
+
+@mixin sentence() {
+  line-height: $sentence-line-height;
+  margin-top: -(($font-size-basic * $sentence-line-height) / 2);
+}
+
+.main {
+  margin: 140px 40px 150px;
+}
+
+
+.content {
+  @include debug-border;
+
+  a {
+    color: $text-link-color;
+  }
+
+  &__header-title {
+    //font-family
+    font-size: 2.6rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    @include debug-border;
+  }
+
+  &__header-update-date {
+    color: $text-pale-color;
+    font-size: 11px;
+    margin-bottom: 22px;
+    @include debug-border;
+  }
+
+  &__header-image {
+    margin-bottom: $image-margin-bottom;
+  }
+
+  &__section {
+    margin-bottom: 80px;
+    @include debug-border;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__description {
+    margin-bottom: 10px;
+    @include sentence;
+    @include debug-border;
+  }
+}
+
+.section {
+  &__header-image {
+    margin-bottom: $image-margin-bottom;
+  }
+
+  &__title-text {
+    font-weight: bold;
+    margin-bottom: 22px;
+  }
+
+  &__label {
+    margin-bottom: $label-line-height;
+
+    &--alert {
+      color: $text-alert-color;
+
+      &:before {
+        content: "※";
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__sentence {
+    @include sentence;
+    @include debug-border;
+  }
+
+  &__schedule-image {
+    margin-top: $label-line-height + $label-margin-bottom;
+  }
+}
+
+
+.image-list {
+  &__image {
+    margin-bottom: $image-margin-bottom;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+.lesson-section {
+  &__content {
+    margin-bottom: $label-line-height + $label-margin-bottom;
+  }
+
+  &__content-title {
+    margin-bottom: $label-line-height;
+
+    &:before {
+      content: "▼";
+    }
+  }
+
+  &__content-labels {
+    margin-bottom: $label-line-height;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__content-label {
+    margin-bottom: $label-line-height;
+
+    &--annotation {
+      &:before {
+        content: "※";
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+.discography-text-section {
+  position: relative;
+
+  &__amazon-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 3.6rem;
+  }
+
+  &__content {
+    margin-bottom: $label-line-height + $label-margin-bottom;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__content-label {
+    margin-bottom: $label-line-height;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

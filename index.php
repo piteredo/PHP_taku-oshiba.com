@@ -26,15 +26,15 @@ $medias = $data['media']['data'];
 $design_update_date = substr($medias[0]['timestamp'], 0, 10);
 ?>
 
-<main>
-  <section>
-    <h2><?=INDEX_GREETING_TITLE?></h2>
+<main class="main">
+  <section class="content">
+    <h2 class="content__header-title"><?=INDEX_GREETING_TITLE?></h2>
     <p><?=INDEX_GREETING_TEXT?></p>
   </section>
 
-  <section>
-    <h2><?=VIDEO_EN?></h2>
-    <p><?=SYNC_ICON?><time><?=$video_update_date?></time></p>
+  <section class="content">
+    <h2 class="content__header-title"><?=VIDEO_EN?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$video_update_date?></time></p>
     <ul>
     <?php foreach($json_decode['items'] as $video):
       $videoId = $video['snippet']['resourceId']['videoId'];
@@ -53,9 +53,9 @@ $design_update_date = substr($medias[0]['timestamp'], 0, 10);
     </ul>
   </section>
 
-  <section>
-    <h2><?=DESIGN_EN?></h2>
-    <p><?=SYNC_ICON?><time><?=$design_update_date?></time></p>
+  <section class="content">
+    <h2 class="content__header-title"><?=DESIGN_EN?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$design_update_date?></time></p>
     <ul>
     <?php foreach($medias as $media):
       $permalink = $media['permalink'];

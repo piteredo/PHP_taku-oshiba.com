@@ -12,10 +12,10 @@ $place_data = getPDOStatement($pdo, PLACE_SQL)->fetchAll();
 $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
 ?>
 
-<main>
-  <article>
-    <h2><?=SCHEDULE_EN?></h2>
-    <p><?=SYNC_ICON?><time><?=$update_date?></time></p>
+<main class="main">
+  <article class="content" class="content">
+    <h2 class="content__header-title"><?=SCHEDULE_EN?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$update_date?></time></p>
 
     <?php foreach($schedule_data as $row):
       $date = $row['date'];
@@ -33,29 +33,35 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
       $img_url = $row['imgurl'];
       $img_fullpath = $root. 'img/design/'. $img_url;
     ?>
-    <section>
-      <p>
+    <section class="content__section section">
+      <p class="section__label">
         <time><?=$date?></time> <?=getDay($date)?>
       </p>
 
       <?php if($alert != null): ?>
-      <p><?=$alert?></p>
+      <p class="section__label section__label--alert">
+        <?=$alert?>
+      </p>
       <?php endif; ?>
 
-      <h3><?=$title?></h3>
+      <h3 class="section__title-text">
+        <?=$title?>
+      </h3>
 
-      <p>
+      <p class="section__label">
         <?=$place_city?> <a href="<?=$place_url?>" target="_blank"><?=$place_name?></a>
       </p>
 
-      <p>
+      <p class="section__label">
         <?php if($starttime != null) echo $starttime; ?>
         <?php if($opentime != null) echo '('. $opentime. 'open)'; ?>
         <?php if($price != null) echo $price; ?>
       </p>
 
       <?php if($other_text != null): ?>
-      <p><?=$other_text?></p>
+      <p class="section__label">
+        <?=$other_text?>
+      </p>
       <?php endif; ?>
 
       <ul>
@@ -65,7 +71,7 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
         $player_name = $player['name'];
         $player_instrument = $player['instrument'];
         ?>
-        <li>
+        <li class="section__label">
           <?php if($player_url != null) : ?><a href="<?=$player_url?>" target="_blank"><?php endif;?>
           <?=$player_name?>
           <?php if($player_url != null) : ?></a><?php endif;?>
@@ -74,8 +80,10 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
       <?php endforeach; ?>
       </ul>
 
-      <?php if($imgurl != null): ?>
-      <p><img src="<?=$img_fullpath?>" alt="<?=$imgurl?>"></p>
+      <?php if($img_url != null): ?>
+      <p class="section__schedule-image">
+        <img src="<?=$img_fullpath?>" alt="<?=$img_url?>">
+      </p>
       <?php endif; ?>
     </section>
 

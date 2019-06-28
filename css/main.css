@@ -1,356 +1,134 @@
-@charset "utf-8";
-
-
-
-/*----------------------------- BASE -----------------------------*/
-
+@charset "UTF-8";
 html {
-  font-size: 62.5%; /*10px(root)*/
+  font-size: 62.5%;
+  /*10px(root)*/
   overflow-y: scroll;
 }
 
-img,
-iframe {
+img, iframe {
   width: 100%;
 }
 
-a {
-  color: rgb(0, 163, 175);
-}
-
 body {
-  font-size: 1.3rem; /*basic(14px)*/
+  font-size: 1.4rem;
+  /*basic(14px)*/
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   text-align: justify;
   word-break: break-all;
-
-  line-height: 1.7;
+  line-height: 1.0;
   color: #191918;
   background-color: #E3E3E0;
 }
 
-
-
-/*----------------------------- HEADER -----------------------------*/
-
-
-header {
-  display: flex;
-  position: fixed;
-  justify-content: flex-end;
-  padding: 10px 10px 0;
-  box-sizing: border-box;
-  width: 100%;
-  top: 0;
-  background-color: #E3E3E0;
+.main {
+  margin: 140px 40px 150px;
 }
 
-header .site-title {
-  /*font-size: 2.0rem;*/
-  margin-right: 10px;
+.content a {
+  color: #00A99D;
 }
-
-header >:nth-child(2) {
-  margin-right: auto;
-}
-
-header .lang-switcher ul {
-  display: flex;
-}
-header .lang-switcher ul li:first-child {
-  margin-right: 10px;
-}
-
-header nav.typical-menu {
-  display: none;
-}
-@media screen and (min-width: 768px) {
-  header nav.typical-menu {
-    display: inline;
-  }
-  header nav.typical-menu ul {
-    display: flex;
-  }
-  header nav.typical-menu ul li {
-    margin-left: 10px;
-  }
-  header nav.typical-menu ul li:first-child {
-    margin-left: 0;
-  }
-}
-
-header #ham-menu-icon {
-  margin-left: 10px;
-}
-
-
-
-
-/*----------------------------- HAMBURGUR_MENU -----------------------------*/
-
-
-header #ham-menu-cb {
-  display: none;
-}
-
-header #ham-menu-icon {
-  display: block;
-  font-size: 3.0rem;
-  cursor: pointer;
-}
-
-header nav.ham-menu {
-  opacity: 0;
-  display: block;
-  position: absolute;
-  pointer-events: none;
-  top: 45px;
-	left: 50%;
-	-webkit-transform: translate(-50%,0);
-	-moz-transform: translate(-50%,0);
-	-ms-transform: translate(-50%,0);
-	-o-transform: translate(-50%,0);
-	transform: translate(-50%,0);
-	text-align: center;
-  z-index: 1000;
-}
-
-header #ham-menu-bg {
-  opacity: 0;
-  pointer-events: none;
-  background-color: rgba(255, 255, 255, 0.99);
-  display: block;
-  position: fixed;
-  z-index: -1;
-  /*transition: all 0s linear 0s;*/
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-
-header #ham-menu-cb:checked ~ .ham-menu {
-  opacity: 1.0;
-  pointer-events: all;
-}
-
-header #ham-menu-cb:checked ~ #ham-menu-bg {
-    opacity: 0.9;
-    z-index: 999;
-    pointer-events: all;
-}
-
-
-
-/*----------------------------- MAIN -----------------------------*/
-
-
-#main {
-  display: block;
-  margin: 100px 0;
-}
-@media screen and (min-width: 768px) {
-  #main {
-    width: calc(768px * 0.9);
-    margin: 100px auto 0;
-  }
-}
-
-#main .header {
-  margin: 0 12.5% 2%;
-}
-
-#main .page-title {
-  font-size: 2.0rem;
-  /*margin-bottom: 10px;*/
-}
-
-#main .updated-date {
-  opacity: 0.6;
-  font-size: 1.1rem;
-  /*margin-bottom: 10px;*/
-}
-
-
-#main .text-section {
-  margin-left: 12.5%;
-  margin-right: 12.5%;
-}
-
-#main .article-section {
-  margin-bottom: 12%;
-}
-
-
-/*----------------------------- MAIN INDEX -----------------------------*/
-
-
-
-
-/*orverride*/
-#index #main .text-section {
-  margin-bottom: 10px;
-}
-
-#index #main .view-all-wrapper {
-  display: block;
-  width: 75%;
-  margin: 0 12.5% 0;
-  text-align: right;
-}
-
-#main .blog .title a::before {
-  content: "■ ";
-}
-
-
-
-/*----------------------------- MAIN SQUARE-TRIM -----------------------------*/
-
-
-#main .square-trim-ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-#main .square-trim-wrapper {
-  position: relative;
-  width: 75%;
-  margin: 0 12.5% 8%;
-}
-
-#main .square-trim-wrapper::before {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
-
-#main .square-trim-wrapper img,
-#main .square-trim-wrapper iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  margin: auto;
-  object-fit: cover;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid #AAA;
-}
-
-
-
-/*----------------------------- MOVIE PLAY-CIRCLE -----------------------------*/
-
-
-#index #main .movie .fa-play-circle {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%,-50%);
-	-moz-transform: translate(-50%,-50%);
-	-ms-transform: translate(-50%,-50%);
-	-o-transform: translate(-50%,-50%);
-	transform: translate(-50%,-50%);
-	font-size: 80px;
-	color: #E3E3E0;
-	pointer-events: none;
-
-  z-index: 4;
-}
-
-
-
-/*----------------------------- SLIDER (BIO) -----------------------------*/
-
-
-#main .slider li {
-	height: 300px;
-}
-
-#main .slider .prev {
-	position: absolute;
-	left: -3%;
-	top: 130px;
-	cursor: pointer;
-	font-size: 2rem;
-}
-
-#main .slider .next {
-	position: absolute;
-	right: -3%;
-	top: 130px;
-	cursor: pointer;
-	font-size: 2rem;
-}
-
-
-/*for IE & Edge*/
-#main .slider li {
-  position: relative;
-  height: 315px;
-  display: block;
-  overflow: hidden;
-}
-/*for IE & Edge*/
-#main .slider img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  height: 100%;
-
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-}
-/*for Othres*/
-@supports (object-fit: cover) {
-  #main .slider img {
-    /* negative */
-    position: static;
-    top: 0;
-    left: 0;
-    -ms-transform: none;
-    -moz-transform: none;
-    -webkit-transform: none;
-    transform: none;
-    min-width: inherit;
-
-    /* main */
-    width: 100%;
-  	height: 100%;
-  	object-fit: cover;
-  	object-position: center 40%;
-  	margin-right: 5%;
-  }
-}
-
-.slider .slick-slide  {
-    margin-left: 6px;
-    margin-right: 6px;
-}
-
-
-
-/*----------------------------- FOOTER -----------------------------*/
-
-footer {
-  margin: 0 12.5%;
-}
-
-footer nav li {
+.content__header-title {
+  font-size: 2.6rem;
+  font-weight: bold;
   margin-bottom: 8px;
 }
+.content__header-update-date {
+  color: #AAA;
+  font-size: 11px;
+  margin-bottom: 22px;
+}
+.content__header-image {
+  margin-bottom: 30px;
+}
+.content__section {
+  margin-bottom: 80px;
+}
+.content__section:last-child {
+  margin-bottom: 0;
+}
+.content__description {
+  margin-bottom: 10px;
+  line-height: 1.7;
+  margin-top: -11.9px;
+}
 
-footer .copyright {
-  display: block;
-  font-size: 1rem;
-  text-align: center;
-  opacity: 0.6;
+.section__header-image {
+  margin-bottom: 30px;
+}
+.section__title-text {
+  font-weight: bold;
+  margin-bottom: 22px;
+}
+.section__label {
+  margin-bottom: 12.6px;
+}
+.section__label--alert {
+  color: #C1272D;
+}
+.section__label--alert:before {
+  content: "※";
+}
+.section__label:last-child {
+  margin-bottom: 0;
+}
+.section__sentence {
+  line-height: 1.7;
+  margin-top: -11.9px;
+}
+.section__schedule-image {
+  margin-top: 22.6px;
+}
+
+.image-list__image {
+  margin-bottom: 30px;
+}
+.image-list__image:last-child {
+  margin-bottom: 0;
+}
+
+.lesson-section__content {
+  margin-bottom: 22.6px;
+}
+.lesson-section__content-title {
+  margin-bottom: 12.6px;
+}
+.lesson-section__content-title:before {
+  content: "▼";
+}
+.lesson-section__content-labels {
+  margin-bottom: 12.6px;
+}
+.lesson-section__content-labels:last-child {
+  margin-bottom: 0;
+}
+.lesson-section__content-label {
+  margin-bottom: 12.6px;
+}
+.lesson-section__content-label--annotation:before {
+  content: "※";
+}
+.lesson-section__content-label:last-child {
+  margin-bottom: 0;
+}
+
+.discography-text-section {
+  position: relative;
+}
+.discography-text-section__amazon-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 3.6rem;
+}
+.discography-text-section__content {
+  margin-bottom: 22.6px;
+}
+.discography-text-section__content:last-child {
+  margin-bottom: 0;
+}
+.discography-text-section__content-label {
+  margin-bottom: 12.6px;
+}
+.discography-text-section__content-label:last-child {
+  margin-bottom: 0;
 }

@@ -14,20 +14,22 @@ $update_date = substr($medias[0]['timestamp'], 0, 10);
 ?>
 
 
-<main>
-  <article>
-    <h2><?=DESIGN_EN?></h2>
-    <p><?=SYNC_ICON?><time><?=$update_date?></time></p>
+<main class="main">
+  <article class="content">
+    <h2 class="content__header-title"><?=DESIGN_EN?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$update_date?></time></p>
 
-    <p><?=DESIGN_GREETING_TEXT?></p>
+    <p class="content__description">
+      <?=DESIGN_GREETING_TEXT?>
+    </p>
 
-    <ul>
+    <ul class="image-list">
     <?php foreach($medias as $media):
       $permalink = $media['permalink'];
       $media_url = $media['media_url'];
       $caption = deleteHashTags($media['caption']);
       ?>
-      <li>
+      <li class="image-list__image">
         <a href="<?=$permalink?>">
           <img src="<?=$media_url?>" alt="<?=$caption?>">
         </a>

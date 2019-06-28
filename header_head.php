@@ -19,9 +19,9 @@
   <link rel="icon" type="image/x-icon" href="<?=$root?>img/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="<?=$root?>img/apple-touch-icon-180x180.png">
 
-  <!--<link rel="stylesheet" href="<?=$root?>css/reset.css">
+  <link rel="stylesheet" href="<?=$root?>css/reset.css">
   <link rel="stylesheet" href="<?=$root?>css/main.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">-->
+  <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
   <!--<link rel="stylesheet" href="<?=$root?>css/slick.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">

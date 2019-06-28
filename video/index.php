@@ -5,7 +5,7 @@ $_GET['robot'] = 'noindex';
 $_GET['page_name'] = $page_name;
 require($root.'header.php');
 
-$maxResults = 50;
+$maxResults = 5;
 $address = $apiAddress . $checkId . $fragment . "&key=" . $yt_apiKey . "&maxResults=" . $maxResults;
 $json = cuGet_contents( $address );
 $json_decode = json_decode($json, true);
@@ -19,18 +19,27 @@ $update_date = $dates[0];
 ?>
 
 
-<main>
-  <article>
-    <h2><?=VIDEO_EN?></h2>
-    <p><?=SYNC_ICON?><time><?=$update_date?></time></p>
+<main class="main">
+  <article class="content">
+    <h2 class="content__header-title">
+      <?=VIDEO_EN?>
+    </h2>
+    <p class="content__header-update-date">
+      <?=SYNC_ICON?>
+      <time>
+        <?=$update_date?>
+      </time>
+    </p>
 
-    <p><?=VIDEO_GREETING_TEXT?></p>
+    <p class="content__description">
+      <?=VIDEO_GREETING_TEXT?>
+    </p>
 
-    <ul>
+    <ul class="image-list">
     <?php foreach($json_decode['items'] as $video):
       $videoId = $video['snippet']['resourceId']['videoId'];
       ?>
-      <li>
+      <li class="image-list__image">
         <iframe
           src = "https://www.youtube.com/embed/<?=$videoId?>?rel=0"
           width = "560"
