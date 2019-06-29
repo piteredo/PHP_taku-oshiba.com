@@ -1,11 +1,17 @@
 <body>
-  <header>
-    <p style="color:red">サイトリニューアル中にてレイアウト崩れていますが内容は更新されています(2019.06/22~)。</p>
+  <header class="header">
 
-    <h1><a href="<?=$root?>"><?=SITE_LOGO?></a></h1>
+    <h1 class="header__title-text">
+      <a href="<?=$root?>">
+        <?=SITE_LOGO?>
+      </a>
+    </h1>
 
-    <nav>
-      <ul>
+    <nav class="header__nav hamburger-menu">
+      <input class="hamburger-menu__check-box" type="checkbox" value="off">
+      <label class="hamburger-menu__icon" for="hamburger-menu__check-box"><i class="fas fa-bars"></i></label>
+      <label class="hamburger-menu__background" for="hamburger-menu__check-box"></label>
+      <ul class="hamburger-menu__content">
         <li><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_EN?></a></li>
         <li><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_EN?></a></li>
         <li><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=DESIGN_EN?></a></li>

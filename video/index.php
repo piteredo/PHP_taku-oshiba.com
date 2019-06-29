@@ -35,7 +35,7 @@ $update_date = $dates[0];
       <?=VIDEO_GREETING_TEXT?>
     </p>
 
-    <ul class="image-list">
+    <ul class="content__image-list image-list">
     <?php foreach($json_decode['items'] as $video):
       $videoId = $video['snippet']['resourceId']['videoId'];
       ?>
@@ -51,6 +51,10 @@ $update_date = $dates[0];
       </li>
     <?php endforeach; ?>
     </ul>
+
+    <p class="content__description content__description--right">
+      <?=VIDEO_END_TEXT?>
+    </p>
   </article>
 </main>
 

@@ -26,7 +26,7 @@ $work_design_data = getPDOStatement($pdo, CONTACT_WORK_DESIGN_SQL)->fetch();*/
       <p class="section__sentence">
         <?=CONTACT_DESCRIPTION?>
       </p>
-      <p>
+      <p class="section__label">
         <a href="mailto:<?=EMAIL_ADDRESS?>?subject=<?=EMAIL_SUBJECT?>" target="_blank"><i class="far fa-envelope"></i></a>
         <a href="mailto:<?=EMAIL_ADDRESS?>?subject=<?=EMAIL_SUBJECT?>" target="_blank"><?=EMAIL_ADDRESS?></a>
       </p>

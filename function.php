@@ -33,12 +33,13 @@ function getUpdateDate($pdo, $page_name) {
   return substr(getPDOStatement($pdo, UPDATE_DATE_SQL_PREFIX.'"'.$page_name.'"')->fetch()['Create_time'], 0, 10);
 }
 
-function scheduleDateSortAsc($data, $key) {
-  //data==schedule_data key=="date"
-  foreach ($data as $v) {
-    $date[] = strtotime(substr($v[$key], 0, -4));
+function scheduleDateSortAsc($array, $key) {
+  //array==schedule_data key=="date"
+  foreach ($array as $v) {
+    $date[] = strtotime($v[$key]);
   }
-  array_multisort($key, SORT_ASC, SORT_NUMERIC, $data);
+  array_multisort($date, SORT_ASC, SORT_NUMERIC, $array);
+  return $array;
 }
 
 function deleteHashTags($str) {

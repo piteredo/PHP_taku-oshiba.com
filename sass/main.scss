@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+$debug-mode: 0; //1=>true
+$headline-font: 'Ubuntu Condensed', sans-serif;
+$text-basic-color: #191918;
+$text-pale-color: #888;
+$text-link-color: #00A99D;
+$text-alert-color: #C1272D;
+$background-color: #E3E3E0;
+$image-margin-bottom: 30px;
+$font-size-basic: 14px;
+$sentence-line-height: 1.7;
+$label-line-height: 12.6px; // use as margin-bottom
+$label-margin-bottom: 10px;
+$body-margin-horizontal:  40px;
+
+
 html {
   font-size: 62.5%; /*10px(root)*/
   overflow-y: scroll;
@@ -14,28 +29,24 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   text-align: justify;
   word-break: break-all;
+  box-sizing: border-box;
 
   line-height: 1.0;
-  color: #191918;
-  background-color: #E3E3E0;
+  color: $text-basic-color;
+  background-color: $background-color;
 }
 
-
-$debug-mode: 0; //1=>true
-$text-pale-color: #AAA;
-$text-link-color: #00A99D;
-$text-alert-color: #C1272D;
-$image-margin-bottom: 30px;
-$font-size-basic: 14px;
-$sentence-line-height: 1.7;
-$label-line-height: 12.6px; // use as margin-bottom
-$label-margin-bottom: 10px;
-$body-margin-horizontal:  40px;
 
 @mixin debug-border() {
   @if $debug-mode == 1 {
     border: 1px solid #000;
   }
+}
+
+@mixin headline-font($size) {
+  font-family: $headline-font;
+  font-size: $size;
+  font-weight: bold;
 }
 
 @mixin sentence() {
@@ -44,7 +55,7 @@ $body-margin-horizontal:  40px;
 }
 
 .main {
-  margin: 140px $body-margin-horizontal 150px;
+  margin: 140px 0 150px;
 }
 
 
@@ -53,20 +64,19 @@ $body-margin-horizontal:  40px;
 
   a {
     color: $text-link-color;
+    text-decoration: underline;
   }
 
   &__header-title {
-    //font-family
-    font-size: 2.6rem;
-    font-weight: bold;
-    margin-bottom: 8px;
+    margin: 0 $body-margin-horizontal 8px;
+    @include headline-font(3.4rem);
     @include debug-border;
   }
 
   &__header-update-date {
     color: $text-pale-color;
     font-size: 11px;
-    margin-bottom: 22px;
+    margin: 0 $body-margin-horizontal 22px;
     @include debug-border;
   }
 
@@ -83,10 +93,22 @@ $body-margin-horizontal:  40px;
     }
   }
 
+  &__image-list {
+    margin-bottom: $image-margin-bottom;
+  }
+
   &__description {
-    margin-bottom: 10px;
+    margin: 0 $body-margin-horizontal 10px;
     @include sentence;
     @include debug-border;
+
+    &--right {
+      text-align: right;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -97,11 +119,11 @@ $body-margin-horizontal:  40px;
 
   &__title-text {
     font-weight: bold;
-    margin-bottom: 22px;
+    margin: 0 $body-margin-horizontal 18px;
   }
 
   &__label {
-    margin-bottom: $label-line-height;
+    margin: 0 $body-margin-horizontal $label-line-height;
 
     &--alert {
       color: $text-alert-color;
@@ -117,6 +139,7 @@ $body-margin-horizontal:  40px;
   }
 
   &__sentence {
+    margin: 0 $body-margin-horizontal;
     @include sentence;
     @include debug-border;
   }
@@ -144,7 +167,7 @@ $body-margin-horizontal:  40px;
   }
 
   &__content-title {
-    margin-bottom: $label-line-height;
+    margin: 0 $body-margin-horizontal $label-line-height;
 
     &:before {
       content: "▼";
@@ -152,7 +175,7 @@ $body-margin-horizontal:  40px;
   }
 
   &__content-labels {
-    margin-bottom: $label-line-height;
+    margin: 0 $body-margin-horizontal $label-line-height;
 
     &:last-child {
       margin-bottom: 0;
@@ -177,6 +200,7 @@ $body-margin-horizontal:  40px;
 
 .discography-text-section {
   position: relative;
+  margin: 0 $body-margin-horizontal;
 
   &__amazon-logo {
     position: absolute;
@@ -199,6 +223,35 @@ $body-margin-horizontal:  40px;
     &:last-child {
       margin-bottom: 0;
     }
+  }
+}
+
+
+.header {
+  display: grid;
+  position: fixed;
+  top: 0;
+  grid-auto-columns: 1fr min-content;
+  padding: 14px;
+  width: calc(100% - 28px);
+  background-color: $background-color;
+
+  &__title-text {
+    grid-column: 1 / 2;
+    @include headline-font(2.4rem);
+    @include debug-border;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &__nav {
+    grid-column: 2 / 2;
+    text-align: right;
+    white-space: nowrap;
+    @include debug-border;
   }
 }
 
@@ -230,3 +283,126 @@ $body-margin-horizontal:  40px;
     text-align: center;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hamburger-menu {
+  &__check-box {
+    display: none;
+  }
+
+  &__icon {
+    cursor: pointer;
+    font-size: 3.0rem;
+    z-index: 1000;
+    @include debug-border;
+  }
+
+  &__content {
+    opacity: 0;
+    display: none;
+    //display: block;
+    //position: absolute;
+    //pointer-events: none;
+    //top: 45px;
+  	//left: 50%;
+  	//-webkit-transform: translate(-50%,0);
+  	//-moz-transform: translate(-50%,0);
+  	//-ms-transform: translate(-50%,0);
+  	//-o-transform: translate(-50%,0);
+  	//transform: translate(-50%,0);
+  	//text-align: center;
+    z-index: 1000;
+  }
+
+  &__background {
+    opacity: 0;
+    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.99);
+    display: block;
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+header nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 767px) {
+  header nav ul {
+    display: inline;
+  }
+
+  header nav div.ham-menu {
+    opacity: 0;
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    top: 45px;
+	left: 50%;
+	-webkit-transform: translate(-50%,0);
+	-moz-transform: translate(-50%,0);
+	-ms-transform: translate(-50%,0);
+	-o-transform: translate(-50%,0);
+	transform: translate(-50%,0);
+	text-align: center;
+    z-index: 1000;
+  }
+}
+
+
+header nav #ham-menu-bg {
+  opacity: 0;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.99);
+  display: block;
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+header nav #ham-menu-cb:checked ~ .ham-menu {
+  opacity: 1.0;
+  pointer-events: all;
+}
+
+header nav #ham-menu-cb:checked ~ #ham-menu-bg {
+    opacity: 0.9;
+    z-index: 999;
+    pointer-events: all;
+}
+*/

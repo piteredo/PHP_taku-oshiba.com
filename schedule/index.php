@@ -7,7 +7,7 @@ require($root.'header.php');
 
 $update_date = getUpdateDate($pdo, $page_name);
 $schedule_data = getPDOStatement($pdo, SCHEDULE_SQL)->fetchAll();
-scheduleDateSortAsc($schedule_data, 'date');
+$schedule_data = scheduleDateSortAsc($schedule_data, "date");
 $place_data = getPDOStatement($pdo, PLACE_SQL)->fetchAll();
 $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
 ?>
@@ -53,9 +53,11 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
       </p>
 
       <p class="section__label">
-        <?php if($start_time != null) echo $start_time . '-'; ?>
-        <?php if($open_time != null) echo '('. $open_time. 'open) '; ?>
-        <?php if($price != null) echo $price; ?>
+        <?php
+        if($start_time != null) echo $start_time . '- ';
+        if($open_time != null) echo '('. $open_time. 'open)';
+        if($price != null) echo ' / ' . $price;
+        ?>
       </p>
 
       <?php if($other_text != null): ?>
@@ -73,8 +75,7 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
         ?>
         <li class="section__label">
           <?php if($player_url != null) : ?><a href="<?=$player_url?>" target="_blank"><?php endif;?>
-          <?=$player_name?>
-          <?php if($player_url != null) : ?></a><?php endif;?>
+          <?=$player_name?><?php if($player_url != null) : ?></a> <?php endif;?>
           (<?=$player_instrument?>)
         </li>
       <?php endforeach; ?>

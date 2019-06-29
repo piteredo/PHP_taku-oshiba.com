@@ -28,8 +28,15 @@ $design_update_date = substr($medias[0]['timestamp'], 0, 10);
 
 <main class="main">
   <section class="content">
-    <h2 class="content__header-title"><?=INDEX_GREETING_TITLE?></h2>
-    <p><?=INDEX_GREETING_TEXT?></p>
+    <h2 class="content__header-title">
+      <?=INDEX_GREETING_TITLE?>
+    </h2>
+    <p class="content__header-update-date">
+      <?=SYNC_ICON?><time><?=$video_update_date?></time>
+    </p>
+    <p class="content__description">
+      <?=INDEX_GREETING_TEXT?>
+    </p>
   </section>
 
   <section class="content">
