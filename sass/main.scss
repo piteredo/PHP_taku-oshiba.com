@@ -30,6 +30,7 @@ $font-size-basic: 14px;
 $sentence-line-height: 1.7;
 $label-line-height: 12.6px; // use as margin-bottom
 $label-margin-bottom: 10px;
+$body-margin-horizontal:  40px;
 
 @mixin debug-border() {
   @if $debug-mode == 1 {
@@ -43,7 +44,7 @@ $label-margin-bottom: 10px;
 }
 
 .main {
-  margin: 140px 40px 150px;
+  margin: 140px $body-margin-horizontal 150px;
 }
 
 
@@ -198,5 +199,34 @@ $label-margin-bottom: 10px;
     &:last-child {
       margin-bottom: 0;
     }
+  }
+}
+
+
+.footer {
+  background-color: #333;
+  padding: 30px $body-margin-horizontal;
+
+  a {
+    color: $text-link-color;
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__nav-label {
+    margin-bottom: 25.5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__copyright {
+    display: block;
+    color: $text-pale-color;
+    font-size: 1.1rem;
+    text-align: center;
   }
 }

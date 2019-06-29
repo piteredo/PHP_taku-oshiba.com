@@ -53,8 +53,8 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
       </p>
 
       <p class="section__label">
-        <?php if($starttime != null) echo $starttime; ?>
-        <?php if($opentime != null) echo '('. $opentime. 'open)'; ?>
+        <?php if($start_time != null) echo $start_time . '-'; ?>
+        <?php if($open_time != null) echo '('. $open_time. 'open) '; ?>
         <?php if($price != null) echo $price; ?>
       </p>
 
