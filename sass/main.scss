@@ -60,7 +60,12 @@ body {
 
 
 .content {
+  margin-bottom: 80px;
   @include debug-border;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   a {
     color: $text-link-color;
