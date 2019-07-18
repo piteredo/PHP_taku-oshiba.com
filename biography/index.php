@@ -20,13 +20,13 @@ $en_text = $bio_data['entext'];
     <h2 class="content__header-title"><?=BIOGRAPHY_EN?></h2>
     <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$update_date?></time></p>
 
-    <ul class="content__header-image">
+    <ul class="content__header-image slider">
     <?php foreach($photos as $photo) :
       $src = $root.'img/bio/'.$photo['src'].'.jpg'; ?>
-      <li>
-        <a href="<?=$src?>">
-          <img src="<?=$src?>" alt="<?=$en_name?>">
-        </a>
+      <li class="biography-images">
+        <!--<a href="<?=$src?>">-->
+          <img src="<?=$src?>" class="biography-images__image" alt="<?=$en_name?>">
+        <!--</a>-->
       </li>
     <?php endforeach; ?>
     </ul>

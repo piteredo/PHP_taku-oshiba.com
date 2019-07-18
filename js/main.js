@@ -5,10 +5,13 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 $(function() {
+
+console.log("hello");
+
   $('.slider').slick({
     slidesToShow: 2,
       autoplay: false,
-      arrows: true,
+      arrows: false,
       centerMode: true,
       speed: 500,
       touchThreshold: 14,
@@ -25,8 +28,13 @@ $(function() {
     }]
   });
 
-  $('.modal').modaal({
+  /*$('.modal').modaal({
     type: "image"
+  });*/
+
+  $(".modal").iziModal({
+     group: "group01",
+	   loop: true,
   });
 
   $(function() {

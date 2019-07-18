@@ -35,11 +35,11 @@ $update_date = $dates[0];
       <?=VIDEO_GREETING_TEXT?>
     </p>
 
-    <ul class="content__image-list image-list">
+    <ul class="content__image-list video-list">
     <?php foreach($json_decode['items'] as $video):
       $videoId = $video['snippet']['resourceId']['videoId'];
       ?>
-      <li class="image-list__image">
+      <li class="video-list__video">
         <iframe
           src = "https://www.youtube.com/embed/<?=$videoId?>?rel=0"
           width = "560"
