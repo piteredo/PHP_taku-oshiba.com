@@ -5,9 +5,6 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 $(function() {
-
-console.log("hello");
-
   $('.slider').slick({
     slidesToShow: 2,
       autoplay: false,
@@ -32,18 +29,18 @@ console.log("hello");
     type: "image"
   });*/
 
-  $(".modal").iziModal({
+  /*$(".modal").iziModal({
      group: "group01",
 	   loop: true,
-  });
+  });*/
 
-  $(function() {
-     $('img.lazy').lazyload(/*{
+  /*$(function() {
+     $('img.lazy').lazyload(
        distance: 1270
-     }*/);
-   });
+     );
+   });*/
 
-  $('iframe').each(function(i){
+ /*$('iframe').each(function(i){
     let url = $(this).attr('src');
     if(url.indexOf("www.youtube.com")){
       let id = url.replace("https://www.youtube.com/embed/","").replace("?rel=0","");
@@ -69,9 +66,9 @@ console.log("hello");
       );
       $(this).children(".fa-play-circle").hide();
     });
-  });
+  });*/
 });
 
-function onPlayerReady(event) {
+/*function onPlayerReady(event) {
   event.target.playVideo();
-}
+}*/
