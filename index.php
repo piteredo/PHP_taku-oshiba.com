@@ -7,7 +7,12 @@ require($root.'header.php');
 require('blog/wp-load.php');
 
 //UPDATES
-$updates = [];
+$biography_updates = [];
+$schedule_updates = [];
+$video_updates = [];
+$design_updates = [];
+$discography_updates = [];
+$blog_updates = [];
 
 //BIO
 $bio_data = getPDOStatement($pdo, BIOGRAPHY_SQL)->fetch(); //only 1 column
@@ -17,8 +22,8 @@ $url = 'biography';
 $date = getUpdateDate($pdo, 'biography');
 $fullpath = $root.'img/bio/'.$photos[0]['src'].'.jpg';
 $title = "[BIO] " . $bio_data['janame'] . " (" . $bio_data['janame_ruby'] . ") / " . $bio_data['enname'];
-$text = str_replace("<br/>", "", mb_substr($bio_data['jatext'], 0, 160)) . " ...";
-$updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
+$text = $bio_data['jatext_short'];
+$biography_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
 
 //SCHEDULE
 $schedule_data = getPDOStatement($pdo, SCHEDULE_SQL)->fetchAll();
@@ -30,10 +35,10 @@ if($schedule_data[0]['imgurl'] != null) $fullpath = $root. 'img/design/'. $sched
 else $fullpath = $root. 'img/no-image.png';
 $title = "[SCHEDULE] 次回出演: " . $schedule_data[0]['date'] . ' ' . $schedule_data[0]['title'];
 $text = "###";
-$updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
+$schedule_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
 
 //VIDEO
-$maxResults = 2;
+$maxResults = 3;
 $address = $apiAddress . $checkId . $fragment . "&key=" . $yt_apiKey . "&maxResults=" . $maxResults;
 $json = cuGet_contents( $address );
 $json_decode = json_decode($json, true);
@@ -44,11 +49,11 @@ foreach ($json_decode['items'] as $video) {
   $fullpath = 'https://www.youtube.com/embed/' . $video['snippet']['resourceId']['videoId'] . '?rel=0';
   $title = "[VIDEO] " . $video['snippet']['title'];
   $text = mb_substr($video['snippet']['description'], 0, 160) . " ...";
-  $updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
+  $video_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
 }
 
 //DESIGN
-$num   = 3;
+$num   = 5;
 $query = 'media.limit('. $num. '){caption,media_url,permalink,timestamp,thumbnail_url}';
 $json  = file_get_contents("{$f_api}{$ig_id}?fields={$query}&access_token={$token}");
 $data  = json_decode($json, true);
@@ -61,7 +66,7 @@ foreach ($medias as $media) {
   $thumbnail = $media['thumbnail_url'];
   $title = "[DESIGN] " . deleteHashTags($media['caption']);
   $text = deleteHashTags($media['caption']);
-  $updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'thumbnail'=>$thumbnail, 'title'=>$title, 'text'=>$text);
+  $design_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'thumbnail'=>$thumbnail, 'title'=>$title, 'text'=>$text);
 }
 
 //DISCO
@@ -80,7 +85,7 @@ $url = 'discography';
 $date = getUpdateDate($pdo, 'discography');
 $fullpath = $root. 'img/design/'. $discography_data[0]['imgurl']. '.jpg';
 $title = "[DISCO] " . $discography_data[0]['title'];
-$updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
+$discography_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
 
 //BLOG * 5
 $arg = array(
@@ -95,46 +100,58 @@ foreach (get_posts($arg) as $post) {
   else {
     $image = 'https://taku-oshiba.com/img/no-image.png';
   }
-  $updates[] = [
+  $blog_updates[] = [
     'type' => 'blog',
     'url' => './blog/?p=' . $post->ID,
     'date' => substr($post->post_date, 0, 10),
-    'title' => '[BLOG] ' . $post->post_title,
-    'text' => wp_strip_all_tags($post->post_content),
+    'title' => $post->post_title,
+    'text' => mb_substr(wp_strip_all_tags($post->post_content), 0, 100) . " ...",
     'fullpath' => $image
   ];
 }
 
 
-$updates = dateSort($updates);
-$total_update_date = $updates[0]['date'];
+//$updates = dateSort($updates);
+//$total_update_date = $updates[0]['date'];
 
 //echo json_encode($updates);
 ?>
 
 <main class="main">
   <section class="content">
-    <!--<h2 class="content__header-title">
-      <?=INDEX_GREETING_TITLE?>
-    </h2>
-    <p class="content__header-update-date">
-      <?=SYNC_ICON?><time><?=$total_update_date?></time>
-    </p>-->
-    <p class="content__description">
-      <?=INDEX_GREETING_TEXT?>
-    </p>
+    <h2 class="content__header-title"><?=SITE_LOGO?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$biography_updates[0]['date']?></time></p>
+    <ul>
+    <?php
+    foreach($biography_updates as $content): ?>
+      <li class="content__section section">
+        <!--<p class="section__update-date">
+          <?=SYNC_ICON?><time><?=$content['date']?></time>
+        </p>
+        <h3 class="section__title-text section__title-text--narrow-bottom">
+          <?=$content['title']?>
+        </h3>-->
+        <p class="section__sentence">
+          <?=$content['text']?></br>
+          <a href="./biography"><?=VIEW_ALL_BIOGRAPHY?> ≫</a>
+        </p>
+        <p class="section__square-image-wrapper section__schedule-image">
+          <a href="./<?=$content['url']?>">
+            <img src="<?=$content['fullpath']?>" class="section__square-image" alt="<?=$content['text']?>">
+          </a>
+        </p>
+      </li>
+    <?php endforeach; ?>
+    </ul>
   </section>
 
   <section class="content">
-    <h2 class="content__header-title"><?=UPDATES_EN?></h2>
-    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$total_update_date?></time></p>
+    <h2 class="content__header-title"><?=VIDEO_EN?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$video_updates[0]['date']?></time></p>
     <ul>
-    <?php
-    foreach($updates as $content):
-      if($content['type'] == "video"):
-      ?>
+    <?php foreach($video_updates as $content): ?>
       <li class="content__section section">
-        <p class="section__update-date">
+        <!--<p class="section__update-date">
           <?=SYNC_ICON?><time><?=$content['date']?></time>
         </p>
         <h3 class="section__title-text section__title-text--narrow-bottom">
@@ -142,7 +159,7 @@ $total_update_date = $updates[0]['date'];
         </h3>
         <p class="section__label">
           <a href="./<?=$content['type']?>">≫view <?=$content['type']?> page</a>
-        </p>
+        </p>-->
         <p class="video-list">
           <iframe
             src = <?=$content['fullpath']?>
@@ -155,9 +172,21 @@ $total_update_date = $updates[0]['date'];
           </iframe>
         </p>
       </li>
-    <?php else: ?>
-      <li class="content__section section">
-        <p class="section__update-date">
+    <?php endforeach; ?>
+    <p class="section__label">
+      <a href="./<?=$content['type']?>"><?=VIEW_ALL_VIDEO?> ≫</a>
+    </p>
+    </ul>
+  </section>
+
+  <section class="content">
+    <h2 class="content__header-title"><?=DESIGN_EN?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$design_updates[0]['date']?></time></p>
+    <ul class="image-list">
+    <?php
+    foreach($design_updates as $content): ?>
+      <li class="content__section section image-list__image-li">
+        <!--<p class="section__update-date">
           <?=SYNC_ICON?><time><?=$content['date']?></time>
         </p>
         <h3 class="section__title-text section__title-text--narrow-bottom">
@@ -165,8 +194,8 @@ $total_update_date = $updates[0]['date'];
         </h3>
         <p class="section__label">
           <a href="./<?=$content['url']?>">≫View <?=mb_strtoupper($content['type'])?> page</a>
-        </p>
-        <p class="section__square-image-wrapper">
+        </p>-->
+        <p class="">
           <?php if(strpos($content['fullpath'], 'mp4')): ?>
           <video
             src="<?=$content['fullpath']?>"
@@ -174,16 +203,48 @@ $total_update_date = $updates[0]['date'];
             controls
             playsinline
             loop
-            class="section__square-image">
+            class="image-list__image">
           </video>
           <?php else: ?>
           <a href="./<?=$content['url']?>">
-            <img src="<?=$content['fullpath']?>" class="section__square-image" alt="<?=$content['text']?>">
+            <img src="<?=$content['fullpath']?>" class="image-list__image" alt="<?=$content['text']?>">
           </a>
           <?php endif; ?>
         </p>
       </li>
-    <?php endif; endforeach; ?>
+    <?php endforeach; ?>
+    <p class="section__label">
+      <a href="./<?=$content['type']?>"><?=VIEW_ALL_DESIGN?> ≫</a>
+    </p>
+    </ul>
+  </section>
+
+  <section class="content">
+    <h2 class="content__header-title"><?=BLOG_EN?></h2>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$blog_updates[0]['date']?></time></p>
+    <ul>
+    <?php
+    foreach($blog_updates as $content): ?>
+      <li class="content__section section">
+        <p class="section__update-date">
+          <?=SYNC_ICON?><time><?=$content['date']?></time>
+        </p>
+        <h3 class="section__title-text">
+          <?=$content['title']?>
+        </h3>
+        <p class="section__sentence">
+          <?=$content['text']?> <a href="./<?=$content['url']?>"><?=VIEW_ALL?> ≫</a>
+        </p>
+        <p class="section__square-image-wrapper section__schedule-image">
+          <a href="./<?=$content['url']?>">
+            <img src="<?=$content['fullpath']?>" class="section__square-image" alt="<?=$content['text']?>">
+          </a>
+        </p>
+      </li>
+    <?php endforeach; ?>
+    <p class="section__label">
+      <a href="./<?=$content['type']?>"><?=VIEW_ALL_BLOG?> ≫</a>
+    </p>
     </ul>
   </section>
 </main>

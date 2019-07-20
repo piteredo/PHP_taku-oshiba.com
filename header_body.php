@@ -23,6 +23,7 @@
         <div class="header__sns-icons">
           <li class="header__sns-icon"><a href="<?=TWITTER_URL?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
           <li class="header__sns-icon"><a href="<?=INSTAGRAM_URL?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
+          <li class="header__sns-icon"><a href="<?=FACEBOOK_URL?>" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
           <li class="header__sns-icon"><a href="<?=GITHUB_URL?>" target="_blank"><i class="fab fa-github"></i></a></li>
         </div>
       </ul>

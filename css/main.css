@@ -232,14 +232,14 @@ body {
 }
 
 .video-list__video {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 .video-list__video--square {
-  height: 100vw;
+  /*height: 100vw;*/
 }
 @media (min-width: 580px) {
   .video-list__video--square {
-    height: 580px;
+    /*height: 580px;*/
   }
 }
 
