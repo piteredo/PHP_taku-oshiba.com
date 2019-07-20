@@ -39,9 +39,10 @@ $update_date = $dates[0];
     <?php foreach($json_decode['items'] as $video):
       $videoId = $video['snippet']['resourceId']['videoId'];
       ?>
-      <li class="video-list__video">
+      <li>
         <iframe
           src = "https://www.youtube.com/embed/<?=$videoId?>?rel=0"
+          class="video-list__video video-list__video--square"
           width = "560"
           height = "315"
           frameborder = "0"

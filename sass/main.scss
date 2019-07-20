@@ -14,6 +14,8 @@ $label-line-height: 12.6px; // use as margin-bottom
 $label-margin-bottom: 10px;
 $body-margin-horizontal:  40px;
 
+$beak-point: 580px;
+
 
 html {
   font-size: 62.5%; /*10px(root)*/
@@ -23,6 +25,12 @@ html {
 img, iframe, video {
   width: 100%;
   height: auto;
+}
+@media (min-width: $beak-point) {
+  img, iframe, video {
+    width: $beak-point;
+    height: auto;
+  }
 }
 
 body {
@@ -172,7 +180,13 @@ body {
     @include debug-border;
 
     img {
-      margin-top: $label-line-height + $label-margin-bottom;
+      margin: $label-line-height + $label-margin-bottom -1 * $body-margin-horizontal 0;
+      width: 100vw;
+    }
+    @media (min-width: $beak-point) {
+      img {
+        width: $beak-point;
+      }
     }
   }
 
@@ -188,6 +202,18 @@ body {
       display: block;
       content: "";
       padding-top: 100%;
+    }
+  }
+  @media (min-width: $beak-point) {
+    &__square-image-wrapper {
+      position: relative;
+      width: $beak-point;
+
+      &:before {
+        display: block;
+        content: "";
+        padding-top: 100%;
+      }
     }
   }
 
@@ -254,6 +280,27 @@ $image-list-image-margin: $image-margin-bottom;
     &:nth-child(odd) {
       margin-right: $image-list-image-margin;
     }
+    @media (min-width: $beak-point) {
+      margin-right: $image-list-image-margin;
+    }
+  }
+
+  @media (min-width: $beak-point) {
+    &__image-li {
+      position: relative;
+      width: calc((#{$beak-point} - #{$image-list-image-margin}) / 2);
+      margin-bottom: $image-list-image-margin;
+
+      &:before {
+        display: block;
+        content: "";
+        padding-top: 100%;
+      }
+
+      &:nth-child(odd) {
+        margin-right: $image-list-image-margin;
+      }
+    }
   }
 
   &__image {
@@ -278,6 +325,11 @@ $image-list-image-margin: $image-margin-bottom;
 
     &--square {
       height: 100vw;
+    }
+    @media (min-width: $beak-point) {
+      &--square {
+        height: $beak-point;
+      }
     }
   }
 }
@@ -329,6 +381,14 @@ $image-list-image-margin: $image-margin-bottom;
     top: 0;
     right: 0;
     font-size: 3.6rem;
+  }
+  @media (min-width: $beak-point) {
+    &__amazon-logo {
+      position: absolute;
+      top: 0;
+      right: calc(100vw - #{$beak-point});
+      font-size: 3.6rem;
+    }
   }
 
   &__content {

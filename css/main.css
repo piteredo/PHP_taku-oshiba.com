@@ -10,6 +10,12 @@ img, iframe, video {
   height: auto;
 }
 
+@media (min-width: 580px) {
+  img, iframe, video {
+    width: 580px;
+    height: auto;
+  }
+}
 body {
   font-size: 1.4rem;
   /*basic(14px)*/
@@ -110,7 +116,13 @@ body {
   margin-top: -11.9px;
 }
 .section__sentence img {
-  margin-top: 22.6px;
+  margin: 22.6px -40px 0;
+  width: 100vw;
+}
+@media (min-width: 580px) {
+  .section__sentence img {
+    width: 580px;
+  }
 }
 .section__schedule-image, .section__blog-image {
   margin-top: 22.6px;
@@ -122,6 +134,17 @@ body {
   display: block;
   content: "";
   padding-top: 100%;
+}
+@media (min-width: 580px) {
+  .section__square-image-wrapper {
+    position: relative;
+    width: 580px;
+  }
+  .section__square-image-wrapper:before {
+    display: block;
+    content: "";
+    padding-top: 100%;
+  }
 }
 .section__square-image {
   position: absolute;
@@ -176,6 +199,26 @@ body {
 .image-list__image-li:nth-child(odd) {
   margin-right: 30px;
 }
+@media (min-width: 580px) {
+  .image-list__image-li {
+    margin-right: 30px;
+  }
+}
+@media (min-width: 580px) {
+  .image-list__image-li {
+    position: relative;
+    width: calc((580px - 30px) / 2);
+    margin-bottom: 30px;
+  }
+  .image-list__image-li:before {
+    display: block;
+    content: "";
+    padding-top: 100%;
+  }
+  .image-list__image-li:nth-child(odd) {
+    margin-right: 30px;
+  }
+}
 .image-list__image {
   position: absolute;
   width: 100%;
@@ -193,6 +236,11 @@ body {
 }
 .video-list__video--square {
   height: 100vw;
+}
+@media (min-width: 580px) {
+  .video-list__video--square {
+    height: 580px;
+  }
 }
 
 .lesson-section__content {
@@ -229,6 +277,14 @@ body {
   top: 0;
   right: 0;
   font-size: 3.6rem;
+}
+@media (min-width: 580px) {
+  .discography-text-section__amazon-logo {
+    position: absolute;
+    top: 0;
+    right: calc(100vw - 580px);
+    font-size: 3.6rem;
+  }
 }
 .discography-text-section__content {
   margin-bottom: 22.6px;

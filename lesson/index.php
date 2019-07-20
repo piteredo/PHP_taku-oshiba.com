@@ -48,10 +48,11 @@ $contact_text = $contact['textmain_arr'];
         $title = $row['subtitle'];
         $src = $row['textmain_arr'];
       ?>
-      <section class="video-list__video">
+      <section>
         <h4 class="lesson-section__content-title"><?=$title?></h4>
         <iframe
           src = "https://www.youtube.com/embed/<?=$src?>?rel=0"
+          class="video-list__video video-list__video--square"
           width = "560"
           height = "315"
           frameborder = "0"
