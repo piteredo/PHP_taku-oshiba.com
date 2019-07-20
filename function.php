@@ -92,4 +92,14 @@ function getPlayerById($sql, $id) {
   $sql->execute(array($id));
   return $sql->fetch();
 }
+
+function get_author_latest_update( $author_id, $date_format = null ) {
+    $latest_post = get_posts( 'posts_per_page=1&author=' . (int)$author_id );
+    $update_date = '';
+    if ( $latest_post ) {
+        $format = is_null( $date_format ) ? get_option( 'date_format' ) : $date_format;
+        $update_date = mysql2date( $format, $latest_post[0]->post_date );
+    }
+    return $update_date;
+}
 ?>
