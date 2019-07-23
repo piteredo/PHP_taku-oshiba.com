@@ -19,10 +19,6 @@ $update_date = get_author_latest_update(1);
 					<time datetime="<?=get_the_date( 'Y-m-d' );?>"><?=the_time('Y-m-d D');?></time>
 				</p>
 
-				<h3 class="section__title-text">
-					<?php the_title(); ?>
-				</h3>
-
 				<div class="sns-share-buttons">
 					<div
 						class="fb-share-button"
@@ -42,6 +38,10 @@ $update_date = get_author_latest_update(1);
 					</a>
 					<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 				</div>
+
+				<h3 class="section__title-text">
+					<?php the_title(); ?>
+				</h3>
 
 				<div class="section__sentence">
 					<?=the_content(); ?>

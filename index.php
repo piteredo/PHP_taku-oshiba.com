@@ -53,7 +53,7 @@ foreach ($json_decode['items'] as $video) {
 }
 
 //DESIGN
-$num   = 6;
+$num   = 8;
 $query = 'media.limit('. $num. '){caption,media_url,permalink,timestamp,thumbnail_url}';
 $json  = file_get_contents("{$f_api}{$ig_id}?fields={$query}&access_token={$token}");
 $data  = json_decode($json, true);
@@ -133,6 +133,8 @@ foreach (get_posts($arg) as $post) {
         </h3>-->
         <p class="section__sentence">
           <?=$content['text']?></br>
+        </p>
+        <p class="section__label section__label--view-all">
           <a href="./biography"><?=VIEW_ALL_BIOGRAPHY?> ≫</a>
         </p>
         <p class="section__square-image-wrapper section__schedule-image">
@@ -150,32 +152,21 @@ foreach (get_posts($arg) as $post) {
     <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$video_updates[0]['date']?></time></p>
     <ul>
     <?php foreach($video_updates as $content): ?>
-      <li class="content____image-list section">
-        <!--<p class="section__update-date">
-          <?=SYNC_ICON?><time><?=$content['date']?></time>
-        </p>
-        <h3 class="section__title-text section__title-text--narrow-bottom">
-          <?=$content['title']?>
-        </h3>
-        <p class="section__label">
-          <a href="./<?=$content['type']?>">≫view <?=$content['type']?> page</a>
-        </p>-->
-        <p class="video-list">
-          <iframe
-            src = <?=$content['fullpath']?>
-            class="video-list__video video-list__video--square"
-            width = "560"
-            height = "315"
-            frameborder = "0"
-            allow = "autoplay; encrypted-media"
-            allowfullscreen>
-          </iframe>
-        </p>
+      <li class="video-list">
+        <iframe
+          src = <?=$content['fullpath']?>
+          class="video-list__video video-list__video--square"
+          width = "560"
+          height = "315"
+          frameborder = "0"
+          allow = "autoplay; encrypted-media"
+          allowfullscreen>
+        </iframe>
       </li>
     <?php endforeach; ?>
     </ul>
-    <p class="section__label">
-      <a href="./<?=$content['type']?>"><?=VIEW_ALL_VIDEO?></a>
+    <p class="section__label section__label--view-all">
+      <a href="<?=YOUTUBE_URL?>" target="_blank"><?=VIEW_ALL_VIDEO?></a>
     </p>
   </section>
 
@@ -186,36 +177,25 @@ foreach (get_posts($arg) as $post) {
     <?php
     foreach($design_updates as $content): ?>
       <li class="section image-list__image-li">
-        <!--<p class="section__update-date">
-          <?=SYNC_ICON?><time><?=$content['date']?></time>
-        </p>
-        <h3 class="section__title-text section__title-text--narrow-bottom">
-          <?=$content['title']?>
-        </h3>
-        <p class="section__label">
-          <a href="./<?=$content['url']?>">≫View <?=mb_strtoupper($content['type'])?> page</a>
-        </p>-->
-        <p class="">
-          <?php if(strpos($content['fullpath'], 'mp4')): ?>
-          <video
-            src="<?=$content['fullpath']?>"
-            poster="<?=$content['thumbnail']?>"
-            controls
-            playsinline
-            loop
-            class="image-list__image">
-          </video>
-          <?php else: ?>
-          <a href="<?=$content['fullpath']?>">
-            <img src="<?=$content['fullpath']?>" class="image-list__image" alt="<?=$content['text']?>">
-          </a>
-          <?php endif; ?>
-        </p>
+        <?php if(strpos($content['fullpath'], 'mp4')): ?>
+        <video
+          src="<?=$content['fullpath']?>"
+          poster="<?=$content['thumbnail']?>"
+          controls
+          playsinline
+          loop
+          class="image-list__image">
+        </video>
+        <?php else: ?>
+        <a href="<?=$content['fullpath']?>">
+          <img src="<?=$content['fullpath']?>" class="image-list__image" alt="<?=$content['text']?>">
+        </a>
+        <?php endif; ?>
       </li>
     <?php endforeach; ?>
     </ul>
-    <p class="section__label">
-      <a href="./<?=$content['type']?>"><?=VIEW_ALL_DESIGN?></a>
+    <p class="section__label section__label--view-all">
+      <a href="<?=INSTAGRAM_URL?>" target="_blank"><?=VIEW_ALL_DESIGN?></a>
     </p>
   </section>
 
@@ -226,8 +206,8 @@ foreach (get_posts($arg) as $post) {
     <?php
     foreach($blog_updates as $content): ?>
       <li class="content__section section">
-        <p class="section__update-date">
-          <?=SYNC_ICON?><time><?=$content['date']?></time>
+        <p class="section__label">
+          <time><?=$content['date']?></time> <?=getDay($content['date'])?>
         </p>
         <h3 class="section__title-text">
           <?=$content['title']?>
@@ -242,10 +222,10 @@ foreach (get_posts($arg) as $post) {
         </p>
       </li>
     <?php endforeach; ?>
-    <p class="content__description">
+    </ul>
+    <p class="section__label section__label--view-all">
       <a href="./<?=$content['type']?>"><?=VIEW_ALL_BLOG?> ≫</a>
     </p>
-    </ul>
   </section>
 </main>
 

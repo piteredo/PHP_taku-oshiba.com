@@ -40,7 +40,7 @@ $contact_text = $contact['textmain_arr'];
       </p>
     </section>
 
-    <section class="content__section section video-list lesson-section">
+    <section class="content__section section lesson-section">
       <h3 class="section__title-text">
         <?=$movie_title?>
       </h3>
@@ -48,7 +48,7 @@ $contact_text = $contact['textmain_arr'];
         $title = $row['subtitle'];
         $src = $row['textmain_arr'];
       ?>
-      <section>
+      <section class="video-list">
         <h4 class="lesson-section__content-title"><?=$title?></h4>
         <iframe
           src = "https://www.youtube.com/embed/<?=$src?>?rel=0"

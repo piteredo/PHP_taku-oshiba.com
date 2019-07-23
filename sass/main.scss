@@ -8,9 +8,9 @@ $text-link-color: #00A99D;
 $text-alert-color: #C1272D;
 $background-color: #E3E3E0;
 $image-margin-bottom: 30px;
-$font-size-basic: 14px;
-$sentence-line-height: 1.7;
-$label-line-height: 12.6px; // use as margin-bottom
+$font-size-basic: 1.5rem;
+$sentence-line-height: 1.9;
+$label-line-height: 15.4px; // use as margin-bottom
 $label-margin-bottom: 10px;
 $body-margin-horizontal:  40px;
 $break-point: 580px;
@@ -33,7 +33,7 @@ img, iframe, video {
 }*/
 
 body {
-  font-size: 1.4rem; /*basic(14px)*/
+  font-size: $font-size-basic; /*basic(14px)*/
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   text-align: justify;
   word-break: break-all;
@@ -46,7 +46,7 @@ body {
 
 @media (min-width: $break-point) {
   body {
-    font-size: 1.4rem; /*basic(14px)*/
+    font-size: $font-size-basic; /*basic(14px)*/
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
     text-align: justify;
     word-break: break-all;
@@ -80,12 +80,12 @@ body {
 }
 
 .main {
-  margin: 140px 0 150px;
+  margin: 100px 0 150px;
 }
 
 
 .content {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
   @include debug-border;
 
   &:last-child {
@@ -99,7 +99,7 @@ body {
 
   &__header-title {
     margin: 0 $body-margin-horizontal 8px;
-    @include headline-font(3.4rem);
+    @include headline-font(3.6rem);
     @include debug-border;
 
     a {
@@ -108,13 +108,13 @@ body {
     }
 
     &--ja {
-      @include headline-font(3.0rem);
+      @include headline-font(3.2rem);
     }
   }
 
   &__header-update-date {
     color: $text-pale-color;
-    font-size: 11px;
+    font-size: 12px;
     margin: 0 $body-margin-horizontal 22px;
     @include debug-border;
   }
@@ -124,7 +124,7 @@ body {
   }
 
   &__section {
-    margin-bottom: 80px;
+    margin-bottom: 90px;
     @include debug-border;
 
     &:last-child {
@@ -134,6 +134,10 @@ body {
 
   &__image-list {
     margin-bottom: $image-margin-bottom;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__description {
@@ -159,6 +163,7 @@ body {
   &__title-text {
     font-weight: bold;
     margin: 0 $body-margin-horizontal 18px;
+    line-height: 1.9;
     @include debug-border;
 
     &--narrow-bottom {
@@ -187,6 +192,11 @@ body {
       &:before {
         content: "※";
       }
+    }
+
+    &--view-all {
+      text-align: right;
+      margin-top: $image-margin-bottom;
     }
 
     &:last-child {
@@ -279,7 +289,7 @@ body {
 
 
 $image-list-row-length: 2;
-$image-list-image-margin: $image-margin-bottom;
+$image-list-image-margin: 10px;
 
 .image-list {
   display: flex;
@@ -300,6 +310,11 @@ $image-list-image-margin: $image-margin-bottom;
     &:nth-child(odd) {
       margin-right: $image-list-image-margin;
     }
+
+    &:nth-last-child(-n + #{$image-list-row-length}) {
+      margin-bottom: 0;
+    }
+
     /*@media (min-width: $break-point) {
       margin-right: $image-list-image-margin;
     }*/
@@ -338,10 +353,9 @@ $image-list-image-margin: $image-margin-bottom;
 
 
 .video-list {
-  //margin: 0 $body-margin-horizontal;
+  margin-bottom: $image-margin-bottom;
 
   &__video {
-    margin-bottom: $image-margin-bottom;
 
     &--square {
       height: 100vw / 560 * 315;
@@ -351,6 +365,10 @@ $image-list-image-margin: $image-margin-bottom;
         height: $break-point / 560 * 315;
       }
     }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -461,7 +479,7 @@ $nav-lavel-margin-bottom: 26px;
   }
 
   &__nav-label {
-    @include headline-font(2.0rem);
+    @include headline-font(2.2rem);
     margin-bottom: $nav-lavel-margin-bottom;
 
     &:last-child {
@@ -517,7 +535,7 @@ $nav-lavel-margin-bottom: 26px;
   &__background {
     opacity: 0;
     pointer-events: none;
-    background-color: rgba(200, 200, 200, 0.9);
+    background-color: rgba(210, 210, 210, 0.9);
     display: block;
     position: fixed;
     z-index: -1;
@@ -583,8 +601,7 @@ $nav-lavel-margin-bottom: 26px;
 
 .sns-share-buttons {
   display: flex;
-  margin: 0 $body-margin-horizontal 18px;
-  line-height: 1.0;
+  margin: 0 $body-margin-horizontal 10px;
   @include debug-border;
 }
 

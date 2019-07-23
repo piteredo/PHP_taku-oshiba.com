@@ -24,7 +24,7 @@
   ?>
     <meta property="og:url" content="<?php echo $url; ?>">
     <meta property="og:description" content="<?php bloginfo( 'description' ) ?>">
-    <meta property="og:image" content="<?=$root.OG_IMG_PATH?>">
+    <meta property="og:image" content="<?='https://taku-oshiba.com/'.OG_IMG_PATH?>">
   <?php elseif( is_single() || is_page() ): ?>
 		<meta property="og:type" content="article">
 		<meta property="og:title" content="<?php the_title(); ?>">

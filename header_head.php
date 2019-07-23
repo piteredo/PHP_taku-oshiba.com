@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="<?=SITE_TITLE?>">
   <meta property="og:description" content="<?=SITE_DESCRIPTION?>">
-  <meta property="og:image" content="<?=$root.OG_IMG_PATH?>">
+  <meta property="og:image" content="<?='https://taku-oshiba.com/'.OG_IMG_PATH?>">
   <meta name="twitter:site" content="<?=TWITTER_CREATOR?>">
   <meta name="twitter:creator" content="<?=TWITTER_CREATOR?>">
   <meta name="twitter:card" content="summary_large_image">

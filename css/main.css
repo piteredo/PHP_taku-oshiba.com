@@ -17,7 +17,7 @@ img, iframe, video {
   }
 }*/
 body {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   /*basic(14px)*/
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   text-align: justify;
@@ -30,7 +30,7 @@ body {
 
 @media (min-width: 580px) {
   body {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     /*basic(14px)*/
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
     text-align: justify;
@@ -44,11 +44,11 @@ body {
   }
 }
 .main {
-  margin: 140px 0 150px;
+  margin: 100px 0 150px;
 }
 
 .content {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 .content:last-child {
   margin-bottom: 0;
@@ -60,7 +60,7 @@ body {
 .content__header-title {
   margin: 0 40px 8px;
   font-family: "Ubuntu Condensed", sans-serif;
-  font-size: 3.4rem;
+  font-size: 3.6rem;
   font-weight: bold;
 }
 .content__header-title a {
@@ -68,19 +68,19 @@ body {
 }
 .content__header-title--ja {
   font-family: "Ubuntu Condensed", sans-serif;
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: bold;
 }
 .content__header-update-date {
   color: #888;
-  font-size: 11px;
+  font-size: 12px;
   margin: 0 40px 22px;
 }
 .content__header-image {
   margin-bottom: 30px;
 }
 .content__section {
-  margin-bottom: 80px;
+  margin-bottom: 90px;
 }
 .content__section:last-child {
   margin-bottom: 0;
@@ -88,10 +88,13 @@ body {
 .content__image-list {
   margin-bottom: 30px;
 }
+.content__image-list:last-child {
+  margin-bottom: 0;
+}
 .content__description {
   margin: 0 40px 10px;
-  line-height: 1.7;
-  margin-top: -11.9px;
+  line-height: 1.9;
+  margin-top: -1.425rem;
 }
 .content__description--right {
   text-align: right;
@@ -120,6 +123,7 @@ body {
 .section__title-text {
   font-weight: bold;
   margin: 0 40px 18px;
+  line-height: 1.9;
 }
 .section__title-text--narrow-bottom {
   margin-bottom: 8px;
@@ -133,7 +137,7 @@ body {
   margin: 0 40px 8px;
 }
 .section__label {
-  margin: 0 40px 12.6px;
+  margin: 0 40px 15.4px;
 }
 .section__label--alert {
   color: #C1272D;
@@ -141,16 +145,20 @@ body {
 .section__label--alert:before {
   content: "※";
 }
+.section__label--view-all {
+  text-align: right;
+  margin-top: 30px;
+}
 .section__label:last-child {
   margin-bottom: 0;
 }
 .section__sentence {
   margin: 0 40px;
-  line-height: 1.7;
-  margin-top: -11.9px;
+  line-height: 1.9;
+  margin-top: -1.425rem;
 }
 .section__sentence img {
-  margin: 22.6px -40px 0;
+  margin: 25.4px -40px 0;
   width: 100vw;
 }
 @media (min-width: 580px) {
@@ -159,7 +167,7 @@ body {
   }
 }
 .section__schedule-image, .section__blog-image {
-  margin-top: 22.6px;
+  margin-top: 25.4px;
 }
 .section__square-image-wrapper {
   position: relative;
@@ -211,7 +219,7 @@ body {
   /*@media (min-width: $break-point) {
     &__image-li {
       position: relative;
-      width: calc((580px - 30px) / 2);
+      width: calc((580px - 10px) / 2);
       margin-bottom: $image-list-image-margin;
 
       &:before {
@@ -228,8 +236,8 @@ body {
 }
 .image-list__image-li {
   position: relative;
-  width: calc((100% - 30px) / 2);
-  margin-bottom: 30px;
+  width: calc((100% - 10px) / 2);
+  margin-bottom: 10px;
   /*@media (min-width: $break-point) {
     margin-right: $image-list-image-margin;
   }*/
@@ -240,7 +248,10 @@ body {
   padding-top: 100%;
 }
 .image-list__image-li:nth-child(odd) {
-  margin-right: 30px;
+  margin-right: 10px;
+}
+.image-list__image-li:nth-last-child(-n + 2) {
+  margin-bottom: 0;
 }
 .image-list__image {
   position: absolute;
@@ -254,7 +265,7 @@ body {
   object-fit: cover;
 }
 
-.video-list__video {
+.video-list {
   margin-bottom: 30px;
 }
 .video-list__video--square {
@@ -265,24 +276,27 @@ body {
     height: 326.25px;
   }
 }
+.video-list:last-child {
+  margin-bottom: 0;
+}
 
 .lesson-section__content {
-  margin-bottom: 22.6px;
+  margin-bottom: 25.4px;
 }
 .lesson-section__content-title {
-  margin: 0 40px 12.6px;
+  margin: 0 40px 15.4px;
 }
 .lesson-section__content-title:before {
   content: "▼";
 }
 .lesson-section__content-labels {
-  margin: 0 40px 12.6px;
+  margin: 0 40px 15.4px;
 }
 .lesson-section__content-labels:last-child {
   margin-bottom: 0;
 }
 .lesson-section__content-label {
-  margin-bottom: 12.6px;
+  margin-bottom: 15.4px;
 }
 .lesson-section__content-label--annotation:before {
   content: "※";
@@ -310,13 +324,13 @@ body {
   font-size: 3.6rem;
 }
 .discography-text-section__content {
-  margin-bottom: 22.6px;
+  margin-bottom: 25.4px;
 }
 .discography-text-section__content:last-child {
   margin-bottom: 0;
 }
 .discography-text-section__content-label {
-  margin-bottom: 12.6px;
+  margin-bottom: 15.4px;
 }
 .discography-text-section__content-label:last-child {
   margin-bottom: 0;
@@ -350,7 +364,7 @@ body {
 }
 .header__nav-label {
   font-family: "Ubuntu Condensed", sans-serif;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 26px;
 }
@@ -395,7 +409,7 @@ body {
 #hamburger-menu__background {
   opacity: 0;
   pointer-events: none;
-  background-color: rgba(200, 200, 200, 0.9);
+  background-color: rgba(210, 210, 210, 0.9);
   display: block;
   position: fixed;
   z-index: -1;
@@ -446,8 +460,7 @@ body {
 
 .sns-share-buttons {
   display: flex;
-  margin: 0 40px 18px;
-  line-height: 1.0;
+  margin: 0 40px 10px;
 }
 
 .fb-share-button {

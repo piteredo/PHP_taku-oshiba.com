@@ -14,12 +14,12 @@
       <ul id="hamburger-menu__content">
         <li class="header__nav-label"><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_EN?></a></li>
         <li class="header__nav-label"><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_EN?></a></li>
-        <li class="header__nav-label"><a href="<?=INSTAGRAM_URL?>" target="_blank"><?=DESIGN_EN?> <i class="fab fa-instagram"></i></a></li>
-        <li class="header__nav-label"><a href="<?=YOUTUBE_URL?>" target="_blank"><?=VIDEO_EN?> <i class="fab fa-youtube"></i></a></li>
+        <li class="header__nav-label"><a href="<?=INSTAGRAM_URL?>" target="_blank"><?=DESIGN_EN?> <i class="fas fa-external-link-alt"></i></a></li>
+        <li class="header__nav-label"><a href="<?=YOUTUBE_URL?>" target="_blank"><?=VIDEO_EN?> <i class="fas fa-external-link-alt"></i></a></li>
         <li class="header__nav-label"><a href="<?=$root.BLOG_PAGE_PATH?>"><?=BLOG_EN?></a></li>
         <li class="header__nav-label"><a href="<?=$root.LESSON_PAGE_PATH?>"><?=LESSON_EN?></a></li>
         <li class="header__nav-label"><a href="<?=$root.DISCOGRAPHY_PAGE_PATH?>"><?=DISCOGRAPHY_EN?></a></li>
-        <li class="header__nav-label"><a href="<?='mailto:'.EMAIL_ADDRESS.'?subject='.EMAIL_SUBJECT?>"><?=CONTACT_EN?> <i class="far fa-envelope"></i></a></li>
+        <li class="header__nav-label"><a href="<?='mailto:'.EMAIL_ADDRESS.'?subject='.EMAIL_SUBJECT?>"><?=CONTACT_EN?> <i class="fas fa-external-link-alt"></i></a></li>
         <div class="header__sns-icons">
           <li class="header__sns-icon"><a href="<?=TWITTER_URL?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
           <li class="header__sns-icon"><a href="<?=INSTAGRAM_URL?>" target="_blank"><i class="fab fa-instagram"></i></a></li>

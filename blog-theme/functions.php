@@ -26,7 +26,7 @@
 
 	//概要（抜粋）の省略文字
 	function my_excerpt_more($more) {
-		return '. . . . <a href="'. get_permalink($post->ID) . '">続きを読む</a>';
+		return '. . . . <a href="'. get_permalink($post->ID) . '">続きを読む ≫</a>';
 	}
 	add_filter('excerpt_more', 'my_excerpt_more');
 
