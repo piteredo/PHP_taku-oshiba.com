@@ -53,7 +53,7 @@ $update_date = $dates[0];
     <?php endforeach; ?>
     </ul>
 
-    <p class="content__description content__description--right">
+    <p class="content__description">
       <?=VIDEO_END_TEXT?>
     </p>
   </article>

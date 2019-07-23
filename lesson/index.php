@@ -24,7 +24,7 @@ $contact_text = $contact['textmain_arr'];
 
 <main class="main">
   <article class="content">
-    <h2 class="content__header-title"><?=LESSON_SCHOOL_NAME?></h2>
+    <h2 class="content__header-title content__header-title--ja"><?=LESSON_SCHOOL_NAME?></h2>
     <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$update_date?></time></p>
 
     <p class="content__header-image">

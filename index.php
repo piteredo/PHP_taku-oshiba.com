@@ -53,7 +53,7 @@ foreach ($json_decode['items'] as $video) {
 }
 
 //DESIGN
-$num   = 5;
+$num   = 6;
 $query = 'media.limit('. $num. '){caption,media_url,permalink,timestamp,thumbnail_url}';
 $json  = file_get_contents("{$f_api}{$ig_id}?fields={$query}&access_token={$token}");
 $data  = json_decode($json, true);
@@ -150,7 +150,7 @@ foreach (get_posts($arg) as $post) {
     <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$video_updates[0]['date']?></time></p>
     <ul>
     <?php foreach($video_updates as $content): ?>
-      <li class="content__section section">
+      <li class="content____image-list section">
         <!--<p class="section__update-date">
           <?=SYNC_ICON?><time><?=$content['date']?></time>
         </p>
@@ -173,10 +173,10 @@ foreach (get_posts($arg) as $post) {
         </p>
       </li>
     <?php endforeach; ?>
-    <p class="section__label">
-      <a href="./<?=$content['type']?>"><?=VIEW_ALL_VIDEO?> ≫</a>
-    </p>
     </ul>
+    <p class="section__label">
+      <a href="./<?=$content['type']?>"><?=VIEW_ALL_VIDEO?></a>
+    </p>
   </section>
 
   <section class="content">
@@ -185,7 +185,7 @@ foreach (get_posts($arg) as $post) {
     <ul class="image-list">
     <?php
     foreach($design_updates as $content): ?>
-      <li class="content__section section image-list__image-li">
+      <li class="section image-list__image-li">
         <!--<p class="section__update-date">
           <?=SYNC_ICON?><time><?=$content['date']?></time>
         </p>
@@ -206,17 +206,17 @@ foreach (get_posts($arg) as $post) {
             class="image-list__image">
           </video>
           <?php else: ?>
-          <a href="./<?=$content['url']?>">
+          <a href="<?=$content['fullpath']?>">
             <img src="<?=$content['fullpath']?>" class="image-list__image" alt="<?=$content['text']?>">
           </a>
           <?php endif; ?>
         </p>
       </li>
     <?php endforeach; ?>
-    <p class="section__label">
-      <a href="./<?=$content['type']?>"><?=VIEW_ALL_DESIGN?> ≫</a>
-    </p>
     </ul>
+    <p class="section__label">
+      <a href="./<?=$content['type']?>"><?=VIEW_ALL_DESIGN?></a>
+    </p>
   </section>
 
   <section class="content">
@@ -242,7 +242,7 @@ foreach (get_posts($arg) as $post) {
         </p>
       </li>
     <?php endforeach; ?>
-    <p class="section__label">
+    <p class="content__description">
       <a href="./<?=$content['type']?>"><?=VIEW_ALL_BLOG?> ≫</a>
     </p>
     </ul>

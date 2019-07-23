@@ -13,8 +13,7 @@ $sentence-line-height: 1.7;
 $label-line-height: 12.6px; // use as margin-bottom
 $label-margin-bottom: 10px;
 $body-margin-horizontal:  40px;
-
-$beak-point: 580px;
+$break-point: 580px;
 
 
 html {
@@ -26,12 +25,12 @@ img, iframe, video {
   width: 100%;
   height: auto;
 }
-@media (min-width: $beak-point) {
+/*@media (min-width: $break-point) {
   img, iframe, video {
-    width: $beak-point;
+    width: $break-point;
     height: auto;
   }
-}
+}*/
 
 body {
   font-size: 1.4rem; /*basic(14px)*/
@@ -43,6 +42,23 @@ body {
   line-height: 1.0;
   color: $text-basic-color;
   background-color: $background-color;
+}
+
+@media (min-width: $break-point) {
+  body {
+    font-size: 1.4rem; /*basic(14px)*/
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+    text-align: justify;
+    word-break: break-all;
+    box-sizing: border-box;
+
+    line-height: 1.0;
+    color: $text-basic-color;
+    background-color: $background-color;
+
+    width: $break-point;
+    margin: 0 auto;
+  }
 }
 
 
@@ -89,6 +105,10 @@ body {
     a {
       color: $text-basic-color;
       //text-decoration: none;
+    }
+
+    &--ja {
+      @include headline-font(3.0rem);
     }
   }
 
@@ -183,9 +203,9 @@ body {
       margin: $label-line-height + $label-margin-bottom -1 * $body-margin-horizontal 0;
       width: 100vw;
     }
-    @media (min-width: $beak-point) {
+    @media (min-width: $break-point) {
       img {
-        width: $beak-point;
+        width: $break-point;
       }
     }
   }
@@ -204,10 +224,10 @@ body {
       padding-top: 100%;
     }
   }
-  @media (min-width: $beak-point) {
+  /*@media (min-width: $break-point) {
     &__square-image-wrapper {
       position: relative;
-      width: $beak-point;
+      width: $break-point;
 
       &:before {
         display: block;
@@ -215,7 +235,7 @@ body {
         padding-top: 100%;
       }
     }
-  }
+  }*/
 
   &__square-image {
     position: absolute;
@@ -280,15 +300,15 @@ $image-list-image-margin: $image-margin-bottom;
     &:nth-child(odd) {
       margin-right: $image-list-image-margin;
     }
-    @media (min-width: $beak-point) {
+    /*@media (min-width: $break-point) {
       margin-right: $image-list-image-margin;
-    }
+    }*/
   }
 
-  @media (min-width: $beak-point) {
+  /*@media (min-width: $break-point) {
     &__image-li {
       position: relative;
-      width: calc((#{$beak-point} - #{$image-list-image-margin}) / 2);
+      width: calc((#{$break-point} - #{$image-list-image-margin}) / 2);
       margin-bottom: $image-list-image-margin;
 
       &:before {
@@ -301,7 +321,7 @@ $image-list-image-margin: $image-margin-bottom;
         margin-right: $image-list-image-margin;
       }
     }
-  }
+  }*/
 
   &__image {
     position: absolute;
@@ -324,11 +344,11 @@ $image-list-image-margin: $image-margin-bottom;
     margin-bottom: $image-margin-bottom;
 
     &--square {
-      height: 100vw;
+      height: 100vw / 560 * 315;
     }
-    @media (min-width: $beak-point) {
+    @media (min-width: $break-point) {
       &--square {
-        height: $beak-point;
+        height: $break-point / 560 * 315;
       }
     }
   }
@@ -382,14 +402,14 @@ $image-list-image-margin: $image-margin-bottom;
     right: 0;
     font-size: 3.6rem;
   }
-  @media (min-width: $beak-point) {
+  /*@media (min-width: $break-point) {
     &__amazon-logo {
       position: absolute;
       top: 0;
-      right: calc(100vw - #{$beak-point});
+      right: calc(100vw - #{$break-point});
       font-size: 3.6rem;
     }
-  }
+  }*/
 
   &__content {
     margin-bottom: $label-line-height + $label-margin-bottom;
@@ -415,6 +435,7 @@ $nav-lavel-margin-bottom: 26px;
   display: grid;
   position: fixed;
   top: 0;
+  left: 0;
   grid-auto-columns: 1fr min-content;
   padding: $header-margin;
   width: calc(100% - 28px);

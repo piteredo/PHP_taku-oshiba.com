@@ -10,12 +10,12 @@ img, iframe, video {
   height: auto;
 }
 
-@media (min-width: 580px) {
+/*@media (min-width: $break-point) {
   img, iframe, video {
-    width: 580px;
+    width: $break-point;
     height: auto;
   }
-}
+}*/
 body {
   font-size: 1.4rem;
   /*basic(14px)*/
@@ -28,6 +28,21 @@ body {
   background-color: #E3E3E0;
 }
 
+@media (min-width: 580px) {
+  body {
+    font-size: 1.4rem;
+    /*basic(14px)*/
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+    text-align: justify;
+    word-break: break-all;
+    box-sizing: border-box;
+    line-height: 1.0;
+    color: #191918;
+    background-color: #E3E3E0;
+    width: 580px;
+    margin: 0 auto;
+  }
+}
 .main {
   margin: 140px 0 150px;
 }
@@ -50,6 +65,11 @@ body {
 }
 .content__header-title a {
   color: #191918;
+}
+.content__header-title--ja {
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
 }
 .content__header-update-date {
   color: #888;
@@ -80,6 +100,20 @@ body {
   margin-bottom: 0;
 }
 
+.section {
+  /*@media (min-width: $break-point) {
+    &__square-image-wrapper {
+      position: relative;
+      width: $break-point;
+
+      &:before {
+        display: block;
+        content: "";
+        padding-top: 100%;
+      }
+    }
+  }*/
+}
 .section__header-image {
   margin-bottom: 30px;
 }
@@ -135,17 +169,6 @@ body {
   content: "";
   padding-top: 100%;
 }
-@media (min-width: 580px) {
-  .section__square-image-wrapper {
-    position: relative;
-    width: 580px;
-  }
-  .section__square-image-wrapper:before {
-    display: block;
-    content: "";
-    padding-top: 100%;
-  }
-}
 .section__square-image {
   position: absolute;
   width: 100%;
@@ -185,11 +208,31 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: 0 40px;
+  /*@media (min-width: $break-point) {
+    &__image-li {
+      position: relative;
+      width: calc((580px - 30px) / 2);
+      margin-bottom: $image-list-image-margin;
+
+      &:before {
+        display: block;
+        content: "";
+        padding-top: 100%;
+      }
+
+      &:nth-child(odd) {
+        margin-right: $image-list-image-margin;
+      }
+    }
+  }*/
 }
 .image-list__image-li {
   position: relative;
   width: calc((100% - 30px) / 2);
   margin-bottom: 30px;
+  /*@media (min-width: $break-point) {
+    margin-right: $image-list-image-margin;
+  }*/
 }
 .image-list__image-li:before {
   display: block;
@@ -198,26 +241,6 @@ body {
 }
 .image-list__image-li:nth-child(odd) {
   margin-right: 30px;
-}
-@media (min-width: 580px) {
-  .image-list__image-li {
-    margin-right: 30px;
-  }
-}
-@media (min-width: 580px) {
-  .image-list__image-li {
-    position: relative;
-    width: calc((580px - 30px) / 2);
-    margin-bottom: 30px;
-  }
-  .image-list__image-li:before {
-    display: block;
-    content: "";
-    padding-top: 100%;
-  }
-  .image-list__image-li:nth-child(odd) {
-    margin-right: 30px;
-  }
 }
 .image-list__image {
   position: absolute;
@@ -232,14 +255,14 @@ body {
 }
 
 .video-list__video {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 .video-list__video--square {
-  /*height: 100vw;*/
+  height: 56.25vw;
 }
 @media (min-width: 580px) {
   .video-list__video--square {
-    /*height: 580px;*/
+    height: 326.25px;
   }
 }
 
@@ -271,20 +294,20 @@ body {
 .discography-text-section {
   position: relative;
   margin: 0 40px;
+  /*@media (min-width: $break-point) {
+    &__amazon-logo {
+      position: absolute;
+      top: 0;
+      right: calc(100vw - 580px);
+      font-size: 3.6rem;
+    }
+  }*/
 }
 .discography-text-section__amazon-logo {
   position: absolute;
   top: 0;
   right: 0;
   font-size: 3.6rem;
-}
-@media (min-width: 580px) {
-  .discography-text-section__amazon-logo {
-    position: absolute;
-    top: 0;
-    right: calc(100vw - 580px);
-    font-size: 3.6rem;
-  }
 }
 .discography-text-section__content {
   margin-bottom: 22.6px;
@@ -303,6 +326,7 @@ body {
   display: grid;
   position: fixed;
   top: 0;
+  left: 0;
   grid-auto-columns: 1fr min-content;
   padding: 14px;
   width: calc(100% - 28px);

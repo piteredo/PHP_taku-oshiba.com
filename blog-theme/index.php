@@ -46,4 +46,4 @@ $update_date = get_author_latest_update(1);
 	</article>
 </main>
 
-<?php get_footer(); ?>
+<?php require('footer.php'); ?>
