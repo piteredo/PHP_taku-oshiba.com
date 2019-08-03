@@ -1,8 +1,8 @@
 <head prefix="og: http://ogp.me/ns#">
   <?php if( is_home() ): ?>
-    <title><?=SITE_TITLE?></title>
+    <title><?=SITE_TITLE_BLOG?></title>
   <?php elseif( is_single() || is_page() ): ?>
-    <title><?php the_title(); ?><?=SITE_TITLE_SUF?></title>
+    <title><?php the_title(); ?><?=SITE_TITLE_SUF_BLOG?></title>
   <?php endif; ?>
 
   <meta charset="utf-8">
