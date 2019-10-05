@@ -5,9 +5,11 @@ $_GET['robot'] = 'noindex';
 $_GET['page_name'] = $page_name;
 require($root.'header.php');
 
-$update_date = getUpdateDate($pdo, $page_name);
+//$update_date = getUpdateDate($pdo, $page_name);
 $schedule_data = getPDOStatement($pdo, SCHEDULE_SQL)->fetchAll();
 $schedule_data = scheduleDateSortAsc($schedule_data, "date");
+$update_date = $schedule_data[count($schedule_data)-1]['updatedate'];
+
 $place_data = getPDOStatement($pdo, PLACE_SQL)->fetchAll();
 $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
 ?>

@@ -530,6 +530,7 @@ $nav-lavel-margin-bottom: 26px;
   	right: $header-margin;
   	text-align: right;
     z-index: 3000;
+    @include debug-border;
   }
 
   &__background {
