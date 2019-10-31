@@ -8,6 +8,7 @@
         <li class="footer__sns-icon"><a href="<?=FACEBOOK_URL?>" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
         <li class="footer__sns-icon"><a href="<?=GITHUB_URL?>" target="_blank"><i class="fab fa-github"></i></a></li>
       </div>
+      <li class="footer__nav-label"><a href="https://taku-oshiba.com/yumekui2020/">2020 音楽劇『ゆめくい』詳</a></li>
       <li class="footer__nav-label"><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_JA?></a></li>
       <li class="footer__nav-label"><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_JA?></a></li>
       <li class="footer__nav-label"><a href="<?=INSTAGRAM_URL?>" target="_blank"><?=DESIGN_JA?> <i class="fas fa-external-link-alt"></i></a></li>

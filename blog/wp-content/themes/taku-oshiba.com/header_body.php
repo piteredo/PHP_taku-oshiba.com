@@ -1,4 +1,4 @@
-<body>
+<body <?php body_class(); ?>>
   <header class="header">
 
     <h1 class="header__title-text">
@@ -11,8 +11,7 @@
       <input id="hamburger-menu__check-box" type="checkbox" value="off">
       <label id="hamburger-menu__icon" for="hamburger-menu__check-box"><i class="fas fa-bars"></i></label>
       <label id="hamburger-menu__background" for="hamburger-menu__check-box"></label>
-      <label id="hamburger-menu__content" for="hamburger-menu__check-box">
-      <ul>
+      <ul id="hamburger-menu__content">
         <li class="header__nav-label"><a href="https://taku-oshiba.com/yumekui2020/">2020 音楽劇『ゆめくい』詳細</a></li>
         <li class="header__nav-label"><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_EN?></a></li>
         <li class="header__nav-label"><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_EN?></a></li>
@@ -30,6 +29,5 @@
           <li class="header__sns-icon"><a href="<?=GITHUB_URL?>" target="_blank"><i class="fab fa-github"></i></a></li>
         </div>
       </ul>
-      </label>
     </nav>
   </header>
