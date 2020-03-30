@@ -13,7 +13,7 @@
       <label id="hamburger-menu__background" for="hamburger-menu__check-box"></label>
       <label id="hamburger-menu__content" for="hamburger-menu__check-box">
       <ul>
-        <li class="header__nav-label"><a href="https://taku-oshiba.com/yumekui2020/">2020 音楽劇『ゆめくい』詳細</a></li>
+        <li class="header__nav-label"><a href="https://taku-oshiba.com/taku-oshiba-quartet2020/">大柴拓カルテットツアー2020春 詳細</a></li>
         <li class="header__nav-label"><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_EN?></a></li>
         <li class="header__nav-label"><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_EN?></a></li>
         <li class="header__nav-label"><a href="<?=INSTAGRAM_URL?>" target="_blank"><?=DESIGN_EN?> <i class="fas fa-external-link-alt"></i></a></li>
