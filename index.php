@@ -38,7 +38,7 @@ $text = "###";
 $schedule_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
 
 //VIDEO
-$maxResults = 3;
+/*$maxResults = 3;
 $address = $apiAddress . $checkId . $fragment . "&key=" . $yt_apiKey . "&maxResults=" . $maxResults;
 $json = cuGet_contents( $address );
 $json_decode = json_decode($json, true);
@@ -50,6 +50,14 @@ foreach ($json_decode['items'] as $video) {
   $title = "[VIDEO] " . $video['snippet']['title'];
   $text = mb_substr($video['snippet']['description'], 0, 160) . " ...";
   $video_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
+}*/
+
+//VIDEO_new(200803)
+$video_data = getPDOStatement($pdo, YOUTUBE_SQL)->fetchAll();
+$date = $video_data[0]['updatedate'];
+foreach ($video_data as $video) {
+  $fullpath = 'https://www.youtube.com/embed/' . $video['src'] . '?rel=0';
+  $video_updates[] = array('date'=>$date, 'fullpath'=>$fullpath);
 }
 
 //DESIGN

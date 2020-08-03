@@ -12,7 +12,7 @@
       <label id="hamburger-menu__icon" for="hamburger-menu__check-box"><i class="fas fa-bars"></i></label>
       <label id="hamburger-menu__background" for="hamburger-menu__check-box"></label>
       <ul id="hamburger-menu__content">
-        <li class="header__nav-label"><a href="https://taku-oshiba.com/taku-oshiba-quartet2020/">大柴拓カルテットツアー2020春 詳細</a></li>
+        <!--<li class="header__nav-label"><a href="https://taku-oshiba.com/taku-oshiba-quartet2020/">大柴拓カルテットツアー2020春 詳細</a></li>-->
         <li class="header__nav-label"><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_EN?></a></li>
         <li class="header__nav-label"><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_EN?></a></li>
         <li class="header__nav-label"><a href="<?=INSTAGRAM_URL?>" target="_blank"><?=DESIGN_EN?> <i class="fas fa-external-link-alt"></i></a></li>
