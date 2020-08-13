@@ -321,7 +321,8 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 3.6rem;
+  font-size: 2.2rem;
+  font-weight:  bold;
 }
 .discography-text-section__content {
   margin-bottom: 25.4px;

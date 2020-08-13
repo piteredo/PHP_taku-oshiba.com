@@ -19,7 +19,7 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
       $title = $row['title'];
       $img_url = $row['imgurl'];
       $img_fullpath = $root. 'img/design/'. $img_url. '.jpg';
-      $amazon_fullpath = 'https://www.amazon.co.jp/dp/'.$row['amazonurl'];
+      $amazon_fullpath = 'https://studiopite.theshop.jp/items/'.$row['amazonurl'];
       $performer_id_list = strListToArray($row['performeridlist']);
       $info_list = strListToArray($row['info']);
       $rec_size = $row['recsize'];
@@ -34,7 +34,7 @@ $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
       </p>
       <div class="discography-text-section">
         <p class="discography-text-section__amazon-logo">
-          <a href="<?=$amazon_fullpath?>" target="_blank"><i class="fab fa-amazon"></i></a>
+          <a href="<?=$amazon_fullpath?>">ONLINE SHOP</a>
         </p>
         <ul class="discography-text-section__content">
         <?php foreach($performer_id_list as $performer_id):

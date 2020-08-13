@@ -18,6 +18,7 @@
         <li class="header__nav-label"><a href="<?=INSTAGRAM_URL?>" target="_blank"><?=DESIGN_EN?> <i class="fas fa-external-link-alt"></i></a></li>
         <li class="header__nav-label"><a href="<?=YOUTUBE_URL?>" target="_blank"><?=VIDEO_EN?> <i class="fas fa-external-link-alt"></i></a></li>
         <li class="header__nav-label"><a href="<?=$root.BLOG_PAGE_PATH?>"><?=BLOG_EN?></a></li>
+        <li class="header__nav-label"><a href="https://studiopite.theshop.jp">ONLINE SHOP</a></li>
         <li class="header__nav-label"><a href="<?=$root.LESSON_PAGE_PATH?>"><?=LESSON_EN?></a></li>
         <li class="header__nav-label"><a href="<?=$root.DISCOGRAPHY_PAGE_PATH?>"><?=DISCOGRAPHY_EN?></a></li>
         <li class="header__nav-label"><a href="<?='mailto:'.EMAIL_ADDRESS.'?subject='.EMAIL_SUBJECT?>"><?=CONTACT_EN?> <i class="fas fa-external-link-alt"></i></a></li>
