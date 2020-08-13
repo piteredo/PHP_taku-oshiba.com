@@ -1,0 +1,595 @@
+{block:NotLoadItemsPage}
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="ja"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="ja"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="ja"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="ja"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta name="copyright" content="BASE">
+	<title>Taku Oshiba, Guitarist | ギタリスト大柴拓 公式サイト</title>
+    {FaviconTag}
+    <link rel="icon" type="image/x-icon" href="https://taku-oshiba.com/img/favicon.ico">
+	{JQueryTag}
+    {CanonicalTag}
+    <meta name="robots" content="noindex">
+
+	<script src="{BASEURL}/js/jquery.bottom-1.0.js"></script>
+	<script src="{BASEURL}/js/change_status.js?{UpdateTime}"></script>
+
+	<meta name="BASE-Theme-Name" content="shop_09">
+
+	<meta name="BASE-Theme-Version" content="18">
+
+	{block:Hidden}
+	<!-- meta tag -->
+	{/block:Hidden}
+
+	{block:IndexPage}
+	{HeadLinkNextPrevTag}
+	{/block:IndexPage}
+
+	<!--[if IE]>
+	<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!--[if lt IE 8 ]>
+	<script src="https://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+	<script>window.attachEvent('onload', function(){CFInstall.check({mode:'overlay'});});</script>
+	<![endif]-->
+	<!--<link rel="stylesheet" href="/css/shopTemplate/v2/common.css?{UpdateTime}">-->
+
+	<link rel="stylesheet" href="{BASEURL}/css/colorbox.css">
+	<!--<link rel="stylesheet" href="{BASEURL}/css/shopTemplate/v4/shop_09.css?{UpdateTime}">-->
+
+	{BackgroundTag}
+	<!--<style type="text/css">
+		{block:NavColor}
+		.childCategoryList01_child,
+		.childCategoryList01_link,
+		.mainHeaderNavColor,
+		.appsItemCategoryTag_lowerLink,
+		.categoryTitle01,
+		.footerNav {
+			color: {NavColor};
+		}
+		{/block:NavColor}
+	</style>-->
+
+	{block:ItemPage}
+	{MetaItemInfoTag}
+	<link rel="stylesheet" type="text/css" href="{BASEURL}/css/colorbox.css">
+	<link rel="stylesheet" href="{BASEURL}/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{BASEURL}/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="{BASEURL}/css/jquery.mCustomScrollbar.min.css">
+	{/block:ItemPage}
+
+	{block:NotItemPage}
+	<meta http-equiv="X-UA-Compatible" content="IE=8 ; IE=9">
+	{MetaShopInfoTag}
+	{/block:NotItemPage}
+
+	{block:AppsSearch}
+	<link rel="stylesheet" type="text/css" href="{BASEURL}/search/css/shopTemplate/search.css?{UpdateTime}">
+	{/block:AppsSearch}
+
+	{block:AppsItemLabel}
+	<link rel="stylesheet" type="text/css" href="{BASEURL}/item_label/css/ShopTemplate/style.css?{UpdateTime}">
+	<script type="text/javascript" src="{BASEURL}/item_label/js/ShopTemplate/labelpostion.js?{UpdateTime}"></script>
+	{/block:AppsItemLabel}
+
+    {GoogleAnalyticsTag}
+
+    <link rel="stylesheet" href="https://taku-oshiba.com/css/reset.css">
+    <link rel="stylesheet" href="https://taku-oshiba.com/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+
+    <style type="text/css">
+        #baseMenu .clearfix {
+            width: 35px;
+            height: 35px;
+        }
+        .clearfix .base {
+            display: none;
+        }
+        .cart img {
+            width: 35px;
+            height: 35px;
+        }
+        #baseMenu {
+            box-sizing: border-box;
+            position: fixed;
+            padding: 0;
+            right: 13px;
+            top: 71px;
+        }
+        .content__header-title .logoText {
+            font-family: "Ubuntu Condensed", sans-serif;
+            font-size: 3.6rem;
+            font-weight: bold;
+            z-index: 2000;
+        }
+        .section__title-text a {
+            text-decoration: none;
+        }
+        .purchaseButton__btn {
+            position: absolute;
+            top: -4px;
+            right: 0;
+
+            -webkit-appearance: none;
+            -moz-appearance: none;
+                appearance: none;
+            border: 0;
+            border-radius: 0;
+            background: #ccc;
+            appearance: none;
+            border: 0;
+            border-radius: 5px;
+            background: #333;
+            color: #E3E3E0;
+            padding: 6px 12px;
+            cursor: pointer;
+
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        .shop-section__title-text {
+            position: relative;
+            font-weight: bold;
+            margin: 30px 40px 0px;
+            line-height: 1.9;
+        }
+        #itemAttention {
+            margin: 4px 0 40px;
+        }
+        .item-page-plice {
+            font-weight: bold;
+            font-size: 1.9rem;
+        }
+        #item-reportBtn {
+            margin: 0 40px;
+        }
+        #item-reportBtn a {
+            color: #999;
+        }
+        #itemSelect {
+            visibility: hidden;
+        }
+        .shop-footer__copyright {
+            display: block;
+            color: #888;
+            font-size: 1.1rem;
+            text-align: center;
+            line-height: 1.5rem;
+        }
+        .shop-footer__copyright a {
+            color: #888;
+        }
+        .shop-footer__copyright .contact-hidden {
+            visibility: hidden;
+        }
+        #privacy,
+        #law,
+        .inquirySection {
+            margin: 0 40px;
+            line-height: 1.9;
+        }
+        .law__telNumber img {
+            width: 110px;
+        }
+        .shop-sns-share-buttons {
+            display: flex;
+            margin: 10px 40px 10px;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    {block:AppsI18n}{AppsI18nTag}{/block:AppsI18n}
+
+	<header class="header">
+        <h1 class="header__title-text">
+            <a href="https://taku-oshiba.com">TAKU OSHIBA</a>
+        </h1>
+
+        <nav class="header__nav" id="hamburger-menu">
+            <input id="hamburger-menu__check-box" type="checkbox" value="off">
+            <label id="hamburger-menu__icon" for="hamburger-menu__check-box"><i class="fas fa-bars"></i></label>
+            <label id="hamburger-menu__background" for="hamburger-menu__check-box"></label>
+            <label id="hamburger-menu__content" for="hamburger-menu__check-box">
+            <ul>
+                <li class="header__nav-label"><a href="https://taku-oshiba.com/biography/">BIOGRAPHY</a></li>
+                <li class="header__nav-label"><a href="https://taku-oshiba.com/schedule/">SCHEDULE</a></li>
+                <li class="header__nav-label"><a href="https://www.instagram.com/taku_oshiba/" target="_blank">DESIGN <i class="fas fa-external-link-alt"></i></a></li>
+                <li class="header__nav-label"><a href="https://www.youtube.com/user/studiopite3" target="_blank">VIDEO <i class="fas fa-external-link-alt"></i></a></li>
+                <li class="header__nav-label"><a href="https://taku-oshiba.com/blog/">BLOG</a></li>
+                <li class="header__nav-label"><a href="https://taku-oshiba.com/lesson/">LESSON</a></li>
+                <li class="header__nav-label"><a href="https://taku-oshiba.com/discography/">DISCOGRAPHY</a></li>
+                <li class="header__nav-label"><a href="mailto:piteredo@gmail.com?subject=(大柴拓サイトよりお問い合わせ)">CONTACT <i class="fas fa-external-link-alt"></i></a></li>
+                <div class="header__sns-icons">
+                <li class="header__sns-icon"><a href="https://twitter.com/piteredo" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                <li class="header__sns-icon"><a href="https://www.instagram.com/taku_oshiba/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li class="header__sns-icon"><a href="https://www.youtube.com/user/studiopite3" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                <li class="header__sns-icon"><a href="https://www.facebook.com/taku.oshiba" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                <li class="header__sns-icon"><a href="https://github.com/piteredo" target="_blank"><i class="fab fa-github"></i></a></li>
+                </div>
+                {block:AppsItemCategory}
+                <li>
+                    <div id="category-menu">
+                        <span class="mainHeaderNavColor">category</span>
+                        <div class="category-list">
+                            {AppsItemCategoryCategoriesTag}
+                        </div>
+                    </div>
+                </li>
+                {/block:AppsItemCategory}
+            </ul>
+            {block:AppsItemCategory}
+			{block:IndexPageCategory}
+			<h2 class="categoryTitle01">{IndexPageCategory}</h2>
+
+			{block:HasAppsItemCategoryChildCategories}
+			<ul class="childCategoryList01">
+				{block:AppsItemCategoryChildCategories}
+				<li class="childCategoryList01_child"><a href="{AppsItemCategoryChildCategoryPageURL}" class="childCategoryList01_link">{AppsItemCategoryChildCategoryName}</a></li>
+				{/block:AppsItemCategoryChildCategories}
+			</ul>
+			{/block:HasAppsItemCategoryChildCategories}
+
+			{/block:IndexPageCategory}
+			{/block:AppsItemCategory}
+            </label>
+        </nav>
+
+        {BASEMenuTag}
+    </header>
+
+
+	{block:IndexPage}
+	<span id="max_page" style="display: none;">{MaxPageNumber}</span>
+	<span id="next_page" style="display: none;">{NextPageNumber}</span>
+	{/block:IndexPage}
+
+    <main class="main">
+        <article class="content">
+          <h2 class="content__header-title"><a href="{IndexPageURL}">ONLINE SHOP</a></h2>
+          <p class="content__header-update-date"><i class="fas fa-sync"></i> <time>2020-08-13</time></p>
+
+	{block:IndexPage}
+	{block:ShopPublic}
+
+	{block:IndexPageSearch}
+	<h3 class="mainHeaderNavColor titleForSearchResult">{lang:ItemSearchResult}</h3>
+    {/block:IndexPageSearch}
+
+
+
+    {block:HasItems}
+    {block:Items}
+	<section class="content__section section">
+        <h3 class="section__title-text">
+            <a href="{ItemPageURL}">{ItemTitle}</a>
+        </h3>
+        <div class="section__sentence">
+            <ul class="itemDetail">
+                {block:NoItemProperPrice}
+                <!-- 定価 -->
+                <li class="itemPrice">
+                    {ItemPrice} (税込)
+                    {block:ItemNowOnSale}
+                        {block:NoItemStock}　SOLD OUT{/block:NoItemStock}
+                    {/block:ItemNowOnSale}
+                    {block:ItemEndOfSale}　SOLD OUT{/block:ItemEndOfSale}
+                </li>
+                {/block:NoItemProperPrice}
+                <li>
+                    <a href="{ItemPageURL}">[ 商品の詳細を見る ]</a>
+                </li>
+            </ul>
+        </div>
+        <p class="section__blog-image">
+            <a href="{ItemPageURL}">
+                {block:AppsItemLabel}
+                    {AppsItemLabelTag}
+                {/block:AppsItemLabel}
+                <img src="{block:ItemImage1}{ItemImage1URL-300}{/block:ItemImage1}{block:NoItemImage1}{ItemNoImageURL}{/block:NoItemImage1}" alt="{ItemTitle}" title="{ItemTitle}" class="image-resize">
+            </a>
+        </p>
+    </section>
+    {/block:Items}
+	<div id="loading" style="display: none;text-align: center;"><img src="/img/loading.gif" width="220" style="padding: 20px 0;;"></div>
+	{/block:HasItems}
+	{block:NoItems}
+	<p style="text-align: center;">{lang:NoItemsMessage}</p>
+	{/block:NoItems}
+	{/block:ShopPublic}
+
+	{block:NotShopPublic}
+	<p style="text-align: center;">{lang:NotShopPublicMessage}</p>
+	{/block:NotShopPublic}
+
+	<script type="text/javascript">
+		var process_flg = false;
+		var end_flg = false;
+		$(window).bottom({proximity: 0.05});
+		$(window).on('bottom', function() {
+			if (process_flg == false && end_flg == false) {
+				var max_page = $("#max_page").text();
+				var next_page = $('#next_page').text();
+				if (eval(max_page) >= eval(next_page)) {
+					$.ajax({
+						url: "{LoadItemsPageURL}" + next_page + "{LoadItemsPageURLParams}",
+						dataType: 'html',
+						beforeSend: function () {
+							process_flg = true;
+							$('#loading').css('display', 'block');
+						},
+						success: function (data) {
+							$('#mainContent').append(data);
+							next_page = eval(next_page) + 1;
+							$('#next_page').text(next_page);
+						},
+						complete: function () {
+							process_flg = false;
+							$('#loading').css('display', 'none');
+						}
+					});
+				} else {
+					end_flg = true;
+				}
+			}
+		});
+	</script>
+	{/block:IndexPage}
+
+	{block:ItemPage}
+	<section class="content__section section">
+        {IllegalReportMessageTag}
+
+		<h3 class="section__title-text">
+            {ItemTitle}
+        </h3>
+
+
+
+		<p class="section__header-image">
+            <ul>
+                <li>
+                    <div class="imgBox">
+                        {block:AppsItemLabel}
+                        {AppsItemLabelTag}
+                        {/block:AppsItemLabel}
+                        <img src="{block:ItemImage1}{ItemImage1URL-500}{/block:ItemImage1}{block:NoItemImage1}{ItemNoImageURL}{/block:NoItemImage1}" alt="{ItemTitle}" title="">
+                    </div>
+                </li>
+                {block:ItemImage2}<li style="display:none;"><div class="imgBox"><img src="{ItemImage2URL-500}" alt="" title=""></div></li>{/block:ItemImage2}
+                {block:ItemImage3}<li style="display:none;"><div class="imgBox"><img src="{ItemImage3URL-500}" alt="" title=""></div></li>{/block:ItemImage3}
+                {block:ItemImage4}<li style="display:none;"><div class="imgBox"><img src="{ItemImage4URL-500}" alt="" title=""></div></li>{/block:ItemImage4}
+                {block:ItemImage5}<li style="display:none;"><div class="imgBox"><img src="{ItemImage5URL-500}" alt="" title=""></div></li>{/block:ItemImage5}
+                {block:ItemImage6}<li style="display:none;"><div class="imgBox"><img src="{ItemImage6URL-500}" alt="" title=""></div></li>{/block:ItemImage6}
+                {block:ItemImage7}<li style="display:none;"><div class="imgBox"><img src="{ItemImage7URL-500}" alt="" title=""></div></li>{/block:ItemImage7}
+                {block:ItemImage8}<li style="display:none;"><div class="imgBox"><img src="{ItemImage8URL-500}" alt="" title=""></div></li>{/block:ItemImage8}
+                {block:ItemImage9}<li style="display:none;"><div class="imgBox"><img src="{ItemImage9URL-500}" alt="" title=""></div></li>{/block:ItemImage9}
+                {block:ItemImage10}<li style="display:none;"><div class="imgBox"><img src="{ItemImage10URL-500}" alt="" title=""></div></li>{/block:ItemImage10}
+                {block:ItemImage11}<li style="display:none;"><div class="imgBox"><img src="{ItemImage11URL-500}" alt="" title=""></div></li>{/block:ItemImage11}
+                {block:ItemImage12}<li style="display:none;"><div class="imgBox"><img src="{ItemImage12URL-500}" alt="" title=""></div></li>{/block:ItemImage12}
+                {block:ItemImage13}<li style="display:none;"><div class="imgBox"><img src="{ItemImage13URL-500}" alt="" title=""></div></li>{/block:ItemImage13}
+                {block:ItemImage14}<li style="display:none;"><div class="imgBox"><img src="{ItemImage14URL-500}" alt="" title=""></div></li>{/block:ItemImage14}
+                {block:ItemImage15}<li style="display:none;"><div class="imgBox"><img src="{ItemImage15URL-500}" alt="" title=""></div></li>{/block:ItemImage15}
+                {block:ItemImage16}<li style="display:none;"><div class="imgBox"><img src="{ItemImage16URL-500}" alt="" title=""></div></li>{/block:ItemImage16}
+                {block:ItemImage17}<li style="display:none;"><div class="imgBox"><img src="{ItemImage17URL-500}" alt="" title=""></div></li>{/block:ItemImage17}
+                {block:ItemImage18}<li style="display:none;"><div class="imgBox"><img src="{ItemImage18URL-500}" alt="" title=""></div></li>{/block:ItemImage18}
+                {block:ItemImage19}<li style="display:none;"><div class="imgBox"><img src="{ItemImage19URL-500}" alt="" title=""></div></li>{/block:ItemImage19}
+                {block:ItemImage20}<li style="display:none;"><div class="imgBox"><img src="{ItemImage20URL-500}" alt="" title=""></div></li>{/block:ItemImage20}
+            </ul>
+        </p>
+
+        <div class="shop-section__title-text">
+            {block:NoItemProperPrice}
+            <!-- 定価 -->
+            <p class="item-page-plice">
+                {ItemPrice}
+                {block:ItemNowOnSale}{block:NoItemStock}　SOLD OUT{/block:NoItemStock}{/block:ItemNowOnSale}
+                {block:ItemEndOfSale}　SOLD OUT{/block:ItemEndOfSale}
+            </p>
+            {/block:NoItemProperPrice}
+
+            {ItemAttentionTag}
+
+            <p>{ItemDetail}</p>
+            {block:PurchaseForm}
+            {ItemSelectTag}
+                {PurchaseButton}
+            {/block:PurchaseForm}
+        </div>
+        <div class="shop-sns-share-buttons">
+            <div class="facebook">
+                <div class="fb-share-button" data-layout="button" data-size="small" data-mobile-iframe="true">
+                    <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse">シェア</a>
+                </div>
+            </div>
+            <div class="twitter">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{ItemRedirectUrl}" data-lang="ja" data-hashtags="{TwitterDataHashtags}" data-via="{TwitterDataVia}">{lang:Tweet}</a>
+            </div>
+        </div>
+        <div id="item-reportBtn">
+            {IllegalReportTag}
+        </div>
+		{block:AppsReview}
+		{AppsReviewTag}
+		{/block:AppsReview}
+	</section>
+
+	<script src="{BASEURL}/js/jquery.colorbox-min.js"></script>
+	<script src="{BASEURL}/js/jquery.bxslider.min.js"></script>
+	<script src="{BASEURL}/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script>
+		(function(win, doc, $) {
+			'use strict';
+			var COMMON = {};
+
+			$(function() {
+				COMMON.init();
+			});
+
+			COMMON = {
+				init: function() {
+					$(window).load(function(){
+						COMMON.slide_img();
+						COMMON.colorbox();
+						COMMON.customScrollBar();
+					});
+				},
+				slide_img: function(){
+					$('#slideImg').bxSlider({
+						controls: false,
+						pagerCustom: '#slideImgPager',
+						adaptiveHeight: true,
+						mode: 'fade'
+					});
+				},
+				colorbox:function(){
+					$(".ajax").colorbox({className:'itemCb',maxWidth:'1000px',current:false});
+				},
+				customScrollBar: function(){
+					$("#slideImgPager").mCustomScrollbar({
+						axis:"y",
+						theme:"dark-thin"
+					});
+				}
+			};
+		}(window, document, jQuery));
+	</script>
+	{/block:ItemPage}
+
+	{block:ContactPage}
+	{ContactContentsTag}
+	{/block:ContactPage}
+
+	{block:PrivacyPage}
+	{PrivacyContentsTag}
+	{/block:PrivacyPage}
+
+	{block:LawPage}
+	{LawContentsTag}
+    {/block:LawPage}
+
+
+</article>
+</main>
+
+    <footer class="footer">
+        <nav class="footer__nav">
+            <ul>
+              <div class="footer__sns-icons">
+                <li class="footer__sns-icon"><a href="https://twitter.com/piteredo" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                <li class="footer__sns-icon"><a href="https://www.instagram.com/taku_oshiba/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li class="footer__sns-icon"><a href="https://www.youtube.com/user/studiopite3" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                <li class="footer__sns-icon"><a href="https://www.facebook.com/taku.oshiba" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                <li class="footer__sns-icon"><a href="https://github.com/piteredo" target="_blank"><i class="fab fa-github"></i></a></li>
+              </div>
+              <li class="footer__nav-label"><a href="https://taku-oshiba.com/biography/">プロフィール</a></li>
+              <li class="footer__nav-label"><a href="https://taku-oshiba.com/schedule/">出演予定</a></li>
+              <li class="footer__nav-label"><a href="https://www.instagram.com/taku_oshiba/" target="_blank">デザイン <i class="fas fa-external-link-alt"></i></a></li>
+              <li class="footer__nav-label"><a href="https://www.youtube.com/user/studiopite3" target="_blank">動画 <i class="fas fa-external-link-alt"></i></a></li>
+              <li class="footer__nav-label"><a href="https://taku-oshiba.com/blog/">ブログ</a></li>
+              <li class="footer__nav-label"><a href="https://taku-oshiba.com/lesson/">レッスン</a></li>
+              <li class="footer__nav-label"><a href="https://taku-oshiba.com/discography/">CD情報</a></li>
+              <li class="footer__nav-label"><a href="mailto:piteredo@gmail.com?subject=(大柴拓サイトよりお問い合わせ)">お問合せ <i class="fas fa-external-link-alt"></i></a></li>
+              <li class="footer__nav-label"><a href="https://taku-oshiba.com/">トップページ</a></li>
+            </ul>
+          </nav>
+        <small class="shop-footer__copyright">
+            <a class="contact-hidden" href="{ContactPageURL}">ショップお問合せ{LogoTag}</a><br/>
+            <a class="footerNav" href="{PrivacyPageURL}">{lang:Privacy}</a>　
+            <a class="footerNav" href="{LawPageURL}">{lang:Law}</a><br/>
+            2006-2020 © Taku Oshiba All rights reserved.
+        </small>
+	</footer>
+
+	<input id="base_url" type="hidden" value="{ShopURL}">
+
+	<!-- script:Facebook -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=350947278320210&version=v2.0";
+	fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+	<!-- script:Twitter -->
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</body>
+</html>
+{/block:NotLoadItemsPage}
+{block:LoadItemsPage}
+{block:Items}
+<div class="item part">
+	<div class="itemImg">
+		<a href="{ItemPageURL}">
+			{block:AppsItemLabel}
+				{AppsItemLabelTag}
+			{/block:AppsItemLabel}
+			<img src="{block:ItemImage1}{ItemImage1URL-300}{/block:ItemImage1}{block:NoItemImage1}{ItemNoImageURL}{/block:NoItemImage1}" alt="{ItemTitle}" title="{ItemTitle}" class="image-resize">
+			{block:ItemNowOnSale}{block:NoItemStock}
+				<div class="soldout_cover"><p>SOLD OUT</p></div>
+			{/block:NoItemStock}{/block:ItemNowOnSale}
+			{block:ItemEndOfSale}
+				<div class="soldout_cover"><p>SOLD OUT</p></div>
+			{/block:ItemEndOfSale}
+		</a>
+	</div>
+	<a href="{ItemPageURL}">
+		<div class="itemTitle">
+			<h2>{ItemTitle}</h2>
+		</div>
+		<ul class="itemDetail">
+			{block:NoItemProperPrice}
+			<!-- 定価 -->
+			<li class="itemPrice">{ItemPrice}</li>
+			{/block:NoItemProperPrice}
+			{block:HasItemProperPrice}
+			<!-- 割引 -->
+			<li class="discountPrice">
+				<span class="discountPrice__ratio">{ItemDiscountRate}</span>
+				<span class="discountPrice__calcPrice">{ItemPrice}</span>
+			</li>
+			{/block:HasItemProperPrice}
+		</ul>
+		{block:HasItemStock}
+			{block:ItemWatingForSale}
+				<p class="comingSoon">COMING SOON</p>
+			{/block:ItemWatingForSale}
+			{block:ItemNowOnSale}{block:ItemPreOrder}
+				<p class="preOrder">{lang:PreOrderItem}</p>
+			{/block:ItemPreOrder}{block:ItemLottery}
+				<p class="lottery">{lang:LotteryItem}</p>
+			{/block:ItemLottery}{block:ItemTakeout}
+				<p class="takeout">{lang:TakeoutItem}</p>
+			{/block:ItemTakeout}{block:ItemCommunityLimited}
+				<p class="community">{lang:CommunityLimitedItem}</p>
+			{/block:ItemCommunityLimited}{/block:ItemNowOnSale}
+		{/block:HasItemStock}
+		{block:NoItemStock}
+			{block:ItemWatingForSale}
+				<p class="comingSoon">COMING SOON</p>
+			{/block:ItemWatingForSale}
+		{/block:NoItemStock}
+	</a>
+</div>
+{/block:Items}
+{/block:LoadItemsPage}
+
+{block:AppsSearch}
+<script>
+	$(function(){
+		var _color = $('#x_iconSearch').css('color');
+		$('#x_itemSearchForm').css('border-color' , _color);
+	});
+</script>
+{/block:AppsSearch}
