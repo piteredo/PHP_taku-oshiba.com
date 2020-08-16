@@ -66,7 +66,9 @@
 
 	{block:NotItemPage}
 	<meta http-equiv="X-UA-Compatible" content="IE=8 ; IE=9">
-	{MetaShopInfoTag}
+    {MetaShopInfoTag}
+    <meta property="og:image" content="https://taku-oshiba.com/img/og-image.jpg">
+    <meta name="twitter:image" content="https://taku-oshiba.com/img/og-image.jpg" />
 	{/block:NotItemPage}
 
 	{block:AppsSearch}
@@ -296,7 +298,7 @@
                 {block:AppsItemLabel}
                     {AppsItemLabelTag}
                 {/block:AppsItemLabel}
-                <img src="{block:ItemImage1}{ItemImage1URL-300}{/block:ItemImage1}{block:NoItemImage1}{ItemNoImageURL}{/block:NoItemImage1}" alt="{ItemTitle}" title="{ItemTitle}" class="image-resize">
+                <img src="{block:ItemImage1}{ItemImage1URL-500}{/block:ItemImage1}{block:NoItemImage1}{ItemNoImageURL}{/block:NoItemImage1}" alt="{ItemTitle}" title="{ItemTitle}" class="image-resize">
             </a>
         </p>
     </section>
