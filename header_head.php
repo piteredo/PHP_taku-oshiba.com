@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="<?=$root?>css/reset.css">
   <link rel="stylesheet" href="<?=$root?>css/main.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+  <link rel="stylesheet" href="https://taku-oshiba.com/assets/fontawesome/css/all.css">
   <link rel="stylesheet" href="<?=$root?>css/slick.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">

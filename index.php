@@ -19,7 +19,7 @@ $bio_data = getPDOStatement($pdo, BIOGRAPHY_SQL)->fetch(); //only 1 column
 $photos = getPDOStatement($pdo, PHOTO_SQL)->fetchAll();
 $type = 'biography';
 $url = 'biography';
-$date = getUpdateDate($pdo, 'biography');
+$date = "2021-02-20";//getUpdateDate($pdo, 'biography');
 $fullpath = $root.'img/bio/'.$photos[0]['src'].'.jpg';
 $title = "[BIO] " . $bio_data['janame'] . " (" . $bio_data['janame_ruby'] . ") / " . $bio_data['enname'];
 $text = $bio_data['jatext_short'];
@@ -180,30 +180,39 @@ foreach (get_posts($arg) as $post) {
 
   <section class="content">
     <h2 class="content__header-title"><?=DESIGN_EN?></h2>
-    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$design_updates[0]['date']?></time></p>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time>2021-02-20</time></p>
     <ul class="image-list">
+
     <?php
-    foreach($design_updates as $content): ?>
-      <li class="section image-list__image-li">
-        <?php if(strpos($content['fullpath'], 'mp4')): ?>
-        <video
-          src="<?=$content['fullpath']?>"
-          poster="<?=$content['thumbnail']?>"
-          controls
-          playsinline
-          loop
-          class="image-list__image">
-        </video>
-        <?php else: ?>
-        <a href="<?=$content['fullpath']?>">
-          <img src="<?=$content['fullpath']?>" class="image-list__image" alt="<?=$content['text']?>">
-        </a>
-        <?php endif; ?>
-      </li>
-    <?php endforeach; ?>
+      $dirpath = "./img/design/";
+      $dir = opendir($dirpath);
+      $file_list = array();
+      $time_list = array();
+      $num = 6;
+      while( false !== ($file = readdir($dir))) {
+        if($file[0] != "."){
+          $time_list[] = filemtime($dirpath.$file);
+          $file_list[] = $file;
+        }
+      }
+      closedir($dir);
+      array_multisort($time_list, SORT_DESC, $file_list);
+
+      foreach($file_list as $filename):
+        $ext = substr($filename, strrpos($filename, '.') +1);
+          if( $num> 0 && $ext == "jpg" ): ?>
+            <li class="image-list__image-li">
+              <a href="../img/design/<?=$filename?>">
+                <img src="../img/design/<?=$filename?>" class="image-list__image">
+              </a>
+            </li>
+          <?php
+          $num--;
+          endif;
+      endforeach;?>
     </ul>
     <p class="section__label section__label--view-all">
-      <a href="<?=INSTAGRAM_URL?>" target="_blank"><?=VIEW_ALL_DESIGN?></a>
+      <a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL_DESIGN?></a>
     </p>
   </section>
 

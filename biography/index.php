@@ -5,7 +5,7 @@ $_GET['robot'] = 'noindex';
 $_GET['page_name'] = $page_name;
 require($root.'header.php');
 
-$update_date = getUpdateDate($pdo, $page_name);
+$update_date = "2021-02-20";//getUpdateDate($pdo, 'biography');
 $bio_data = getPDOStatement($pdo, BIOGRAPHY_SQL)->fetch(); //only 1 column
 $photos = getPDOStatement($pdo, PHOTO_SQL)->fetchAll();
 $ja_name = $bio_data['janame'];
