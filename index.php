@@ -99,7 +99,7 @@ $discography_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullp
 $arg = array(
   'post_status' => 'publish',
   'order' => 'DESC',
-  'posts_per_page' => 5,
+  'posts_per_page' => 1,
 );
 foreach (get_posts($arg) as $post) {
   if(catch_that_image() != "#"){
@@ -180,7 +180,7 @@ foreach (get_posts($arg) as $post) {
 
   <section class="content">
     <h2 class="content__header-title"><?=DESIGN_EN?></h2>
-    <p class="content__header-update-date"><?=SYNC_ICON?><time>2021-02-20</time></p>
+    <p class="content__header-update-date"><?=SYNC_ICON?><time>2022-12-12</time></p>
     <ul class="image-list">
 
     <?php
@@ -212,7 +212,7 @@ foreach (get_posts($arg) as $post) {
       endforeach;?>
     </ul>
     <p class="section__label section__label--view-all">
-      <a href="<?=$root.DESIGN_PAGE_PATH?>"><?=VIEW_ALL_DESIGN?></a>
+      <a href="<?=INSTAGRAM_URL?>" target="_blank"><?=VIEW_ALL_DESIGN?></a>
     </p>
   </section>
 

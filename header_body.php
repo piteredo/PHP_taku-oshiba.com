@@ -15,7 +15,7 @@
       <ul>
         <li class="header__nav-label"><a href="<?=$root.BIOGRAPHY_PAGE_PATH?>"><?=BIOGRAPHY_EN?></a></li>
         <li class="header__nav-label"><a href="<?=$root.SCHEDULE_PAGE_PATH?>"><?=SCHEDULE_EN?></a></li>
-        <li class="header__nav-label"><a href="<?=$root.DESIGN_PAGE_PATH?>"><?=DESIGN_EN?></a></li>
+        <li class="header__nav-label"><a href="<?=INSTAGRAM_URL?>" target="_blank"><?=DESIGN_EN?> <i class="fas fa-external-link-alt"></i></a></li>
         <li class="header__nav-label"><a href="<?=YOUTUBE_URL?>" target="_blank"><?=VIDEO_EN?> <i class="fas fa-external-link-alt"></i></a></li>
         <li class="header__nav-label"><a href="<?=$root.BLOG_PAGE_PATH?>"><?=BLOG_EN?></a></li>
         <li class="header__nav-label"><a href="https://shop.taku-oshiba.com">DISCO. / SHOP</a></li>

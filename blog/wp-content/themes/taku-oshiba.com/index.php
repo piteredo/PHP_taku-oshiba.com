@@ -1,7 +1,7 @@
 <?php
 $root = '../././././';
 $page_name = 'blog';
-$_GET['robot'] = 'index';
+$_GET['robot'] = 'noindex';
 $_GET['page_name'] = $page_name;
 require('header.php');
 
