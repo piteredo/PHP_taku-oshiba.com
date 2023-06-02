@@ -393,8 +393,11 @@ body {
 }
 #hamburger-menu__icon {
   cursor: pointer;
-  font-size: 3.0rem;
+  font-size: 4.0rem;
   z-index: 3000;
+}
+#hamburger-menu__icon i {
+  color: #f12c2c;
 }
 #hamburger-menu__content {
   opacity: 0;

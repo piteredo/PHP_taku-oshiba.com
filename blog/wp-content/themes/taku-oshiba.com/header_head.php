@@ -12,7 +12,7 @@
   <?php if(is_tag() || is_date() || is_search() || is_404() || is_category()): ?>
 		<meta name="robots" content="noindex"/>
 	<?php else : ?>
-		<meta name="robots" content="index"/>
+		<meta name="robots" content="noindex"/>
 	<?php endif; ?>
 
   <?php if( is_home() ): ?>

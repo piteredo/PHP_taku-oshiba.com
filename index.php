@@ -19,7 +19,7 @@ $bio_data = getPDOStatement($pdo, BIOGRAPHY_SQL)->fetch(); //only 1 column
 $photos = getPDOStatement($pdo, PHOTO_SQL)->fetchAll();
 $type = 'biography';
 $url = 'biography';
-$date = "2021-02-20";//getUpdateDate($pdo, 'biography');
+$date = "2023-05-31";//getUpdateDate($pdo, 'biography');
 $fullpath = $root.'img/bio/'.$photos[0]['src'].'.jpg';
 $title = "[BIO] " . $bio_data['janame'] . " (" . $bio_data['janame_ruby'] . ") / " . $bio_data['enname'];
 $text = $bio_data['jatext_short'];
@@ -33,7 +33,7 @@ $url = 'schedule';
 $date = getUpdateDate($pdo, 'schedule');
 if($schedule_data[0]['imgurl'] != null) $fullpath = $root. 'img/design/'. $schedule_data[0]['imgurl'];
 else $fullpath = $root. 'img/no-image.png';
-$title = "[SCHEDULE] 次回出演: " . $schedule_data[0]['date'] . ' ' . $schedule_data[0]['title'];
+$title = "次回出演:<br/>" . $schedule_data[0]['date'] . '<br/>' . $schedule_data[0]['title'];
 $text = "###";
 $schedule_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
 
@@ -61,7 +61,7 @@ foreach ($video_data as $video) {
 }
 
 //DESIGN
-$num   = 8;
+/*$num   = 8;
 $query = 'media.limit('. $num. '){caption,media_url,permalink,timestamp,thumbnail_url}';
 $json  = file_get_contents("{$f_api}{$ig_id}?fields={$query}&access_token={$token}");
 $data  = json_decode($json, true);
@@ -75,10 +75,10 @@ foreach ($medias as $media) {
   $title = "[DESIGN] " . deleteHashTags($media['caption']);
   $text = deleteHashTags($media['caption']);
   $design_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'thumbnail'=>$thumbnail, 'title'=>$title, 'text'=>$text);
-}
+}*/
 
 //DISCO
-$discography_data = getPDOStatement($pdo, DISCOGRAPHY_SQL)->fetchAll();
+/*$discography_data = getPDOStatement($pdo, DISCOGRAPHY_SQL)->fetchAll();
 $performer_id_list = strListToArray($discography_data[0]['performeridlist']);
 $player_prepare = getPDOPreparedStatement($pdo, PLAYER_SQL);
 $text = "";
@@ -86,17 +86,17 @@ foreach($performer_id_list as $performer_id){
   $player = getPlayerById($player_prepare, $performer_id);
   $player_name = $player['name'];
   $player_instrument = $player['instrument'];
-  $text .= $player_name . " (" . $player_instrument . ")　";
+  $text .= $player_name . " (" . $player_instrument . ")";
 }
 $type = 'discography';
 $url = 'discography';
 $date = getUpdateDate($pdo, 'discography');
 $fullpath = $root. 'img/design/'. $discography_data[0]['imgurl']. '.jpg';
 $title = "[DISCO] " . $discography_data[0]['title'];
-$discography_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);
+$discography_updates[] = array('type'=>$type, 'url'=>$url, 'date'=>$date, 'fullpath'=>$fullpath, 'title'=>$title, 'text'=>$text);*/
 
 //BLOG * 5
-$arg = array(
+/*$arg = array(
   'post_status' => 'publish',
   'order' => 'DESC',
   'posts_per_page' => 1,
@@ -116,13 +116,7 @@ foreach (get_posts($arg) as $post) {
     'text' => mb_substr(wp_strip_all_tags($post->post_content), 0, 100) . " ...",
     'fullpath' => $image
   ];
-}
-
-
-//$updates = dateSort($updates);
-//$total_update_date = $updates[0]['date'];
-
-//echo json_encode($updates);
+}*/
 ?>
 
 <main class="main">
@@ -140,10 +134,19 @@ foreach (get_posts($arg) as $post) {
           <?=$content['title']?>
         </h3>-->
         <p class="section__sentence">
-          <?=$content['text']?></br>
+          <?=$content['text']?>
         </p>
         <p class="section__label section__label--view-all">
           <a href="./biography"><?=VIEW_ALL_BIOGRAPHY?> ≫</a>
+        </p>
+        <p class="section__sentence">
+        <br/>
+          主な仕事内容<br/>
+          ●作曲/編曲<br/>
+          ●ギター演奏（アコギ・エレキ）<br/>
+          ●アニメーション制作<br/>
+          ●グラフィックデザイン（公演チラシ等）<br/>
+          ※ご依頼等は <a href="mailto:piteredo@gmail.com?subject=(大柴拓サイトよりお問い合わせ)">こちら</a> からお問合せ下さい。
         </p>
         <p class="section__square-image-wrapper section__schedule-image">
           <a href="./<?=$content['url']?>">
@@ -155,9 +158,11 @@ foreach (get_posts($arg) as $post) {
     </ul>
   </section>
 
+  
+
   <section class="content">
     <h2 class="content__header-title"><?=VIDEO_EN?></h2>
-    <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$video_updates[0]['date']?></time></p>
+    <p class="content__header-update-date"><!--<?=SYNC_ICON?><time><?=$video_updates[0]['date']?></time>--></p>
     <ul>
     <?php foreach($video_updates as $content): ?>
       <li class="video-list">
@@ -178,13 +183,16 @@ foreach (get_posts($arg) as $post) {
     </p>
   </section>
 
+
+
+
+
   <section class="content">
     <h2 class="content__header-title"><?=DESIGN_EN?></h2>
-    <p class="content__header-update-date"><?=SYNC_ICON?><time>2022-12-12</time></p>
-    <ul class="image-list">
-
-    <?php
-      $dirpath = "./img/design/";
+    <p class="content__header-update-date"><!--<?=SYNC_ICON?><time>2022-12-12</time>--></p>
+    <ul>
+    <!--<?php
+      /*$dirpath = "./img/design/";
       $dir = opendir($dirpath);
       $file_list = array();
       $time_list = array();
@@ -209,14 +217,100 @@ foreach (get_posts($arg) as $post) {
           <?php
           $num--;
           endif;
-      endforeach;?>
+      endforeach;*/?>-->
+      <li class="content__section section">
+        <p class="section__square-image-wrapper section__schedule-image">
+          <img src="../img/design/img_set.jpg" class="section__square-image">
+        </p>
+      </li>
     </ul>
     <p class="section__label section__label--view-all">
       <a href="<?=INSTAGRAM_URL?>" target="_blank"><?=VIEW_ALL_DESIGN?></a>
     </p>
   </section>
 
+  
+  
   <section class="content">
+    <h2 class="content__header-title"><?=SCHEDULE_EN?></h2>
+    <p class="content__header-update-date"><!--<?=SYNC_ICON?><time><?=$schedule_updates[0]['date']?></time>--></p>
+    <ul>
+    <?php foreach($schedule_updates as $content): ?>
+      <li class="content__section section">
+        <h3 class="section__title-text section__title-text--narrow-bottom">
+          <?=$content['title']?>
+        </h3>
+        <p class="section__label section__label--view-all">
+          <a href="./schedule">スケジュール一覧を見る ≫</a>
+        </p>
+        <p class="section__square-image-wrapper section__schedule-image">
+          <a href="./<?=$content['url']?>">
+            <img src="<?=$content['fullpath']?>" class="section__square-image" alt="<?=$content['text']?>">
+          </a>
+        </p>
+      </li>
+    <?php endforeach; ?>
+    </ul>
+  </section>
+
+
+
+
+  <section class="content">
+    <h2 class="content__header-title"><?=BLOG_EN?></h2>
+    <p class="content__header-update-date"><!--<?=SYNC_ICON?><time><?=$blog_updates[0]['date']?></time>--></p>
+    <ul>
+    <?php
+
+    date_default_timezone_set('Asia/Tokyo');
+    $max = 1;
+    $url ="https://note.com/oshibataku/rss";
+    $i = 0;
+    $output ='';
+    try {
+      // rss読み込み
+      $rss =  simplexml_load_file($url);
+      if($rss){
+        foreach( $rss->channel->item as $item ){
+
+          if($i < $max){
+            $timestamp = new DateTime($item->pubDate);
+            $date = $timestamp->format('Y-m-d');
+            
+            $description = strip_tags($item->description);            
+          
+            // no image
+            $first_img = $item->children('media',true)->thumbnail;
+            if(empty($item->children('media',true)->thumbnail)){
+              $first_img ="img/blank.jpg";
+            }
+            $output .= '<li class="content__section section">';            
+            $output .= '<p class="section__label"><time>' . $date . '</time></p>';
+            $output .= '<a href="'. $item->link .'" target="_blank" class="entry_wrap">';
+            $output .= '<h3 class="section__title-text">' . $item->title . '</h3>';
+            $output .= '</a>';            
+            $output .= '<p class="section__sentence">' . $description . '</p>';            
+            $output .= '<a href="'. $item->link .'" target="_blank" class="entry_wrap">';
+            $output .= '<p class="section__square-image-wrapper section__schedule-image"><img src="'.$first_img.'" class="section__square-image" ></p>';
+            $output .= '</a>';            
+            $output .= '</li>';
+            $i++;
+          }
+        }
+        echo '<ul class="note">'. $output . '</ul>';
+      }else{
+        throw new Exception("xml read error");
+      }
+    }catch(Exception $e){
+      echo '<p>ブログが読み込めませんでした</p>';
+    }
+    ?></ul>
+    <p class="section__label section__label--view-all">
+      <a href="./<?=$content['type']?>"><?=VIEW_ALL_BLOG?></a>
+    </p>
+  </section>
+
+  <!--<section class="content">
     <h2 class="content__header-title"><?=BLOG_EN?></h2>
     <p class="content__header-update-date"><?=SYNC_ICON?><time><?=$blog_updates[0]['date']?></time></p>
     <ul>
@@ -243,7 +337,7 @@ foreach (get_posts($arg) as $post) {
     <p class="section__label section__label--view-all">
       <a href="./<?=$content['type']?>"><?=VIEW_ALL_BLOG?> ≫</a>
     </p>
-  </section>
+  </section>-->
 </main>
 
 <?php require($root.'footer.php'); ?>
